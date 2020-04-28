@@ -7,7 +7,7 @@ namespace Antila.Data
 {
     public class InMemoryTestData
     {
-        readonly List<Test> tests;
+        public readonly List<Test> tests;
 
         public InMemoryTestData()
         {

@@ -1,0 +1,9 @@
+C:\Users\zero\Source\Repos\antila3\Antila.Core\bin\Debug\netcoreapp3.1\Antila.Core.deps.json
+C:\Users\zero\Source\Repos\antila3\Antila.Core\bin\Debug\netcoreapp3.1\Antila.Core.dll
+C:\Users\zero\Source\Repos\antila3\Antila.Core\bin\Debug\netcoreapp3.1\Antila.Core.pdb
+C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.csprojAssemblyReference.cache
+C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.csproj.CoreCompileInputs.cache
+C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.AssemblyInfoInputs.cache
+C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.AssemblyInfo.cs
+C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.dll
+C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.pdb
