@@ -12,16 +12,16 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        //private readonly InMemoryTestData _inMemoryTestData;
+        private readonly InMemoryTestData _inMemoryTestData;
 
-        //public TestController(InMemoryTestData inMemoryTestData)
-        //{
-        //    _inMemoryTestData = inMemoryTestData;
-        //}
-        [HttpGet]
-        public IActionResult Get()
+        public TestController(InMemoryTestData inMemoryTestData)
         {
-            return Ok("Everyting is Good");
+            _inMemoryTestData = inMemoryTestData;
+        }
+        [HttpGet]
+        public IEnumerable<Test> GetTests()
+        {
+            return _inMemoryTestData.tests;
         }
     }
 }
