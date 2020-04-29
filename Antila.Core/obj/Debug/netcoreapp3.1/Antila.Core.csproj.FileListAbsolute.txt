@@ -7,3 +7,12 @@ C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Co
 C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.AssemblyInfo.cs
 C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.dll
 C:\Users\zero\Source\Repos\antila3\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.pdb
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\bin\Debug\netcoreapp3.1\Antila.Core.deps.json
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\bin\Debug\netcoreapp3.1\Antila.Core.dll
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\bin\Debug\netcoreapp3.1\Antila.Core.pdb
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.csprojAssemblyReference.cache
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.csproj.CoreCompileInputs.cache
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.AssemblyInfoInputs.cache
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.AssemblyInfo.cs
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.dll
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Debug\netcoreapp3.1\Antila.Core.pdb

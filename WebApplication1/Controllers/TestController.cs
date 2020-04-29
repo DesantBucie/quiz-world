@@ -10,6 +10,7 @@ namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class TestController : ControllerBase
     {
         private readonly InMemoryTestData _inMemoryTestData;
