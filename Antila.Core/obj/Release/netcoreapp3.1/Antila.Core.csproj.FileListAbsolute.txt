@@ -1,0 +1,9 @@
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\bin\Release\netcoreapp3.1\Antila.Core.deps.json
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\bin\Release\netcoreapp3.1\Antila.Core.dll
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\bin\Release\netcoreapp3.1\Antila.Core.pdb
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Release\netcoreapp3.1\Antila.Core.csprojAssemblyReference.cache
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Release\netcoreapp3.1\Antila.Core.csproj.CoreCompileInputs.cache
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Release\netcoreapp3.1\Antila.Core.AssemblyInfoInputs.cache
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Release\netcoreapp3.1\Antila.Core.AssemblyInfo.cs
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Release\netcoreapp3.1\Antila.Core.dll
+C:\Users\dsnt\source\repos\WebApplication1\Antila.Core\obj\Release\netcoreapp3.1\Antila.Core.pdb

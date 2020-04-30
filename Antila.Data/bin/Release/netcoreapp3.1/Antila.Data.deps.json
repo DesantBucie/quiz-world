@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Antila.Data/1.0.0": {
+        "dependencies": {
+          "Antila.Core": "1.0.0"
+        },
+        "runtime": {
+          "Antila.Data.dll": {}
+        }
+      },
+      "Antila.Core/1.0.0": {
+        "runtime": {
+          "Antila.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Antila.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Antila.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
