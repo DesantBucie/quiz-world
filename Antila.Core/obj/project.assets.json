@@ -8,19 +8,23 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\dsnt\\.nuget\\packages\\": {}
+    "C:\\Users\\zero\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dsnt\\source\\repos\\WebApplication1\\Antila.Core\\Antila.Core.csproj",
+      "projectUniqueName": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\Antila.Core.csproj",
       "projectName": "Antila.Core",
-      "projectPath": "C:\\Users\\dsnt\\source\\repos\\WebApplication1\\Antila.Core\\Antila.Core.csproj",
-      "packagesPath": "C:\\Users\\dsnt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dsnt\\source\\repos\\WebApplication1\\Antila.Core\\obj\\",
+      "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\Antila.Core.csproj",
+      "packagesPath": "C:\\Users\\zero\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\dsnt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zero\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -22,3 +22,15 @@ C:\Users\dsnt\source\repos\WebApplication1\Antila.Data\obj\Debug\netcoreapp3.1\A
 C:\Users\dsnt\source\repos\WebApplication1\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.csproj.CopyComplete
 C:\Users\dsnt\source\repos\WebApplication1\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.dll
 C:\Users\dsnt\source\repos\WebApplication1\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.pdb
+C:\Users\zero\Source\Repos\antila5\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.deps.json
+C:\Users\zero\Source\Repos\antila5\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.dll
+C:\Users\zero\Source\Repos\antila5\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.pdb
+C:\Users\zero\Source\Repos\antila5\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Core.dll
+C:\Users\zero\Source\Repos\antila5\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Core.pdb
+C:\Users\zero\Source\Repos\antila5\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.csprojAssemblyReference.cache
+C:\Users\zero\Source\Repos\antila5\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.csproj.CoreCompileInputs.cache
+C:\Users\zero\Source\Repos\antila5\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.AssemblyInfoInputs.cache
+C:\Users\zero\Source\Repos\antila5\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.AssemblyInfo.cs
+C:\Users\zero\Source\Repos\antila5\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.csproj.CopyComplete
+C:\Users\zero\Source\Repos\antila5\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.dll
+C:\Users\zero\Source\Repos\antila5\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.pdb
