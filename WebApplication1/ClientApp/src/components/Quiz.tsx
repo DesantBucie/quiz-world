@@ -2,63 +2,73 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Container,Row,Col, Button } from 'reactstrap';
 import axios from 'axios';
+import {createStore} from 'redux';
+let id:number
+let category:string
+let correctId:number
+let answer1:string
 
-const state = {
-    question: [],
-    answer1: 'd',
-    answer2: 'u',
-    answer3: 'p',
-    answer4: 'a',
-    error:'',
-};
-axios.get('https://localhost:44322/api/Test',{})
-.then(resp => {
-    console.log(resp.data);
-    console.log(resp.data.Object('0'))
-})
-.catch(err => {
-   state.error = err;
-});
-const styles = {
-    answers:{
+class Quiz extends React.Component {
+
+render() {
+    const apiLink = 'https://localhost:44322/api/Test';
+    
+    axios.get(apiLink,{
+            headers: {
+                'Content-Type': 'aplication/json'
+            }
+    })
+    .then( resp => {
+            console.log(resp.data)
+            id = resp.data[0].id
+            category = resp.data[0].question.content
+            correctId = resp.data[0].question.correctId
+    })
+    .catch (err => {
+            console.log(err);
+    });   
+    const styles = {
+        answers:{
+            marginBottom:"20px",
+        },
+        buttons: {
+            width:"100%",
+        },
         
-    },
-    buttons: {
-        width:"100%",
-    }
-}
-
-
-const Quiz = () => (
+    }; 
+    console.log(id,category);       
+    return (
     <section>
     <Container>
         <Row>
             <Col sm={12}>
-                <p>{state.question}</p>
+                <p>{category}</p>
             </Col>
             <Col sm={6}>
                 <div style={styles.answers}>
-                    <Button style={styles.buttons}>A.{state.answer1}</Button>
+                    <Button style={styles.buttons}>A.{answer1}</Button>
                 </div>
             </Col>
             <Col sm={6}>
                 <div style={styles.answers}>
-                    <Button style={styles.buttons}>B.{state.answer2}</Button>
+                    <Button style={styles.buttons}>B.</Button>
                 </div>
             </Col>
             <Col sm={6}>
                 <div style={styles.answers}>
-                    <Button style={styles.buttons}>C.{state.answer3}</Button>
+                    <Button style={styles.buttons}>C.{}</Button>
                 </div>
             </Col>
             <Col sm={6}>
                 <div style={styles.answers}>
-                    <Button style={styles.buttons}>D.{state.answer4}</Button>
+                    <Button style={styles.buttons}>D.{}</Button>
                 </div>
             </Col>
         </Row>
     </Container> 
     </section>
-)
+        );
+    };
+}
 
 export default connect() (Quiz);

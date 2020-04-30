@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './Home.scss';
+
 const Home = () => (
     <section>
         <h1>Siema z tej strony Sebastian Ślemp</h1>
@@ -10,5 +10,7 @@ const Home = () => (
     </section>
 
 );
+const styles = {
 
+}
 export default connect()(Home);
