@@ -1,11 +1,21 @@
 import * as React from 'react';
 import {} from 'react-dom';
 import { connect } from 'react-redux';
-import { Container,Row,Col, Button } from 'reactstrap';
+import { Container,Row,Col, Button,} from 'reactstrap';
+import {Spring} from 'react-spring/renderprops';
 import axios from 'axios';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
 There is a main class with variables stored inside state, no redux is used yet. 
+
+state - most of the variables used to fetch and send data
+loadData() - function which loads question and answers
+sendIt() -function which sends selected answer
+render() - well render
+
+ REMEMBER ABOUT SETTING STATE WHEN PASSING VARIABLES
+
+ and typescript may need :any
 */
 class Quiz extends React.Component {
 
@@ -54,12 +64,13 @@ class Quiz extends React.Component {
 	}
 	selectAnswer = (e:any) => {
 		this.setState({
-		selectedAnswer: e.target.id
+		selectedAnswer:e.target.id
 		})
-		this.sendId();
+		console.log(this.state.selectedAnswer);
 	}
-	sendId = () => {
+	/* sendId = () => {
 		const selectedAnswer = this.state;
+		console.log(selectedAnswer);
 		axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
 		.then (res => {
 			console.log(res)
@@ -71,7 +82,7 @@ class Quiz extends React.Component {
 				error: `${err}`,
 			});
 		});
-	};
+	};*/
     componentDidMount() {
 		this.loadData();
     }
@@ -79,7 +90,9 @@ class Quiz extends React.Component {
 	render() {
 		const { loading, error, category, answer1, question, answer2, answer3, answer4, id } = this.state;
 		if (loading) {
-			return <p>Loading ...</p>;
+			return (
+			<h2>Ładowanie...</h2>
+			);
 		}
 		if (error) {
 			return (
@@ -91,7 +104,7 @@ class Quiz extends React.Component {
 		}
 		const styles = {
 			answers:{
-				marginBottom:"20px",
+				marginBottom:"10px",
 			},
 			buttons: {
 				width:"100%",
@@ -99,12 +112,17 @@ class Quiz extends React.Component {
 					transition:'2s',
 					color:'green'
 				}
+
 			},
-			
-		};        
+		};    
 		return (
 		<section>
-		<Container>
+			<Spring
+  from={{ opacity: 0 }}
+  to={{ opacity: 1 }}
+  config={{duration:500}}>
+  {props => 
+		<Container style={props}>
 			<Row>
 				<Col sm={12}>
 					<p>{category}</p>
@@ -131,7 +149,8 @@ class Quiz extends React.Component {
 					</div>
 				</Col>
 			</Row>
-		</Container> 
+  </Container>} 
+		</Spring>
 		</section>
 		);
 	};
