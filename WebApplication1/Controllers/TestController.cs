@@ -24,6 +24,11 @@ namespace WebApplication1.Controllers
         {
             return _inMemoryTestData.tests;
         }
-
+        
+        [HttpPost]
+        public IActionResult PostTests ([FromBody] Test test)
+        {
+            return Ok(test.Id);
+        }
     }
 }
