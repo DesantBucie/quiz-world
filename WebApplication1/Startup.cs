@@ -23,7 +23,7 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<InMemoryTestData>();
+            services.AddSingleton<ITestData, InMemoryTestData>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

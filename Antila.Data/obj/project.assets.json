@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Data\\Antila.Data.csproj",
+      "projectUniqueName": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Data\\Antila.Data.csproj",
       "projectName": "Antila.Data",
-      "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Data\\Antila.Data.csproj",
+      "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Data\\Antila.Data.csproj",
       "packagesPath": "C:\\Users\\zero\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Data\\obj\\",
+      "outputPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -56,8 +56,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\Antila.Core.csproj": {
-              "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\Antila.Core.csproj"
+            "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Core\\Antila.Core.csproj": {
+              "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Core\\Antila.Core.csproj"
             }
           }
         }

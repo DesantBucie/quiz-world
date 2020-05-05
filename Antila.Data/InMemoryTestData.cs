@@ -1,15 +1,17 @@
 ﻿using Antila.Core;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Antila.Data
 {
-    public class InMemoryTestData
+    public class InMemoryTestData : ITestData
     {
         public readonly List<Test> tests;
-
+        
+        //Hardcodowane testy
         public InMemoryTestData()
         {
             tests = new List<Test>()
@@ -19,7 +21,7 @@ namespace Antila.Data
                     Id = 0, Category = "Fakty Autentyczne",
                     Question = new Question
                     {
-                        Content = "Wskaż samolot najczęsciej używany do zrzutu chemitrails",
+                        Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
                         CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
                         {
                             new Answer { Id = 0, Content = "Boeing 737" },
@@ -28,11 +30,56 @@ namespace Antila.Data
                             new Answer { Id = 3, Content = "DC-9" }
                         }
                     }
+                },
+                new Test
+                {
+                    Id = 1, Category = "Kinematografia",
+                    Question = new Question
+                    {
+                        Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
+                        CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
+                        {
+                            new Answer { Id = 0, Content = "Rick" },
+                            new Answer { Id = 1, Content = "Deckard" },
+                            new Answer { Id = 2, Content = "Jest" },
+                            new Answer { Id = 3, Content = "Replikantem" }
+                        }
+                    }
+                },
+                new Test
+                {
+                    Id = 2, Category = "Społeczeństwo",
+                    Question = new Question
+                    {
+                        Content = "Czy rzeczywiście jest choroba wywoływana przez COVID-19?",
+                        CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
+                        {
+                            new Answer { Id = 0, Content = "Zwykłą grypą" },
+                            new Answer { Id = 1, Content = "Groźną chorobą" },
+                            new Answer { Id = 2, Content = "Efektem ubocznym chemitrails" },
+                            new Answer { Id = 3, Content = "Atakiem USA na gospodarkę Chin" }
+                        }
+                    }
                 }
             };
+
         }
 
-        public static HashSalt GenerateSaltedHash(int size, string password)
+        //Dostań losowy test
+        public IEnumerable<Test> GetTest()
+        {
+            var random = new Random();
+            int id = random.Next(tests.Count);
+
+            var test = from t in tests
+                       where t.Id.Equals(id)
+                       select t;
+
+            return test;
+        }
+
+        //Haszowanie
+        public HashSalt GenerateSaltedHash(int size, string password)
         {
             var saltBytes = new byte[size];
             var provider = new RNGCryptoServiceProvider();
@@ -46,11 +93,13 @@ namespace Antila.Data
             return hashSalt;
         }
 
-        public static bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt)
+        public bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt)
         {
             var saltBytes = Convert.FromBase64String(storedSalt);
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
             return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == storedHash;
         }
+
+        
     }
 }
