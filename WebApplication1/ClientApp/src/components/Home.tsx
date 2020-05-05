@@ -1,12 +1,16 @@
 import * as React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Container,Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Home = () => (
     <section>
-        <h1>Siema z tej strony Sebastian Ślemp</h1>
-        <Link to='/quiz'><Button variant="primary">Zacznij Quiz</Button></Link>{/*Needs react-router-dom import*/}
+        <Container>
+            <Row>
+                <h1>Witaj na platoformie QuizWorld</h1>
+                <Link to='/quiz'><Button color="primary">Zacznij Quiz</Button></Link>
+            </Row>
+        </Container>
     </section>
 
 );
