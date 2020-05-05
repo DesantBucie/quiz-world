@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\Antila.Core.csproj",
+      "projectUniqueName": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Core\\Antila.Core.csproj",
       "projectName": "Antila.Core",
-      "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\Antila.Core.csproj",
+      "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Core\\Antila.Core.csproj",
       "packagesPath": "C:\\Users\\zero\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zero\\Source\\Repos\\antila5\\Antila.Core\\obj\\",
+      "outputPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
