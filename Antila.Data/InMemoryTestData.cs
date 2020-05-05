@@ -9,7 +9,7 @@ namespace Antila.Data
 {
     public class InMemoryTestData : ITestData
     {
-        public readonly List<Test> tests;
+        private readonly List<Test> tests;
         
         //Hardcodowane testy
         public InMemoryTestData()
