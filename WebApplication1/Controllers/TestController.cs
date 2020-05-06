@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult PostTests ([FromBody] Test test)
         {
-            if(testData.CheckAnswer(1, test.Id))//Convert.ToInt32(test.Id)))
+            if(testData.CheckAnswer(test.Id, test.Id ))//Convert.ToInt32(test.Id)))
             {
                 return Ok("Dobra odp");
             }
