@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {} from 'react-dom';
 import { connect } from 'react-redux';
-import { Container,Row,Col, Button,} from 'reactstrap';
-import {Spring} from 'react-spring/renderprops';
+import { Container,Row,Col } from 'reactstrap';
+import { Spring } from 'react-spring/renderprops';
 import axios from 'axios';
+import './Quiz.css';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
 There is a main class with variables stored inside state, no redux is used yet. 
@@ -17,29 +17,42 @@ render() - well render
 
  and typescript may need :any
 */
-class Quiz extends React.Component {
+type State = {
+	loading: boolean,
+	error: boolean,
+	data: object,
+	category: string,
+	question:string,
+	answer1:string,
+	answer2:string, 
+	answer3:string,
+	answer4:string,
+	id: number,
+	iterator:number,
+	selectedAnswer:number,
+};
 
-    state = {
+export class Quiz extends React.Component<State> {
+
+   	readonly state : State = {
+		data:{},
         loading: true,
-        error: "",
-        data: null,
-        category: null,
-        question:null,
-        answer1:null,
-        answer2:null, 
-        answer3:null,
-		answer4:null,
-		id: null,
-		correctAnswer:null,
+        error: false,
+        category: '',
+        question:'',
+        answer1:'',
+        answer2:'', 
+        answer3:'',
+		answer4:'',
+		id:0,
 		iterator:0,
-		selectedAnswer:null,
-      };
-
+		selectedAnswer:0,
+	  };
+	  
     loadData = () => {
         this.setState({ loading: true });
         return axios.get(`https://localhost:44322/api/Test`)
         .then(result => {
-            console.log(result);
             this.setState({
                 data: result.data[0],
                 loading: false,
@@ -60,44 +73,26 @@ class Quiz extends React.Component {
               	error: `${err}`,
               	loading: false
             });
-        });
+		});
 	}
-	selectAnswer1 = () => {
-		this.setState({
-			selectedAnswer:0
+	 selectAnswer = async (e:any) => {
+		await this.setState ({selectedAnswer: e.target.id});
+		this.sendId(this.state.selectedAnswer);
+	}
+	sendId = (selectedAnswer:number) => {
+		axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
+		.then(res => {
+			console.log(res.data)
 		})
-		this.sendId();
-	}
-	selectAnswer2 = () => {
-		this.setState({
-			selectedAnswer:1
-		})
-		this.sendId();
-	}
-	selectAnswer3 = () => {
-		this.setState({
-			selectedAnswer:2
-		})
-		this.sendId();
-
-	}
-	selectAnswer4 = () => {
-		this.setState({
-			selectedAnswer:3
-		})
-		this.sendId();
-	}
-	sendId = () => {
-		const selectedAnswer = this.state;
-		/*axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
 		.catch(err =>{
 			console.error("error: ", err);
 			this.setState({
 				error: `${err}`,
 			});
-		});*/
-		console.log(selectedAnswer);
+		});
 	};
+	comeAndGetThem = () => {
+	}
     componentDidMount() {
 		this.loadData();
     }
@@ -121,41 +116,8 @@ class Quiz extends React.Component {
 			answers:{
 				marginBottom:"10px",
 			},
-			button1: {
+			buttons: {
 				width:"100%",
-				backgroundColor:"#ffe5ac",
-				'&:hover': {
-					transition:'1s',
-					color:'green'
-				}
-
-			},
-			button2: {
-				width:"100%",
-				backgroundColor:"#caacff",
-				'&:hover': {
-					transition:'1s',
-					color:'green'
-				}
-
-			},
-			button3: {
-				width:"100%",
-				backgroundColor:"#fface1",
-				'&:hover': {
-					transition:'1s',
-					color:'green'
-				}
-
-			},
-			button4: {
-				width:"100%",
-				backgroundColor:"#e1ffac",
-				'&:hover': {
-					transition:'1s',
-					color:'green'
-				}
-
 			},
 		};    
 		return (
@@ -167,28 +129,33 @@ class Quiz extends React.Component {
   {props => 
 		<Container style={props}>
 			<Row>
+				<Col sm={6}>
+					<p>Kategoria: {category}</p>
+				</Col>
+				<Col sm={6}>
+					<p>ID z bazy danych: {id}</p>
+				</Col>
 				<Col sm={12}>
-					<p>{category}</p>
 					<h2>{question}</h2>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<button id='0' onClick={this.selectAnswer1} style={styles.button1} >A. {answer1}</button>
+						<button id='0' className={'but1'} onClick={this.selectAnswer} style={styles.buttons} >A. {answer1}</button>
 					</div>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<button id='1' onClick={this.selectAnswer2} style={styles.button2} >B. {answer2}</button>
+						<button id='1' className={'but2'} onClick={this.selectAnswer} style={styles.buttons} >B. {answer2}</button>
 					</div>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<button id='2' onClick={this.selectAnswer3} style={styles.button3} >C. {answer3}</button>
+						<button id='2' className={'but3'} onClick={this.selectAnswer} style={styles.buttons} >C. {answer3}</button>
 					</div>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<button  id='3' onClick={this.selectAnswer4} style={styles.button4}>D. {answer4}</button>
+						<button  id='3' className={'but4'} onClick={this.selectAnswer} style={styles.buttons}>D. {answer4}</button>
 					</div>
 				</Col>
 			</Row>
