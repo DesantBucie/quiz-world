@@ -15,8 +15,6 @@ namespace WebApplication1.Controllers
     public class TestController : ControllerBase
     {
         private readonly ITestData testData;
-        private readonly int id;
-
         public IEnumerable<Test> Test { get; set; }
 
         public TestController(ITestData testData)
@@ -33,7 +31,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult PostTests ([FromBody] Test test)
         {
-            if(testData.CheckAnswer(1, Convert.ToInt32(test.Question.CorrectId)))
+            if(testData.CheckAnswer(1, test.Id))//Convert.ToInt32(test.Id)))
             {
                 return Ok("Dobra odp");
             }

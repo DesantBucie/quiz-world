@@ -89,7 +89,7 @@ namespace Antila.Data
                        where q.Id.Equals(testId)
                        select q.Question.CorrectId.Salt;
 
-            bool isAnswerMatched = VerifyPassword(answerId.ToString(), hash.ToString(), salt.ToString());
+            bool isAnswerMatched = VerifyPassword(answerId.ToString(), hash.FirstOrDefault(), salt.FirstOrDefault());
 
             return isAnswerMatched;
            
