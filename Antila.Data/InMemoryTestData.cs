@@ -10,6 +10,7 @@ namespace Antila.Data
     public class InMemoryTestData : ITestData
     {
         private readonly List<Test> tests;
+        private readonly HashSalt hashSalt;
         
         //Hardcodowane testy
         public InMemoryTestData()
@@ -78,6 +79,21 @@ namespace Antila.Data
             return test;
         }
 
+        public bool CheckAnswer(int testId, int answerId)
+        {
+            //Troche nie efektywna metoda
+            var hash = from q in tests
+                           where q.Id.Equals(testId)
+                           select q.Question.CorrectId.Hash;
+            var salt = from q in tests
+                       where q.Id.Equals(testId)
+                       select q.Question.CorrectId.Salt;
+
+            bool isAnswerMatched = VerifyPassword(answerId.ToString(), hash.ToString(), salt.ToString());
+
+            return isAnswerMatched;
+           
+        }
         //Haszowanie
         public HashSalt GenerateSaltedHash(int size, string password)
         {
@@ -99,7 +115,8 @@ namespace Antila.Data
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
             return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == storedHash;
         }
+       
+       
 
-        
     }
 }
