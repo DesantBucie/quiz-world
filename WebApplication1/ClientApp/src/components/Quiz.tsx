@@ -62,27 +62,42 @@ class Quiz extends React.Component {
             });
         });
 	}
-	selectAnswer = (e:any) => {
+	selectAnswer1 = () => {
 		this.setState({
-		selectedAnswer:e.target.id
+			selectedAnswer:0
 		})
-		console.log(this.state.selectedAnswer);
+		this.sendId();
 	}
-	/* sendId = () => {
-		const selectedAnswer = this.state;
-		console.log(selectedAnswer);
-		axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
-		.then (res => {
-			console.log(res)
-			console.log(res.data)
+	selectAnswer2 = () => {
+		this.setState({
+			selectedAnswer:1
 		})
+		this.sendId();
+	}
+	selectAnswer3 = () => {
+		this.setState({
+			selectedAnswer:2
+		})
+		this.sendId();
+
+	}
+	selectAnswer4 = () => {
+		this.setState({
+			selectedAnswer:3
+		})
+		this.sendId();
+	}
+	sendId = () => {
+		const selectedAnswer = this.state;
+		/*axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
 		.catch(err =>{
 			console.error("error: ", err);
 			this.setState({
 				error: `${err}`,
 			});
-		});
-	};*/
+		});*/
+		console.log(selectedAnswer);
+	};
     componentDidMount() {
 		this.loadData();
     }
@@ -106,10 +121,38 @@ class Quiz extends React.Component {
 			answers:{
 				marginBottom:"10px",
 			},
-			buttons: {
+			button1: {
 				width:"100%",
+				backgroundColor:"#ffe5ac",
 				'&:hover': {
-					transition:'2s',
+					transition:'1s',
+					color:'green'
+				}
+
+			},
+			button2: {
+				width:"100%",
+				backgroundColor:"#caacff",
+				'&:hover': {
+					transition:'1s',
+					color:'green'
+				}
+
+			},
+			button3: {
+				width:"100%",
+				backgroundColor:"#fface1",
+				'&:hover': {
+					transition:'1s',
+					color:'green'
+				}
+
+			},
+			button4: {
+				width:"100%",
+				backgroundColor:"#e1ffac",
+				'&:hover': {
+					transition:'1s',
 					color:'green'
 				}
 
@@ -130,22 +173,22 @@ class Quiz extends React.Component {
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<Button id='0' onClick={this.selectAnswer} style={styles.buttons}>A. {answer1}</Button>
+						<button id='0' onClick={this.selectAnswer1} style={styles.button1} >A. {answer1}</button>
 					</div>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<Button id='1' onClick={this.selectAnswer} style={styles.buttons}>B. {answer2}</Button>
+						<button id='1' onClick={this.selectAnswer2} style={styles.button2} >B. {answer2}</button>
 					</div>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<Button id='2' onClick={this.selectAnswer} style={styles.buttons}>C. {answer3}</Button>
+						<button id='2' onClick={this.selectAnswer3} style={styles.button3} >C. {answer3}</button>
 					</div>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
-						<Button  id='3' onClick={this.selectAnswer} style={styles.buttons}>D. {answer4}</Button>
+						<button  id='3' onClick={this.selectAnswer4} style={styles.button4}>D. {answer4}</button>
 					</div>
 				</Col>
 			</Row>
