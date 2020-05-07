@@ -29,9 +29,9 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPost]
-        public IActionResult PostTests ([FromBody] Test test)
+        public IActionResult PostTests ([FromBody] int testId, int answerId)
         {
-            if(testData.CheckAnswer(test.Id, test.Id ))//Convert.ToInt32(test.Id)))
+            if(testData.CheckAnswer(testId, answerId))//Convert.ToInt32(test.Id)))
             {
                 return Ok("Dobra odp");
             }
