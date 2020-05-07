@@ -29,7 +29,7 @@ type State = {
 	answer4:string,
 	id: number,
 	iterator:number,
-	selectedAnswer:object,
+	selectedAnswer:number,
 };
 
 export class Quiz extends React.Component<State> {
@@ -46,22 +46,7 @@ export class Quiz extends React.Component<State> {
 		answer4:'',
 		id:0,
 		iterator:0,
-		selectedAnswer: {
-			id:0,
-			category:'',
-			question: {
-				content:'',
-				correctId: {
-					hash:0,
-					salt:0,
-				},
-				answers: [
-					{
-						id:0,
-					}
-				]
-			}
-		}
+		selectedAnswer:0
 	};
 	  
     loadData = () => {
@@ -92,29 +77,15 @@ export class Quiz extends React.Component<State> {
 	}
 	 selectAnswer = async (e:any) => {
 		await this.setState ({
-			selectedAnswer:{
-				id:this.state.id,
-				category:this.state.category,
-				question: {
-					content:this.state.question,
-					correctId: {
-						hash:0,
-						salt:0,
-					},
-					answers: [
-						{
-							id:e.target.id
-						}
-					]
-				}
-			}
+			selectedAnswer: e.target.id
 		});
 		this.sendId();
 	}
 	sendId = () => {
 		const selectedAnswer = this.state.selectedAnswer
+		const id = this.state.id;
 		console.log(selectedAnswer);
-		axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
+		axios.post(`https://localhost:44322/api/Test`, {id,selectedAnswer})
 		.then(res => {
 			console.log(res.data)
 		})
