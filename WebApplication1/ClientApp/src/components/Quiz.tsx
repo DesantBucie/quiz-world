@@ -46,25 +46,30 @@ export class Quiz extends React.Component<State> {
 		answer4:'',
 		id:0,
 		iterator:0,
-		selectedAnswer:{
+		selectedAnswer: {
 			id:0,
+			category:'',
 			question: {
-				answers:[
+				content:'',
+				correctId: {
+					hash:0,
+					salt:0,
+				},
+				answers: [
 					{
-						id:0
+						id:0,
 					}
 				]
 			}
-
-		},
-	  };
+		}
+	};
 	  
     loadData = () => {
         this.setState({ loading: true });
         return axios.get(`https://localhost:44322/api/Test`)
         .then(result => {
+			console.log(result.data)
             this.setState({
-                data: result.data[0],
                 loading: false,
                 error: false,
 				category: result.data[0].category,
@@ -75,8 +80,8 @@ export class Quiz extends React.Component<State> {
                 answer3: result.data[0].question.answers[2].content,
 				answer4: result.data[0].question.answers[3].content,
 				correctAnswer: result.data[0].question.correctId              
-        	});
-        })
+			});
+		})
         .catch(err => {
         	console.error("error: ", err);
             this.setState({
@@ -87,18 +92,27 @@ export class Quiz extends React.Component<State> {
 	}
 	 selectAnswer = async (e:any) => {
 		await this.setState ({
-			selectedAnswer: {
+			selectedAnswer:{
+				id:this.state.id,
+				category:this.state.category,
 				question: {
-					answers: [{
-						id:e.target.id
-					}]
-				},
-				id:this.state.id
+					content:this.state.question,
+					correctId: {
+						hash:0,
+						salt:0,
+					},
+					answers: [
+						{
+							id:e.target.id
+						}
+					]
+				}
 			}
 		});
-		this.sendId(this.state.selectedAnswer);
+		this.sendId();
 	}
-	sendId = (selectedAnswer:object) => {
+	sendId = () => {
+		const selectedAnswer = this.state.selectedAnswer
 		console.log(selectedAnswer);
 		axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
 		.then(res => {
