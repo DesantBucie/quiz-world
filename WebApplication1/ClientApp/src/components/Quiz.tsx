@@ -22,7 +22,7 @@ type State = {
 	error: boolean,
 	data: object,
 	category: string,
-        question:object,
+    question:object,
 	question1:string,
 	answer1:string,
 	answer2:string, 
@@ -34,7 +34,7 @@ type State = {
 
 export class Quiz extends React.Component<State> {
 
-   	readonly state : State = {
+   	readonly  state : State = {
 		data:{},
         loading: true,
         error: false,
@@ -84,10 +84,14 @@ export class Quiz extends React.Component<State> {
 	 selectAnswer = async (e:any) => {
 		await this.setState ({
 			numer: e.target.id,
+		});
+		console.log(this.state.numer);
+		const numer:number = this.state.numer;
+		await this.setState ({
 			question:{
 				answers:[
 					{
-						id:this.state.numer
+						id:numer,
 					}
 				] 
 			}			 
