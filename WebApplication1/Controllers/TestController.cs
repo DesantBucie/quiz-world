@@ -29,13 +29,13 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPost]
-        public IActionResult PostTests ([FromBody] int testId, int answerId)
+        public IActionResult PostTests ([FromBody] Test test)
         {
-            if(testData.CheckAnswer(testId, answerId))//Convert.ToInt32(test.Id)))
-            {
-                return Ok("Dobra odp");
-            }
-            else
+            //if(testData.CheckAnswer(testId, answerId))//Convert.ToInt32(test.Id)))
+            //{
+            //    return Ok("Dobra odp");
+            //}
+            //else
             return Ok("Zła odp");
         }
     }
