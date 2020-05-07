@@ -22,7 +22,6 @@ type State = {
 	error: boolean,
 	data: object,
 	category: string,
-    question:object,
 	question1:string,
 	answer1:string,
 	answer2:string, 
@@ -31,7 +30,15 @@ type State = {
 	id: number,
 	numer:number,
 };
-
+type Sendquestion = {
+	question: {
+		answers:[
+			{
+				id:number
+			}
+		]
+	}
+};
 export class Quiz extends React.Component<State> {
 
    	readonly  state : State = {
@@ -46,15 +53,17 @@ export class Quiz extends React.Component<State> {
 		answer4:'',
 		id:0,
 		numer:0,
-        question:{
-            answers:[
-                {
-                    id:0,
-                }
-            ] 
-        }, 
-    };
-	  
+	};
+	readonly sendquestion : Sendquestion = {
+		question: {
+			answers:[
+				{
+					id:0,
+				}
+			]
+		}
+	};
+
     loadData = () => {
         this.setState({ loading: true });
         return axios.get(`https://localhost:44322/api/Test`)
@@ -85,7 +94,6 @@ export class Quiz extends React.Component<State> {
 		await this.setState ({
 			numer: e.target.id,
 		});
-		console.log(this.state.numer);
 		const numer:number = this.state.numer;
 		await this.setState ({
 			question:{
@@ -96,11 +104,12 @@ export class Quiz extends React.Component<State> {
 				] 
 			}			 
 		});
-		console.log(this.state.question);
 		this.sendId();
 	}
 	sendId = () => {
-		const {id,question} = this.state;
+		const id = this.state;
+		const question = this.sendquestion.question;
+		console.log(this.sendquestion);
 		axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then(res => {
 			console.log(res.data)
