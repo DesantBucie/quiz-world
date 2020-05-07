@@ -85,7 +85,7 @@ export class Quiz extends React.Component<State> {
 		const selectedAnswer = this.state.selectedAnswer
 		const id = this.state.id;
 		console.log(selectedAnswer);
-		axios.post(`https://localhost:44322/api/Test`, {id,selectedAnswer})
+		axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
 		.then(res => {
 			console.log(res.data)
 		})
