@@ -22,14 +22,13 @@ type State = {
 	error: boolean,
 	data: object,
 	category: string,
-	question:string,
+        question:object,
+	question1:string,
 	answer1:string,
 	answer2:string, 
 	answer3:string,
 	answer4:string,
 	id: number,
-	iterator:number,
-	selectedAnswer:number,
 };
 
 export class Quiz extends React.Component<State> {
@@ -39,15 +38,20 @@ export class Quiz extends React.Component<State> {
         loading: true,
         error: false,
         category: '',
-        question:'',
+        question1:'',
         answer1:'',
         answer2:'', 
         answer3:'',
-		answer4:'',
-		id:0,
-		iterator:0,
-		selectedAnswer:0
-	};
+	answer4:'',
+	id:0,
+        question:{
+            answers:[
+                {
+                    id:0,
+                }
+            ] 
+        }, 
+    };
 	  
     loadData = () => {
         this.setState({ loading: true });
@@ -59,7 +63,7 @@ export class Quiz extends React.Component<State> {
                 error: false,
 				category: result.data[0].category,
 				id: result.data[0].id,
-                question: result.data[0].question.content,
+                question1: result.data[0].question.content,
                 answer1: result.data[0].question.answers[0].content,
                 answer2: result.data[0].question.answers[1].content,
                 answer3: result.data[0].question.answers[2].content,
@@ -77,15 +81,16 @@ export class Quiz extends React.Component<State> {
 	}
 	 selectAnswer = async (e:any) => {
 		await this.setState ({
-			selectedAnswer: e.target.id
+			question:{
+answers:[{id:e.target.id}] 
+} 
 		});
 		this.sendId();
 	}
 	sendId = () => {
-		const selectedAnswer = this.state.selectedAnswer
-		const id = this.state.id;
-		console.log(selectedAnswer);
-		axios.post(`https://localhost:44322/api/Test`, {selectedAnswer})
+		const id: this.state.id
+                const question: this.state.question
+		axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then(res => {
 			console.log(res.data)
 		})
@@ -103,7 +108,7 @@ export class Quiz extends React.Component<State> {
     }
 
 	render() {
-		const { loading, error, category, answer1, question, answer2, answer3, answer4, id } = this.state;
+		const { loading, error, category, answer1, question1, answer2, answer3, answer4, id } = this.state;
 		if (loading) {
 			return (
 			<h2>Ładowanie...</h2>
@@ -141,7 +146,7 @@ export class Quiz extends React.Component<State> {
 					<p>ID z bazy danych: {id}</p>
 				</Col>
 				<Col sm={12}>
-					<h2>{question}</h2>
+					<h2>{question1}</h2>
 				</Col>
 				<Col sm={6}>
 					<div style={styles.answers}>
