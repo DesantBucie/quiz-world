@@ -82,14 +82,18 @@ export class Quiz extends React.Component<State> {
 	 selectAnswer = async (e:any) => {
 		await this.setState ({
 			question:{
-answers:[{id:e.target.id}] 
-} 
+				answers:[
+					{
+						id:e.target.id
+					}
+				] 
+			}			 
 		});
 		this.sendId();
 	}
 	sendId = () => {
-		const id: this.state.id
-                const question: this.state.question
+		const id = this.state.id;
+        const question = this.state.question
 		axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then(res => {
 			console.log(res.data)
