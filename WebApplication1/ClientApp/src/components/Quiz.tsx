@@ -20,7 +20,6 @@ render() - well render
 type State = {
 	loading: boolean,
 	error: boolean,
-	data: object,
 	category: string,
 	question1:string,
 	answer1:string,
@@ -35,13 +34,14 @@ type State = {
 				id:any
 			}
 		]
-	}
+	},
+	response:string,
+	iterator:number
 };
 
 export class Quiz extends React.Component<State> {
-
+	
    	readonly  state : State = {
-		data:{},
         loading: true,
         error: false,
         category: '',
@@ -58,14 +58,15 @@ export class Quiz extends React.Component<State> {
 					id:0,
 				}
 			]
-		}
+		},
+		response:'',
+		iterator:0
 	};
 
     loadData = () => {
         this.setState({ loading: true });
         return axios.get(`https://localhost:44322/api/Test`)
         .then(result => {
-			console.log(result.data)
             this.setState({
                 loading: false,
                 error: false,
@@ -102,11 +103,13 @@ export class Quiz extends React.Component<State> {
 		});
 		this.sendId();
 	}
-	sendId = () => {
+	sendId = async () => {
 		const {id,question} = this.state;
-		axios.post(`https://localhost:44322/api/Test`, {id,question})
-		.then(res => {
-			console.log(res.data)
+		await axios.post(`https://localhost:44322/api/Test`, {id,question})
+		.then( res => {
+				this.setState({
+				response:res.data
+			});
 		})
 		.catch(err =>{
 			console.error("error: ", err);
@@ -114,13 +117,15 @@ export class Quiz extends React.Component<State> {
 				error: `${err}`,
 			});
 		});
+		this.comeAndGetThem();
 	};
 	comeAndGetThem = () => {
+		//something will be here maybe
+		this.loadData();
 	}
-    componentDidMount() {
+	componentDidMount() {
 		this.loadData();
     }
-
 	render() {
 		const { loading, error, category, answer1, question1, answer2, answer3, answer4, id } = this.state;
 		if (loading) {
