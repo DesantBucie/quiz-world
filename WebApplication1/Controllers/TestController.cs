@@ -31,11 +31,12 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult PostTests ([FromBody] Test test)
         {
-            //if (testData.CheckAnswer(test.Id, test.Question.Answers.FirstOrDefault()))//Convert.ToInt32(test.Id)))
-            //{
-            //    return Ok("Dobra odp");
-            //}
-            //else
+           
+            if (testData.CheckAnswer(test.Id, test.Question.Answers.Select(x => x.Id).FirstOrDefault()))
+            {
+                return Ok("Dobra odp");
+            }
+            else
             if (test.Question != null)
                 return Ok("Działa");
             else
