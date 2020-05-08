@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container,Row,Col } from 'reactstrap';
 import { Spring } from 'react-spring/renderprops';
 import axios from 'axios';
-import './Quiz.css';
+import './Quiz.scss';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
 There is a main class with variables stored inside state, no redux is used yet. 
@@ -142,6 +142,15 @@ export class Quiz extends React.Component<State> {
 			},
 			buttons: {
 				width:"100%",
+				padding:'30px',
+				border:'1px solid transparent',
+				borderRadius:'4px'
+			},
+			top: {
+				marginTop:'30px'
+			},
+			question: {
+				marginBottom:'30px'
 			},
 		};    
 		return (
@@ -152,7 +161,7 @@ export class Quiz extends React.Component<State> {
   config={{duration:500}}>
   {props => 
 		<Container style={props}>
-			<Row>
+			<Row style={styles.top}>
 				<Col sm={6}>
 					<p>Kategoria: {category}</p>
 				</Col>
@@ -160,24 +169,24 @@ export class Quiz extends React.Component<State> {
 					<p>ID z bazy danych: {id}</p>
 				</Col>
 				<Col sm={12}>
-					<h2>{question1}</h2>
+					<h2 style={styles.question}>{question1}</h2>
 				</Col>
-				<Col sm={6}>
+				<Col xs={6}>
 					<div style={styles.answers}>
 						<button id='0' className={'but1'} onClick={this.selectAnswer} style={styles.buttons} >A. {answer1}</button>
 					</div>
 				</Col>
-				<Col sm={6}>
+				<Col xs={6}>
 					<div style={styles.answers}>
 						<button id='1' className={'but2'} onClick={this.selectAnswer} style={styles.buttons} >B. {answer2}</button>
 					</div>
 				</Col>
-				<Col sm={6}>
+				<Col xs={6}>
 					<div style={styles.answers}>
 						<button id='2' className={'but3'} onClick={this.selectAnswer} style={styles.buttons} >C. {answer3}</button>
 					</div>
 				</Col>
-				<Col sm={6}>
+				<Col xs={6}>
 					<div style={styles.answers}>
 						<button  id='3' className={'but4'} onClick={this.selectAnswer} style={styles.buttons}>D. {answer4}</button>
 					</div>
