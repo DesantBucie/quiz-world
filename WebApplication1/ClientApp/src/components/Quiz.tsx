@@ -28,7 +28,7 @@ type State = {
 	answer3:string,
 	answer4:string,
 	id: number,
-	numer:any,
+	numer:number,
 	question: {
 		answers:[
 			{
@@ -104,12 +104,7 @@ export class Quiz extends React.Component<State> {
 	}
 	sendId = () => {
 		const {id,question} = this.state;
-		const all = {
-			id,
-			question
-		};
-		console.log(all);
-		axios.post(`https://localhost:44322/api/Test`, {all})
+		axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then(res => {
 			console.log(res.data)
 		})
