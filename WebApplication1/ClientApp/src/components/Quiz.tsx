@@ -28,17 +28,16 @@ type State = {
 	answer3:string,
 	answer4:string,
 	id: number,
-	numer:number,
-};
-type Sendquestion = {
+	numer:any,
 	question: {
 		answers:[
 			{
-				id:number
+				id:any
 			}
 		]
 	}
 };
+
 export class Quiz extends React.Component<State> {
 
    	readonly  state : State = {
@@ -53,8 +52,6 @@ export class Quiz extends React.Component<State> {
 		answer4:'',
 		id:0,
 		numer:0,
-	};
-	readonly sendquestion : Sendquestion = {
 		question: {
 			answers:[
 				{
@@ -92,25 +89,27 @@ export class Quiz extends React.Component<State> {
 	}
 	 selectAnswer = async (e:any) => {
 		await this.setState ({
-			numer: e.target.id,
+			numer: parseInt(e.target.id)
 		});
-		const numer:number = this.state.numer;
 		await this.setState ({
 			question:{
 				answers:[
 					{
-						id:numer,
+						id:this.state.numer,
 					}
 				] 
-			}			 
+			}	 
 		});
 		this.sendId();
 	}
 	sendId = () => {
-		const id = this.state;
-		const question = this.sendquestion.question;
-		console.log(this.sendquestion);
-		axios.post(`https://localhost:44322/api/Test`, {id,question})
+		const {id,question} = this.state;
+		const all = {
+			id,
+			question
+		};
+		console.log(all);
+		axios.post(`https://localhost:44322/api/Test`, {all})
 		.then(res => {
 			console.log(res.data)
 		})
