@@ -34,13 +34,11 @@ namespace WebApplication1.Controllers
            
             if (testData.CheckAnswer(test.Id, test.Question.Answers.Select(x => x.Id).FirstOrDefault()))
             {
-                return Ok("Dobra odp");
+                return Ok("Dobra odpowiedź");
             }
             else
-            if (test.Question != null)
-                return Ok("Działa");
-            else
-             return Ok("Nie działa");
+            return Ok("Zła odpowiedź");
+
         }
     }
 }
