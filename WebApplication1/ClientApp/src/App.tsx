@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Help from './components/Help';
 import Quiz from './components/Quiz';
 
-import './custom.css'
+import './custom.scss'
 
 export default () => (
     <Layout>

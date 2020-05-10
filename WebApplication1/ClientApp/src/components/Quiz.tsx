@@ -36,6 +36,7 @@ type State = {
 		]
 	},
 	response:string,
+	data:Array<string>
 	iterator:number
 };
 
@@ -60,24 +61,26 @@ export class Quiz extends React.Component<State> {
 			]
 		},
 		response:'',
+		data:[],
 		iterator:0
 	};
 
     loadData = () => {
+		let it = this.state.iterator;
         this.setState({ loading: true });
         return axios.get(`https://localhost:44322/api/Test`)
         .then(result => {
             this.setState({
                 loading: false,
                 error: false,
-				category: result.data[0].category,
-				id: result.data[0].id,
-                question1: result.data[0].question.content,
-                answer1: result.data[0].question.answers[0].content,
-                answer2: result.data[0].question.answers[1].content,
-                answer3: result.data[0].question.answers[2].content,
-				answer4: result.data[0].question.answers[3].content,
-				correctAnswer: result.data[0].question.correctId              
+				category: result.data[it].category,
+				id: result.data[it].id,
+                question1: result.data[it].question.content,
+                answer1: result.data[it].question.answers[0].content,
+                answer2: result.data[it].question.answers[1].content,
+                answer3: result.data[it].question.answers[2].content,
+				answer4: result.data[it].question.answers[3].content,
+				correctAnswer: result.data[it].question.correctId              
 			});
 		})
         .catch(err => {
@@ -157,13 +160,16 @@ export class Quiz extends React.Component<State> {
 			question: {
 				marginBottom:'30px'
 			},
+			id: {
+				textAlign:'right' as 'right',
+			}
 		};    
 		return (
 		<section>
 			<Spring
   from={{ opacity: 0 }}
   to={{ opacity: 1 }}
-  config={{duration:500}}>
+  config={{duration:700}}>
   {props => 
 		<Container style={props}>
 			<Row style={styles.top}>
@@ -171,7 +177,7 @@ export class Quiz extends React.Component<State> {
 					<p>Kategoria: {category}</p>
 				</Col>
 				<Col sm={6}>
-					<p>ID z bazy danych: {id}</p>
+					<p style={styles.id}>ID z bazy danych: {id}</p>
 				</Col>
 				<Col sm={12}>
 					<h2 style={styles.question}>{question1}</h2>
