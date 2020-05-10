@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Container,Row,Col } from 'reactstrap';
 import { Spring } from 'react-spring/renderprops';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom'
 import './Quiz.scss';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
@@ -36,8 +37,9 @@ type State = {
 		]
 	},
 	response:string,
-	data:Array<string>
-	iterator:number
+	data:Array<string>,
+	iterator:number,
+	redirect:boolean
 };
 
 export class Quiz extends React.Component<State> {
@@ -62,7 +64,8 @@ export class Quiz extends React.Component<State> {
 		},
 		response:'',
 		data:[],
-		iterator:0
+		iterator:0,
+		redirect:false
 	};
 
     loadData = () => {
@@ -108,6 +111,7 @@ export class Quiz extends React.Component<State> {
 	}
 	sendId = async () => {
 		const {id,question} = this.state;
+		console.log(id,question)
 		await axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then( res => {
 				this.setState({
@@ -122,15 +126,25 @@ export class Quiz extends React.Component<State> {
 		});
 		this.comeAndGetThem();
 	};
-	comeAndGetThem = () => {
-		//something will be here maybe
-		this.loadData();
+	comeAndGetThem = async () => {
+		await this.setState({
+			iterator: this.state.iterator + 1
+		})
+		if (this.state.iterator < 5) {
+			this.loadData();
+		}
+		else {
+			await this.setState({
+				iterator:0,
+				redirect:true,
+			});
+		}
 	}
 	componentDidMount() {
 		this.loadData();
     }
 	render() {
-		const { loading, error, category, answer1, question1, answer2, answer3, answer4, id } = this.state;
+		const { redirect,loading, error, category, answer1, question1, answer2, answer3, answer4, id } = this.state;
 		if (loading) {
 			return (
 			<h2>Ładowanie...</h2>
@@ -142,6 +156,11 @@ export class Quiz extends React.Component<State> {
 				There was an error loading the repos.{" "}
 				<button onClick={this.loadData}>Try again</button>
 				</p>
+			);
+		}
+		if (redirect){
+			return (
+				<Redirect to="/summary"/>
 			);
 		}
 		const styles = {
