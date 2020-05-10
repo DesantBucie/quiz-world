@@ -29,15 +29,15 @@ namespace WebApplication1.Controllers
         }
         
         [HttpPost]
-        public IActionResult PostTests ([FromBody] Test test)
+        public bool PostTests ([FromBody] Test test)
         {
-           
+
             if (testData.CheckAnswer(test.Id, test.Question.Answers.Select(x => x.Id).FirstOrDefault()))
             {
-                return Ok("Dobra odpowiedź");
+                return true;
             }
             else
-            return Ok("Zła odpowiedź");
+                return false;
 
         }
     }

@@ -3,15 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Antila.Data
 {
     public class InMemoryTestData : ITestData
     {
+        private readonly static Random rng = new Random();
         private readonly List<Test> tests;
-        private readonly HashSalt hashSalt;
-        
         //Hardcodowane testy
         public InMemoryTestData()
         {
@@ -61,24 +61,62 @@ namespace Antila.Data
                             new Answer { Id = 3, Content = "Atakiem USA na gospodarkę Chin" }
                         }
                     }
+                },
+                new Test
+                {
+                    Id = 3, Category = "Społeczeństwo",
+                    Question = new Question
+                    {
+                        Content = "Jakei są efekty uboczne 5G?",
+                        CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
+                        {
+                            new Answer { Id = 0, Content = "Śmierć" },
+                            new Answer { Id = 1, Content = "Wysypka na twarzy" },
+                            new Answer { Id = 2, Content = "COVID-19" },
+                            new Answer { Id = 3, Content = "Nie ma takich" }
+                        }
+                    }
+                },
+                 new Test
+                {
+                    Id = 4, Category = "Szkoła",
+                    Question = new Question
+                    {
+                        Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
+                        CorrectId = GenerateSaltedHash(32, "3"), Answers = new List<Answer>
+                        {
+                            new Answer { Id = 0, Content = "Norwid" },
+                            new Answer { Id = 1, Content = "Sienkiewicz" },
+                            new Answer { Id = 2, Content = "Traugutt" },
+                            new Answer { Id = 3, Content = "TZN" }
+                        }
+                    }
                 }
             };
+
 
         }
 
         //Dostań losowy test
         public IEnumerable<Test> GetTest()
         {
-            var random = new Random();
-            int id = random.Next(tests.Count);
+            //Random random = new Random();
+            //int randomId;
 
-            var test = from t in tests
-                       where t.Id.Equals(id)
-                       select t;
-
-            return test;
+            //if (tests.Count !=0)
+            //{
+            //    randomId = random.Next(tests.Count);
+            //    var randomElement = from t in tests
+            //                        where t.Id.Equals(randomId)
+            //                        select t;
+            //    tests.RemoveAt(randomId);
+            //    return randomElement;
+            //}
+            var shuffledcards = tests.OrderBy(a => rng.Next()).ToList();
+            return tests;
         }
 
+        //Dodaj test
         public bool CheckAnswer(int testId, int answerId)
         {
             //Troche nie efektywna metoda
