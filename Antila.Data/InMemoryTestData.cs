@@ -112,8 +112,8 @@ namespace Antila.Data
             //    tests.RemoveAt(randomId);
             //    return randomElement;
             //}
-            var shuffledcards = tests.OrderBy(a => rng.Next()).ToList();
-            return tests;
+            var shuffledTests = tests.OrderBy(a => rng.Next()).ToList();
+            return shuffledTests;
         }
 
         //Dodaj test
