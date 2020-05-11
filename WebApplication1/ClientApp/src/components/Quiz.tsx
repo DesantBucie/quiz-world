@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Container,Row,Col } from 'reactstrap';
 import { Spring } from 'react-spring/renderprops';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom'
 import './Quiz.scss';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
@@ -36,7 +37,9 @@ type State = {
 		]
 	},
 	response:string,
-	iterator:number
+	data:Array<string>,
+	iterator:number,
+	redirect:boolean
 };
 
 export class Quiz extends React.Component<State> {
@@ -60,24 +63,27 @@ export class Quiz extends React.Component<State> {
 			]
 		},
 		response:'',
-		iterator:0
+		data:[],
+		iterator:0,
+		redirect:false
 	};
 
     loadData = () => {
+		let it = this.state.iterator;
         this.setState({ loading: true });
         return axios.get(`https://localhost:44322/api/Test`)
         .then(result => {
             this.setState({
                 loading: false,
                 error: false,
-				category: result.data[0].category,
-				id: result.data[0].id,
-                question1: result.data[0].question.content,
-                answer1: result.data[0].question.answers[0].content,
-                answer2: result.data[0].question.answers[1].content,
-                answer3: result.data[0].question.answers[2].content,
-				answer4: result.data[0].question.answers[3].content,
-				correctAnswer: result.data[0].question.correctId              
+				category: result.data[it].category,
+				id: result.data[it].id,
+                question1: result.data[it].question.content,
+                answer1: result.data[it].question.answers[0].content,
+                answer2: result.data[it].question.answers[1].content,
+                answer3: result.data[it].question.answers[2].content,
+				answer4: result.data[it].question.answers[3].content,
+				correctAnswer: result.data[it].question.correctId              
 			});
 		})
         .catch(err => {
@@ -105,6 +111,7 @@ export class Quiz extends React.Component<State> {
 	}
 	sendId = async () => {
 		const {id,question} = this.state;
+		console.log(id,question)
 		await axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then( res => {
 				this.setState({
@@ -119,15 +126,25 @@ export class Quiz extends React.Component<State> {
 		});
 		this.comeAndGetThem();
 	};
-	comeAndGetThem = () => {
-		//something will be here maybe
-		this.loadData();
+	comeAndGetThem = async () => {
+		await this.setState({
+			iterator: this.state.iterator + 1
+		})
+		if (this.state.iterator < 5) {
+			this.loadData();
+		}
+		else {
+			await this.setState({
+				iterator:0,
+				redirect:true,
+			});
+		}
 	}
 	componentDidMount() {
 		this.loadData();
     }
 	render() {
-		const { loading, error, category, answer1, question1, answer2, answer3, answer4, id } = this.state;
+		const { redirect,loading, error, category, answer1, question1, answer2, answer3, answer4, id } = this.state;
 		if (loading) {
 			return (
 			<h2>Ładowanie...</h2>
@@ -139,6 +156,11 @@ export class Quiz extends React.Component<State> {
 				There was an error loading the repos.{" "}
 				<button onClick={this.loadData}>Try again</button>
 				</p>
+			);
+		}
+		if (redirect){
+			return (
+				<Redirect to="/summary"/>
 			);
 		}
 		const styles = {
@@ -157,13 +179,16 @@ export class Quiz extends React.Component<State> {
 			question: {
 				marginBottom:'30px'
 			},
+			id: {
+				textAlign:'right' as 'right',
+			}
 		};    
 		return (
 		<section>
 			<Spring
   from={{ opacity: 0 }}
   to={{ opacity: 1 }}
-  config={{duration:500}}>
+  config={{duration:700}}>
   {props => 
 		<Container style={props}>
 			<Row style={styles.top}>
@@ -171,7 +196,7 @@ export class Quiz extends React.Component<State> {
 					<p>Kategoria: {category}</p>
 				</Col>
 				<Col sm={6}>
-					<p>ID z bazy danych: {id}</p>
+					<p style={styles.id}>ID z bazy danych: {id}</p>
 				</Col>
 				<Col sm={12}>
 					<h2 style={styles.question}>{question1}</h2>

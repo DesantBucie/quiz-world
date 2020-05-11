@@ -6,7 +6,7 @@ const Help = () => (
     <section>
         <Container>
             <Row>
-        <h1>Potrzebujesz więc pomocy?</h1>
+        <h1>Potrzebujesz pomocy?</h1>
         <p><b>Strona dopiero się rozwija(lub już nie)</b>ale automat powinien wylosować ci pytanie i cztery odpowiedzi, jeśli natrafisz na błąd, zgłoś go w formularzu.</p>
        {/*} <form>
             <h2>Opisz Bug</h2>
