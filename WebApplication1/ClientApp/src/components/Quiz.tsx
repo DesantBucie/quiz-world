@@ -75,6 +75,7 @@ export class Quiz extends React.Component<State> {
         this.setState({ loading: true });
         return axios.get(`https://localhost:44322/api/Test`)
         .then(result => {
+			console.log(result.data[it])
             this.setState({
                 loading: false,
 				error: false,
@@ -115,7 +116,6 @@ export class Quiz extends React.Component<State> {
 	sendId = async () => {
 		const {question} = this.state;
 		const id = this.state.seenquestion.id;
-		console.log(id,question)
 		await axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then( res => {
 				this.setState({
