@@ -20,14 +20,16 @@ render() - well render
 */
 type State = {
 	loading: boolean,
-	error: boolean,
-	category: string,
-	question1:string,
-	answer1:string,
-	answer2:string, 
-	answer3:string,
-	answer4:string,
-	id: number,
+	error: boolean
+	seenquestion:{
+		answer1:string,
+		answer2:string, 
+		answer3:string,
+		answer4:string,
+		id: number,
+		category:string,
+		question:string,
+	},
 	numer:number,
 	question: {
 		answers:[
@@ -37,7 +39,6 @@ type State = {
 		]
 	},
 	response:string,
-	data:Array<string>,
 	iterator:number,
 	redirect:boolean
 };
@@ -46,14 +47,16 @@ export class Quiz extends React.Component<State> {
 	
    	readonly  state : State = {
         loading: true,
-        error: false,
-        category: '',
-        question1:'',
-        answer1:'',
-        answer2:'', 
-        answer3:'',
-		answer4:'',
-		id:0,
+		error: false,
+        seenquestion:{
+			answer1:'',
+			answer2:'', 
+			answer3:'',
+			answer4:'',
+			id:0,
+			category: '',
+			question:'',
+		},
 		numer:0,
 		question: {
 			answers:[
@@ -63,7 +66,6 @@ export class Quiz extends React.Component<State> {
 			]
 		},
 		response:'',
-		data:[],
 		iterator:0,
 		redirect:false
 	};
@@ -75,15 +77,16 @@ export class Quiz extends React.Component<State> {
         .then(result => {
             this.setState({
                 loading: false,
-                error: false,
-				category: result.data[it].category,
-				id: result.data[it].id,
-                question1: result.data[it].question.content,
-                answer1: result.data[it].question.answers[0].content,
-                answer2: result.data[it].question.answers[1].content,
-                answer3: result.data[it].question.answers[2].content,
-				answer4: result.data[it].question.answers[3].content,
-				correctAnswer: result.data[it].question.correctId              
+				error: false,
+				seenquestion: {
+					category: result.data[it].category,
+					id: result.data[it].id,
+					question: result.data[it].question.content,
+					answer1: result.data[it].question.answers[0].content,
+					answer2: result.data[it].question.answers[1].content,
+					answer3: result.data[it].question.answers[2].content,
+					answer4: result.data[it].question.answers[3].content,
+				}
 			});
 		})
         .catch(err => {
@@ -110,7 +113,8 @@ export class Quiz extends React.Component<State> {
 		this.sendId();
 	}
 	sendId = async () => {
-		const {id,question} = this.state;
+		const {question} = this.state;
+		const id = this.state.seenquestion.id;
 		console.log(id,question)
 		await axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then( res => {
@@ -144,25 +148,8 @@ export class Quiz extends React.Component<State> {
 		this.loadData();
     }
 	render() {
-		const { redirect,loading, error, category, answer1, question1, answer2, answer3, answer4, id } = this.state;
-		if (loading) {
-			return (
-			<h2>Ładowanie...</h2>
-			);
-		}
-		if (error) {
-			return (
-				<p>
-				There was an error loading the repos.{" "}
-				<button onClick={this.loadData}>Try again</button>
-				</p>
-			);
-		}
-		if (redirect){
-			return (
-				<Redirect to="/summary"/>
-			);
-		}
+		const {category, answer1, question, answer2, answer3, answer4, id } = this.state.seenquestion;
+		const {redirect,loading, error} = this.state;
 		const styles = {
 			answers:{
 				marginBottom:"10px",
@@ -183,6 +170,24 @@ export class Quiz extends React.Component<State> {
 				textAlign:'right' as 'right',
 			}
 		};    
+		if (loading) {
+			return (
+			<h2>Ładowanie...</h2>
+			);
+		}
+		if (error) {
+			return (
+				<p>
+				Wystąpił problem podczas ładowania{" "}
+				<button style={styles.buttons} onClick={this.loadData}>Spróbuj ponownie!</button>
+				</p>
+			);
+		}
+		if (redirect){
+			return (
+				<Redirect to="/summary"/>
+			);
+		}
 		return (
 		<section>
 			<Spring
@@ -199,7 +204,7 @@ export class Quiz extends React.Component<State> {
 					<p style={styles.id}>ID z bazy danych: {id}</p>
 				</Col>
 				<Col sm={12}>
-					<h2 style={styles.question}>{question1}</h2>
+					<h2 style={styles.question}>{question}</h2>
 				</Col>
 				<Col xs={6}>
 					<div style={styles.answers}>
