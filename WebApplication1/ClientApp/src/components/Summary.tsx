@@ -10,7 +10,7 @@ class Summary extends React.Component {
         test:'',
     }
     loadSum = async () => {
-        await axios.get(`localhost:44322/api/Test/summary`,{
+        await axios.get(`https://localhost:44322/api/Test/summary`,{
         })
         .then (res => {
             this.setState({
