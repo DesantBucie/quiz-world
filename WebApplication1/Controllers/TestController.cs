@@ -27,9 +27,9 @@ namespace WebApplication1.Controllers
         {
             return Test = testData.GetTest();
         }
-        
+
         [HttpPost]
-        public bool PostTests ([FromBody] Test test)
+        public bool PostTests([FromBody] Test test)
         {
 
             if (testData.CheckAnswer(test.Id, test.Question.Answers.Select(x => x.Id).FirstOrDefault()))
@@ -38,7 +38,14 @@ namespace WebApplication1.Controllers
             }
             else
                 return false;
+        }
 
+        [HttpGet("summary")]
+        public string GetSummary()
+        {
+            string i = "In Poland we don't say 'We don't need your name'. We Say 'nie pytaja cię o imię'";
+                        
+            return i;
         }
     }
 }
