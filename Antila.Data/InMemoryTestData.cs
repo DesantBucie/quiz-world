@@ -1,6 +1,7 @@
 ﻿using Antila.Core;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -10,6 +11,7 @@ namespace Antila.Data
 {
     public class InMemoryTestData : ITestData
     {
+        private int PointCount { get; set; }
         private readonly static Random rng = new Random();
         private readonly List<Test> tests;
         //Hardcodowane testy
@@ -153,8 +155,21 @@ namespace Antila.Data
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
             return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == storedHash;
         }
-       
-       
 
+        public void CalculateNumberOfPoints(int testId, int answerId)
+        {
+            if (CheckAnswer(testId, answerId))
+                PointCount++;
+        }
+
+        public int PointsCount()
+        {
+            return PointCount;
+        }
+
+        public void ErasePointsCount()
+        {
+            PointCount = 0;
+        }
     }
 }

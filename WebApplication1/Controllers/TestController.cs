@@ -29,23 +29,19 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public bool PostTests([FromBody] Test test)
+        public void PostTests([FromBody] Test test)
         {
-
-            if (testData.CheckAnswer(test.Id, test.Question.Answers.Select(x => x.Id).FirstOrDefault()))
-            {
-                return true;
-            }
-            else
-                return false;
+            
+            testData.CalculateNumberOfPoints(test.Id, test.Question.Answers.Select(x => x.Id).FirstOrDefault());
+            
         }
 
         [HttpGet("summary")]
         public string GetSummary()
-        {
-            string i = "In Poland we don't say 'We don't need your name'. We Say 'nie pytaja cię o imię'";
-                        
-            return i;
+        { 
+            string summary  = "Twoja liczba punktów wynosi: " + testData.PointsCount();
+            testData.ErasePointsCount();
+            return summary;
         }
     }
 }

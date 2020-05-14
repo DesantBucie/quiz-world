@@ -11,6 +11,9 @@ namespace Antila.Data
         bool CheckAnswer(int testId, int answerId);
         HashSalt GenerateSaltedHash(int size, string password);
         bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt);
+        void CalculateNumberOfPoints(int testId, int answerId);
+        int PointsCount();
+        void ErasePointsCount();
 
     }
 }
