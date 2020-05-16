@@ -13,7 +13,9 @@ namespace Antila.Data
         bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt);
         void CalculateNumberOfPoints(int testId, int answerId);
         int PointsCount();
+        int QuestionsCount();
         void ErasePointsCount();
+
 
     }
 }

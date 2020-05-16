@@ -11,7 +11,8 @@ namespace Antila.Data
 {
     public class InMemoryTestData : ITestData
     {
-        private int PointCount { get; set; }
+        private int PointCount;
+        private int QuestionCount;
         private readonly static Random rng = new Random();
         private readonly List<Test> tests;
         //Hardcodowane testy
@@ -95,8 +96,10 @@ namespace Antila.Data
                     }
                 }
             };
-
-
+            for (int i = 0; i < tests.Count; i++)
+            {
+                QuestionCount++;
+            }
         }
 
         //Dostań losowy test
@@ -121,16 +124,13 @@ namespace Antila.Data
         //Dodaj test
         public bool CheckAnswer(int testId, int answerId)
         {
-            //Troche nie efektywna metoda
-            var hash = from q in tests
-                           where q.Id.Equals(testId)
-                           select q.Question.CorrectId.Hash;
-            var salt = from q in tests
-                       where q.Id.Equals(testId)
-                       select q.Question.CorrectId.Salt;
+            
+            List<string> hashsalt = tests.Where(t => t.Id.Equals(testId))
+                                         .Select(t => new List<string> { t.Question.CorrectId.Hash, t.Question.CorrectId.Salt })
+                                         .SingleOrDefault();
 
-            bool isAnswerMatched = VerifyPassword(answerId.ToString(), hash.FirstOrDefault(), salt.FirstOrDefault());
-
+            bool isAnswerMatched = VerifyPassword(answerId.ToString(), hashsalt[0], hashsalt[1]);
+            
             return isAnswerMatched;
            
         }
@@ -166,10 +166,16 @@ namespace Antila.Data
         {
             return PointCount;
         }
+        
+        public int QuestionsCount()
+        {
+            return QuestionCount;
+        }
 
         public void ErasePointsCount()
         {
             PointCount = 0;
+            QuestionCount = 0;
         }
     }
 }

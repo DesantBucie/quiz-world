@@ -39,7 +39,8 @@ namespace WebApplication1.Controllers
         [HttpGet("summary")]
         public string GetSummary()
         { 
-            string summary  = "Twoja liczba punktów wynosi: " + testData.PointsCount();
+            string summary  = "Odpowiedziałeś poprawnie na " + testData.PointsCount()
+                + " z " +testData.QuestionsCount() + " pytań.";
             testData.ErasePointsCount();
             return summary;
         }
