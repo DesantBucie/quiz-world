@@ -1,4 +1,5 @@
 ﻿using Antila.Core;
+using Antila.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,93 +10,94 @@ using System.Text;
 
 namespace Antila.Data
 {
-    public class InMemoryTestData : ITestData
+    public class InMemoryTestData  /*ITestData*/
     {
         private int PointCount;
         private int QuestionCount;
         private readonly static Random rng = new Random();
         private readonly List<Test> tests;
+        private readonly List<TestModel> testsModels;
         //Hardcodowane testy
         public InMemoryTestData()
         {
-            tests = new List<Test>()
-            {
-                new Test
-                {
-                    Id = 0, Category = "Fakty Autentyczne",
-                    Question = new Question
-                    {
-                        Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
-                        CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
-                        {
-                            new Answer { Id = 0, Content = "Boeing 737" },
-                            new Answer { Id = 1, Content = "Airbus 380" },
-                            new Answer { Id = 2, Content = "Tu-154" },
-                            new Answer { Id = 3, Content = "DC-9" }
-                        }
-                    }
-                },
-                new Test
-                {
-                    Id = 1, Category = "Kinematografia",
-                    Question = new Question
-                    {
-                        Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
-                        CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
-                        {
-                            new Answer { Id = 0, Content = "Rick" },
-                            new Answer { Id = 1, Content = "Deckard" },
-                            new Answer { Id = 2, Content = "Jest" },
-                            new Answer { Id = 3, Content = "Replikantem" }
-                        }
-                    }
-                },
-                new Test
-                {
-                    Id = 2, Category = "Społeczeństwo",
-                    Question = new Question
-                    {
-                        Content = "Czy rzeczywiście jest choroba wywoływana przez COVID-19?",
-                        CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
-                        {
-                            new Answer { Id = 0, Content = "Zwykłą grypą" },
-                            new Answer { Id = 1, Content = "Groźną chorobą" },
-                            new Answer { Id = 2, Content = "Efektem ubocznym chemitrails" },
-                            new Answer { Id = 3, Content = "Atakiem USA na gospodarkę Chin" }
-                        }
-                    }
-                },
-                new Test
-                {
-                    Id = 3, Category = "Społeczeństwo",
-                    Question = new Question
-                    {
-                        Content = "Jakei są efekty uboczne 5G?",
-                        CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
-                        {
-                            new Answer { Id = 0, Content = "Śmierć" },
-                            new Answer { Id = 1, Content = "Wysypka na twarzy" },
-                            new Answer { Id = 2, Content = "COVID-19" },
-                            new Answer { Id = 3, Content = "Nie ma takich" }
-                        }
-                    }
-                },
-                 new Test
-                {
-                    Id = 4, Category = "Szkoła",
-                    Question = new Question
-                    {
-                        Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
-                        CorrectId = GenerateSaltedHash(32, "3"), Answers = new List<Answer>
-                        {
-                            new Answer { Id = 0, Content = "Norwid" },
-                            new Answer { Id = 1, Content = "Sienkiewicz" },
-                            new Answer { Id = 2, Content = "Traugutt" },
-                            new Answer { Id = 3, Content = "TZN" }
-                        }
-                    }
-                }
-            };
+            //tests = new List<Test>()
+            //{
+            //    new Test
+            //    {
+            //        Id = 0, Category = "Fakty Autentyczne",
+            //        Question = new Question
+            //        {
+            //            Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
+            //            CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
+            //            {
+            //                new Answer { Id = 0, Content = "Boeing 737" },
+            //                new Answer { Id = 1, Content = "Airbus 380" },
+            //                new Answer { Id = 2, Content = "Tu-154" },
+            //                new Answer { Id = 3, Content = "DC-9" }
+            //            }
+            //        }
+            //    },
+            //    new Test
+            //    {
+            //        Id = 1, Category = "Kinematografia",
+            //        Question = new Question
+            //        {
+            //            Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
+            //            CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
+            //            {
+            //                new Answer { Id = 0, Content = "Rick" },
+            //                new Answer { Id = 1, Content = "Deckard" },
+            //                new Answer { Id = 2, Content = "Jest" },
+            //                new Answer { Id = 3, Content = "Replikantem" }
+            //            }
+            //        }
+            //    },
+            //    new Test
+            //    {
+            //        Id = 2, Category = "Społeczeństwo",
+            //        Question = new Question
+            //        {
+            //            Content = "Czy rzeczywiście jest choroba wywoływana przez COVID-19?",
+            //            CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
+            //            {
+            //                new Answer { Id = 0, Content = "Zwykłą grypą" },
+            //                new Answer { Id = 1, Content = "Groźną chorobą" },
+            //                new Answer { Id = 2, Content = "Efektem ubocznym chemitrails" },
+            //                new Answer { Id = 3, Content = "Atakiem USA na gospodarkę Chin" }
+            //            }
+            //        }
+            //    },
+            //    new Test
+            //    {
+            //        Id = 3, Category = "Społeczeństwo",
+            //        Question = new Question
+            //        {
+            //            Content = "Jakei są efekty uboczne 5G?",
+            //            CorrectId = GenerateSaltedHash(32, "1"), Answers = new List<Answer>
+            //            {
+            //                new Answer { Id = 0, Content = "Śmierć" },
+            //                new Answer { Id = 1, Content = "Wysypka na twarzy" },
+            //                new Answer { Id = 2, Content = "COVID-19" },
+            //                new Answer { Id = 3, Content = "Nie ma takich" }
+            //            }
+            //        }
+            //    },
+            //     new Test
+            //    {
+            //        Id = 4, Category = "Szkoła",
+            //        Question = new Question
+            //        {
+            //            Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
+            //            CorrectId = GenerateSaltedHash(32, "3"), Answers = new List<Answer>
+            //            {
+            //                new Answer { Id = 0, Content = "Norwid" },
+            //                new Answer { Id = 1, Content = "Sienkiewicz" },
+            //                new Answer { Id = 2, Content = "Traugutt" },
+            //                new Answer { Id = 3, Content = "TZN" }
+            //            }
+            //        }
+            //    }
+            //};
             for (int i = 0; i < tests.Count; i++)
             {
                 QuestionCount++;
@@ -126,7 +128,7 @@ namespace Antila.Data
         {
             
             List<string> hashsalt = tests.Where(t => t.Id.Equals(testId))
-                                         .Select(t => new List<string> { t.Question.CorrectId.Hash, t.Question.CorrectId.Salt })
+                                         .Select(t => new List<string> { t.Question.CorrectId/*.Hash*/, t.Question.CorrectId/*.Salt*/ })
                                          .SingleOrDefault();
 
             bool isAnswerMatched = VerifyPassword(answerId.ToString(), hashsalt[0], hashsalt[1]);
@@ -175,7 +177,7 @@ namespace Antila.Data
         public void ErasePointsCount()
         {
             PointCount = 0;
-            QuestionCount = 0;
+           // QuestionCount = 0;
         }
     }
 }

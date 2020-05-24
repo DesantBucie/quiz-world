@@ -15,6 +15,7 @@ namespace WebApplication1.Controllers
     public class TestController : ControllerBase
     {
         private readonly ITestData testData;
+
         public IEnumerable<Test> Test { get; set; }
 
         public TestController(ITestData testData)
@@ -23,9 +24,9 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Test> GetTests()
+        public async Task<IEnumerable<Test>> GetTests()
         {
-            return Test = testData.GetTest();
+            return Test = await testData.GetTest();
         }
 
         [HttpPost]
