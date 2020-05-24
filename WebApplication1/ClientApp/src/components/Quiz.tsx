@@ -20,16 +20,7 @@ render() - well render
 */
 type State = {
 	loading: boolean,
-	error: boolean
-	seenquestion:{
-		answer1:string,
-		answer2:string, 
-		answer3:string,
-		answer4:string,
-		id: number,
-		category:string,
-		question:string,
-	},
+	error: boolean,
 	numer:number,
 	question: {
 		answers:[
@@ -39,24 +30,20 @@ type State = {
 		]
 	},
 	response:string,
-	iterator:number,
-	redirect:boolean
+	redirect:boolean,
+	allquestions:any,
+	currentquestion:any;
+	it:number,
 };
+
+
+
 
 export class Quiz extends React.Component<State> {
 	
    	readonly  state : State = {
         loading: true,
 		error: false,
-        seenquestion:{
-			answer1:'',
-			answer2:'', 
-			answer3:'',
-			answer4:'',
-			id:0,
-			category: '',
-			question:'',
-		},
 		numer:0,
 		question: {
 			answers:[
@@ -66,28 +53,59 @@ export class Quiz extends React.Component<State> {
 			]
 		},
 		response:'',
-		iterator:0,
-		redirect:false
+		redirect:false,
+		allquestions:[
+			{
+				category:'',
+				id:0,
+				question: {
+					content:'',
+					answers:[
+						{
+						id:0,
+						content:'',
+						},
+						{
+							id:0,
+							content:'',
+						},
+						{
+							id:0,
+							content:'',
+						},
+						{
+							id:0,
+							content:'',
+						},
+					]
+				}
+			}
+		],
+		currentquestion:{
+			category:'',
+			id:0,
+			content:'',
+			answer1:'',
+			answer2:'',
+			answer3:'',
+			answer4:'',
+			id1:'',
+			id2:'',
+			id3:'',
+			id4:'',
+		},
+		it:0
 	};
 
-    loadData = () => {
-		let it = this.state.iterator;
+    loadData = async() => {
         this.setState({ loading: true });
-        return axios.get(`https://localhost:44322/api/Test`)
-        .then(result => {
-			console.log(result.data[it])
+        await axios.get(`https://localhost:44322/api/Test`)
+        .then(res=> {
+			console.log(JSON.stringify(res.data))
             this.setState({
+				allquestions: res.data,
                 loading: false,
 				error: false,
-				seenquestion: {
-					category: result.data[it].category,
-					id: result.data[it].id,
-					question: result.data[it].question.content,
-					answer1: result.data[it].question.answers[0].content,
-					answer2: result.data[it].question.answers[1].content,
-					answer3: result.data[it].question.answers[2].content,
-					answer4: result.data[it].question.answers[3].content,
-				}
 			});
 		})
         .catch(err => {
@@ -96,12 +114,32 @@ export class Quiz extends React.Component<State> {
               	error: `${err}`,
               	loading: false
             });
-		});
+		}) 
+		this.currentQuestion();
 	}
-	 selectAnswer = async (e:any) => {
-		await this.setState ({
-			numer: parseInt(e.target.id)
-		});
+	currentQuestion = async() => {
+		const all = this.state.allquestions; 
+		const it = this.state.it;
+		await this.setState({
+			currentquestion: {
+				category: all[it].category,
+				id: all[it].id,
+				content: all[it].question.content,
+				answer1: all[it].question.answers[0].content,
+				answer2: all[it].question.answers[1].content,
+				answer3: all[it].question.answers[2].content,
+				answer4: all[it].question.answers[3].content,
+				id1: all[it].question.answers[0].id.toString(),
+				id2: all[it].question.answers[1].id.toString(),
+				id3: all[it].question.answers[2].id.toString(),
+				id4: all[it].question.answers[3].id.toString(),
+			}
+		})
+	}
+	selectAnswer = async (e:any) => {
+		await this.setState({
+			numer:parseInt(e.target.id)
+		})
 		await this.setState ({
 			question:{
 				answers:[
@@ -111,11 +149,12 @@ export class Quiz extends React.Component<State> {
 				] 
 			}	 
 		});
+		console.log(this.state.question)
 		this.sendId();
 	}
 	sendId = async () => {
 		const {question} = this.state;
-		const id = this.state.seenquestion.id;
+		const id = this.state.currentquestion.id;
 		await axios.post(`https://localhost:44322/api/Test`, {id,question})
 		.then( res => {
 				this.setState({
@@ -127,28 +166,30 @@ export class Quiz extends React.Component<State> {
 			this.setState({
 				error: `${err}`,
 			});
-		});
-		this.comeAndGetThem();
-	};
-	comeAndGetThem = async () => {
-		await this.setState({
-			iterator: this.state.iterator + 1
 		})
-		if (this.state.iterator < 5) {
-			this.loadData();
+		this.molonLabe();
+	};
+	molonLabe = async () => {
+		const it = this.state.it;
+		const amount = this.state.allquestions.length;
+		if (it < amount) {
+			this.setState({
+				it : this.state.it + 1
+			})
+			this.currentQuestion();
 		}
 		else {
-			await this.setState({
-				iterator:0,
-				redirect:true,
-			});
+			this.setState({
+					redirect:true
+			})
 		}
 	}
 	componentDidMount() {
 		this.loadData();
-    }
+	}
+	
 	render() {
-		const {category, answer1, question, answer2, answer3, answer4, id } = this.state.seenquestion;
+		const {category, answer1, content, answer2, answer3, answer4,id1,id2,id3,id4,id} = this.state.currentquestion;
 		const {redirect,loading, error} = this.state;
 		const styles = {
 			answers:{
@@ -191,10 +232,10 @@ export class Quiz extends React.Component<State> {
 		return (
 		<section>
 			<Spring
-  from={{ opacity: 0 }}
-  to={{ opacity: 1 }}
-  config={{duration:700}}>
-  {props => 
+			from={{ opacity: 0 }}
+			to={{ opacity: 1 }}
+			config={{duration:700}}>
+			{props => 
 		<Container style={props}>
 			<Row style={styles.top}>
 				<Col sm={6}>
@@ -204,26 +245,26 @@ export class Quiz extends React.Component<State> {
 					<p style={styles.id}>ID z bazy danych: {id}</p>
 				</Col>
 				<Col sm={12}>
-					<h2 style={styles.question}>{question}</h2>
+					<h2 style={styles.question}>{content}</h2>
 				</Col>
 				<Col xs={6}>
 					<div style={styles.answers}>
-						<button id='0' className={'but1'} onClick={this.selectAnswer} style={styles.buttons} >A. {answer1}</button>
+						<button id={id1} className={'but1'} onClick={this.selectAnswer} style={styles.buttons} >A. {answer1}</button>
 					</div>
 				</Col>
 				<Col xs={6}>
 					<div style={styles.answers}>
-						<button id='1' className={'but2'} onClick={this.selectAnswer} style={styles.buttons} >B. {answer2}</button>
+						<button id={id2} className={'but2'} onClick={this.selectAnswer} style={styles.buttons} >B. {answer2}</button>
 					</div>
 				</Col>
 				<Col xs={6}>
 					<div style={styles.answers}>
-						<button id='2' className={'but3'} onClick={this.selectAnswer} style={styles.buttons} >C. {answer3}</button>
+						<button id={id3} className={'but3'} onClick={this.selectAnswer} style={styles.buttons} >C. {answer3}</button>
 					</div>
 				</Col>
 				<Col xs={6}>
 					<div style={styles.answers}>
-						<button  id='3' className={'but4'} onClick={this.selectAnswer} style={styles.buttons}>D. {answer4}</button>
+						<button  id={id4} className={'but4'} onClick={this.selectAnswer} style={styles.buttons}>D. {answer4}</button>
 					</div>
 				</Col>
 			</Row>
