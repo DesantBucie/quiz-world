@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Antila.Data.Models
 {
-    class QuestionModel
+    public class QuestionModel
     {
         public string Content { get; set; }
         public IEnumerable<AnswerModel> Answers { get; set; }

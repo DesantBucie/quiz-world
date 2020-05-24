@@ -1,8 +1,10 @@
 ﻿using Antila.Core;
+using Antila.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,7 @@ namespace Antila.Data
         private int QuestionCount;
         private readonly AntilaDbContext db;
         private readonly static Random rng = new Random();
+        private readonly List<TestModel> testModels;
 
         public SqlTestData(AntilaDbContext db)
         {
@@ -23,6 +26,23 @@ namespace Antila.Data
             {
                 QuestionCount++;
             }
+
+            //Mapowanie danych z bazy danych do modelu danych
+            testModels = db.Tests.Select(s => new TestModel()
+            {
+                Id = s.Id,
+                Category = s.Category,
+                Question = new QuestionModel()
+                {
+                    Content = s.Question.Content,
+                    Answers = s.Question.Answers.Select(a => new AnswerModel()
+                    {
+                        Id = a.Id,
+                        Content = a.Content
+                    })                  
+                }
+            }).ToList();
+
         }
         public void CalculateNumberOfPoints(int testId, int answerId)
         {
@@ -54,11 +74,12 @@ namespace Antila.Data
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Test>> GetTest()
+        public IEnumerable<TestModel> GetTest()
         {
-            var shuffledTests = await db.Tests.Include(shuffledTests => shuffledTests.Question)
-                                        .Include(shuffledTests => shuffledTests.Question.Answers)
-                                        .ToListAsync();
+            var shuffledTests = testModels.OrderBy(a => rng.Next()).ToList();
+            //await db.Tests.Include(shuffledTests => shuffledTests.Question)
+            //                            .Include(shuffledTests => shuffledTests.Question.Answers)
+            //                            .ToListAsync();
 
             return shuffledTests;
         }

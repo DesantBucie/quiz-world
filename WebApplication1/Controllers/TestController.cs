@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Antila.Core;
 using Antila.Data;
+using Antila.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,7 +17,7 @@ namespace WebApplication1.Controllers
     {
         private readonly ITestData testData;
 
-        public IEnumerable<Test> Test { get; set; }
+        public IEnumerable<TestModel> Test { get; set; }
 
         public TestController(ITestData testData)
         {
@@ -24,17 +25,17 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Test>> GetTests()
+        public IEnumerable<TestModel> GetTests()
         {
-            return Test = await testData.GetTest();
+            return Test = testData.GetTest();
         }
 
         [HttpPost]
         public void PostTests([FromBody] Test test)
         {
-            
-            testData.CalculateNumberOfPoints(test.Id, test.Question.Answers.Select(x => x.Id).FirstOrDefault());
-            
+          
+            testData.CalculateNumberOfPoints(test.Id,
+                                             test.Question.Answers.Select(x => x.Id).FirstOrDefault());
         }
 
         [HttpGet("summary")]
