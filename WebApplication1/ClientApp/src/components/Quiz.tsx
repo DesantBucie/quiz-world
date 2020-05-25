@@ -118,21 +118,22 @@ export class Quiz extends React.Component<State> {
 		this.currentQuestion();
 	}
 	currentQuestion = async() => {
-		const all = this.state.allquestions; 
 		const it = this.state.it;
+		const all = this.state.allquestions[it];
+		console.log(all); 
 		await this.setState({
 			currentquestion: {
-				category: all[it].category,
-				id: all[it].id,
-				content: all[it].question.content,
-				answer1: all[it].question.answers[0].content,
-				answer2: all[it].question.answers[1].content,
-				answer3: all[it].question.answers[2].content,
-				answer4: all[it].question.answers[3].content,
-				id1: all[it].question.answers[0].id.toString(),
-				id2: all[it].question.answers[1].id.toString(),
-				id3: all[it].question.answers[2].id.toString(),
-				id4: all[it].question.answers[3].id.toString(),
+				category: all.category,
+				id: all.id,
+				content: all.question.content,
+				answer1: all.question.answers[0].content,
+				answer2: all.question.answers[1].content,
+				answer3: all.question.answers[2].content,
+				answer4: all.question.answers[3].content,
+				id1: all.question.answers[0].id.toString(),
+				id2: all.question.answers[1].id.toString(),
+				id3: all.question.answers[2].id.toString(),
+				id4: all.question.answers[3].id.toString(),
 			}
 		})
 	}
@@ -172,14 +173,14 @@ export class Quiz extends React.Component<State> {
 	molonLabe = async () => {
 		const it = this.state.it;
 		const amount = this.state.allquestions.length;
-		if (it < amount) {
-			this.setState({
+		if (it < amount - 1) {
+			await this.setState({
 				it : this.state.it + 1
 			})
 			this.currentQuestion();
 		}
 		else {
-			this.setState({
+			await this.setState({
 					redirect:true
 			})
 		}
