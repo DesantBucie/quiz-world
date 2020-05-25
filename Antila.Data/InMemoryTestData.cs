@@ -126,14 +126,15 @@ namespace Antila.Data
         //Dodaj test
         public bool CheckAnswer(int testId, int answerId)
         {
-            
-            List<string> hashsalt = tests.Where(t => t.Id.Equals(testId))
-                                         .Select(t => new List<string> { t.Question.CorrectId/*.Hash*/, t.Question.CorrectId/*.Salt*/ })
-                                         .SingleOrDefault();
 
-            bool isAnswerMatched = VerifyPassword(answerId.ToString(), hashsalt[0], hashsalt[1]);
-            
-            return isAnswerMatched;
+            //List<string> hashsalt = tests.Where(t => t.Id.Equals(testId))
+            //                             .Select(t => new List<string> { t.Question.CorrectId/*.Hash*/, t.Question.CorrectId/*.Salt*/ })
+            //                             .SingleOrDefault();
+
+            //bool isAnswerMatched = VerifyPassword(answerId.ToString(), hashsalt[0], hashsalt[1]);
+
+            //return isAnswerMatched;
+            throw new NotImplementedException();
            
         }
         //Haszowanie

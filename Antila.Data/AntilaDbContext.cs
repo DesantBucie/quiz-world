@@ -33,7 +33,7 @@ namespace Antila.Data
                     Id = 1,
                     TestId = 1,
                     Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
-                    CorrectId = "1"
+                    CorrectId = 1
                 });
             modelBuilder.Entity<Answer>().HasData(
                 new Answer { Id = 1, Content = "Boeing 737", QuestionId = 1 },                                            
@@ -54,7 +54,7 @@ namespace Antila.Data
                     Id = 2,
                     TestId = 2,
                     Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
-                    CorrectId = "7"
+                    CorrectId = 7
                 });
             modelBuilder.Entity<Answer>().HasData(
                 new Answer { Id = 5, Content = "Rick", QuestionId = 2 },
@@ -75,7 +75,7 @@ namespace Antila.Data
                     Id = 3,
                     TestId = 3,
                     Content = "Czym rzeczywiście jest choroba wywoływana przez COVID-19?",
-                    CorrectId = "10"
+                    CorrectId = 10
                 });
             modelBuilder.Entity<Answer>().HasData(
                 new Answer { Id = 9, Content = "Zwykłą grypą", QuestionId = 3 },
@@ -96,7 +96,7 @@ namespace Antila.Data
                     Id = 4,
                     TestId = 4,
                     Content = "Jakie są efekty uboczne 5G?",
-                    CorrectId = "15"
+                    CorrectId = 15
                 });
             modelBuilder.Entity<Answer>().HasData(
                 new Answer { Id = 13, Content = "Śmierć", QuestionId = 4 },
@@ -117,7 +117,7 @@ namespace Antila.Data
                     Id = 5,
                     TestId = 5,
                     Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
-                    CorrectId = "18"
+                    CorrectId = 18
                 });
             modelBuilder.Entity<Answer>().HasData(
                 new Answer { Id = 17, Content = "Norwid", QuestionId = 5 },

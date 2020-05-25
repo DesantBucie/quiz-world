@@ -27,7 +27,7 @@ namespace Antila.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TestId = table.Column<int>(nullable: false),
                     Content = table.Column<string>(nullable: true),
-                    CorrectId = table.Column<string>(nullable: true)
+                    CorrectId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,11 +77,11 @@ namespace Antila.Data.Migrations
                 columns: new[] { "Id", "Content", "CorrectId", "TestId" },
                 values: new object[,]
                 {
-                    { 1, "Wskaż samolot najczęściej używany do zrzutu chemitrails", "1", 1 },
-                    { 2, "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?", "7", 2 },
-                    { 3, "Czym rzeczywiście jest choroba wywoływana przez COVID-19?", "10", 3 },
-                    { 4, "Jakie są efekty uboczne 5G?", "15", 4 },
-                    { 5, "Jakie są efekty uboczne 5G?", "18", 5 }
+                    { 1, "Wskaż samolot najczęściej używany do zrzutu chemitrails", 1, 1 },
+                    { 2, "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?", 7, 2 },
+                    { 3, "Czym rzeczywiście jest choroba wywoływana przez COVID-19?", 10, 3 },
+                    { 4, "Jakie są efekty uboczne 5G?", 15, 4 },
+                    { 5, "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie", 18, 5 }
                 });
 
             migrationBuilder.InsertData(

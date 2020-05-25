@@ -11,7 +11,7 @@ namespace Antila.Core
         public int Id { get; set; }
         public int TestId { get; set; }
         public string Content { get; set; }
-        public string CorrectId { get; set; }
+        public int CorrectId { get; set; }
         public IEnumerable <Answer> Answers { get; set; }
     }
 }
