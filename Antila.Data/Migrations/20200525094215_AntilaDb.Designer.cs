@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Antila.Data.Migrations
 {
     [DbContext(typeof(AntilaDbContext))]
-    [Migration("20200522134527_AntilaDb")]
+    [Migration("20200525094215_AntilaDb")]
     partial class AntilaDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -172,8 +172,8 @@ namespace Antila.Data.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CorrectId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CorrectId")
+                        .HasColumnType("int");
 
                     b.Property<int>("TestId")
                         .HasColumnType("int");
@@ -190,35 +190,35 @@ namespace Antila.Data.Migrations
                         {
                             Id = 1,
                             Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
-                            CorrectId = "1",
+                            CorrectId = 1,
                             TestId = 1
                         },
                         new
                         {
                             Id = 2,
                             Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
-                            CorrectId = "7",
+                            CorrectId = 7,
                             TestId = 2
                         },
                         new
                         {
                             Id = 3,
                             Content = "Czym rzeczywiście jest choroba wywoływana przez COVID-19?",
-                            CorrectId = "10",
+                            CorrectId = 10,
                             TestId = 3
                         },
                         new
                         {
                             Id = 4,
                             Content = "Jakie są efekty uboczne 5G?",
-                            CorrectId = "15",
+                            CorrectId = 15,
                             TestId = 4
                         },
                         new
                         {
                             Id = 5,
-                            Content = "Jakie są efekty uboczne 5G?",
-                            CorrectId = "18",
+                            Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
+                            CorrectId = 18,
                             TestId = 5
                         });
                 });

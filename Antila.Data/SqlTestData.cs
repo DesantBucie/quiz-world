@@ -46,8 +46,10 @@ namespace Antila.Data
         }
         public void CalculateNumberOfPoints(int testId, int answerId)
         {
+
             if (CheckAnswer(testId, answerId))
                 PointCount++;
+                
         }
 
         public bool CheckAnswer(int testId, int answerId)
