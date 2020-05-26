@@ -31,8 +31,8 @@ type State = {
 	},
 	response:string,
 	redirect:boolean,
-	allquestions:any,
-	currentquestion:any;
+	allquestions?:any,
+	currentquestion?:any;
 	it:number,
 };
 
