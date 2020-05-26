@@ -54,33 +54,7 @@ export class Quiz extends React.Component<State> {
 		},
 		response:'',
 		redirect:false,
-		allquestions:[
-			{
-				category:'',
-				id:0,
-				question: {
-					content:'',
-					answers:[
-						{
-						id:0,
-						content:'',
-						},
-						{
-							id:0,
-							content:'',
-						},
-						{
-							id:0,
-							content:'',
-						},
-						{
-							id:0,
-							content:'',
-						},
-					]
-				}
-			}
-		],
+		allquestions:[],
 		currentquestion:{
 			category:'',
 			id:0,
