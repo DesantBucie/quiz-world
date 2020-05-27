@@ -28,6 +28,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IEnumerable<TestModel> GetTests()
         {
+            testData.MapModel();
             return Test = testData.GetTest();
         }
 
@@ -44,7 +45,6 @@ namespace WebApplication1.Controllers
         { 
             string summary  = "Odpowiedziałeś poprawnie na " + testData.PointsCount()
                 + " z " +testData.QuestionsCount() + " pytań.";
-            testData.ErasePointsCount();
             return summary;
         }
     }

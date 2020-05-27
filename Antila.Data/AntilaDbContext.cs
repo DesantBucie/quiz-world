@@ -125,6 +125,89 @@ namespace Antila.Data
                 new Answer { Id = 19, Content = "Traugutt", QuestionId = 5 },
                 new Answer { Id = 20, Content = "TZN", QuestionId = 5 });
 
+            //Test 6
+            modelBuilder.Entity<Test>().HasData(
+                new Test
+                {
+                    Id = 6,
+                    Category = "Kinematografia"
+                });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 6,
+                    TestId = 6,
+                    Content = "Wskaż reżysera, który zdobył najwięcej Oskarów za reżyserię",
+                    CorrectId = 21
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 21, Content = "Martin Scorsese", QuestionId = 6 },
+                new Answer { Id = 22, Content = "Quentin Tarantino", QuestionId = 6 },
+                new Answer { Id = 23, Content = "Stanley Kubrick", QuestionId = 6 },
+                new Answer { Id = 24, Content = "David Fincher", QuestionId = 6 });
+
+            //Test 7
+            modelBuilder.Entity<Test>().HasData(
+                new Test
+                {
+                    Id = 7,
+                    Category = "Kinematografia"
+                });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 7,
+                    TestId = 7,
+                    Content = "Z którego filmu pochodzi cytat 'Oh, hi Mark!'?",
+                    CorrectId = 27
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 25, Content = "Casablanca", QuestionId = 7 },
+                new Answer { Id = 26, Content = "Pulp Fiction", QuestionId = 7 },
+                new Answer { Id = 27, Content = "The Room", QuestionId = 7 },
+                new Answer { Id = 28, Content = "The Mark", QuestionId = 7 });
+
+            //Test 8
+            modelBuilder.Entity<Test>().HasData(
+                new Test
+                {
+                    Id = 8,
+                    Category = "Kinematografia"
+                });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 8,
+                    TestId = 8,
+                    Content = "Wskaż film, który został wybrany przez redakcję BBC najlepszym filmem XX wieku ",
+                    CorrectId = 30
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 29, Content = "Incepcja", QuestionId = 8 },
+                new Answer { Id = 30, Content = "Mulholland Drive", QuestionId = 8 },
+                new Answer { Id = 31, Content = "Joker", QuestionId = 8 },
+                new Answer { Id = 32, Content = "Django", QuestionId = 8 });
+
+            //Test 9
+            modelBuilder.Entity<Test>().HasData(
+                new Test
+                {
+                    Id = 9,
+                    Category = "Kinematografia"
+                });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 9,
+                    TestId = 9,
+                    Content = "Który z wymienionych reżyserów słynie z używania w filmie praktycznych efektów specjalnych?",
+                    CorrectId = 33
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 33, Content = "Christopher Nolan", QuestionId = 9},
+                new Answer { Id = 34, Content = "Anthony Russo", QuestionId = 9 },
+                new Answer { Id = 35, Content = "Zack Snyder", QuestionId = 9 },
+                new Answer { Id = 36, Content = "Joss Whedon", QuestionId = 9 });
         }
     }
 }
