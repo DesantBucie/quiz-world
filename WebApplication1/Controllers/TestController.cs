@@ -45,6 +45,7 @@ namespace WebApplication1.Controllers
         { 
             string summary  = "Odpowiedziałeś poprawnie na " + testData.PointsCount()
                 + " z " +testData.QuestionsCount() + " pytań.";
+            testData.ResetCount();
             return summary;
         }
     }

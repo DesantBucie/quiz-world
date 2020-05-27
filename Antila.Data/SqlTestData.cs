@@ -3,6 +3,7 @@ using Antila.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Antila.Data
 {
     public class SqlTestData : ITestData
     {
-        private int PointCount;
+        private static int PointCount;
         private readonly AntilaDbContext db;
         private readonly static Random rng = new Random();
         private List<TestModel> testModels;
@@ -87,6 +88,11 @@ namespace Antila.Data
                     })
                 }
             }).ToList();
+        }
+
+        public void ResetCount()
+        {
+            PointCount = 0;
         }
     }
 }

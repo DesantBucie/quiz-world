@@ -16,6 +16,7 @@ namespace Antila.Data
         int PointsCount();
         int QuestionsCount();
         void MapModel();
+        void ResetCount();
 
 
     }
