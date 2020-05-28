@@ -12,12 +12,11 @@ namespace Antila.Data
     {
         IEnumerable<TestModel> GetTest();
         bool CheckAnswer(int testId, int answerId);
-        HashSalt GenerateSaltedHash(int size, string password);
-        bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt);
         void CalculateNumberOfPoints(int testId, int answerId);
         int PointsCount();
         int QuestionsCount();
-        void ErasePointsCount();
+        void MapModel();
+        void ResetCount();
 
 
     }

@@ -157,6 +157,102 @@ namespace Antila.Data.Migrations
                             Id = 20,
                             Content = "TZN",
                             QuestionId = 5
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Content = "Martin Scorsese",
+                            QuestionId = 6
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Content = "Quentin Tarantino",
+                            QuestionId = 6
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Content = "Stanley Kubrick",
+                            QuestionId = 6
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Content = "David Fincher",
+                            QuestionId = 6
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Content = "Casablanca",
+                            QuestionId = 7
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Content = "Pulp Fiction",
+                            QuestionId = 7
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Content = "The Room",
+                            QuestionId = 7
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Content = "The Mark",
+                            QuestionId = 7
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Content = "Incepcja",
+                            QuestionId = 8
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Content = "Mulholland Drive",
+                            QuestionId = 8
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Content = "Joker",
+                            QuestionId = 8
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Content = "Django",
+                            QuestionId = 8
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Content = "Christopher Nolan",
+                            QuestionId = 9
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Content = "Anthony Russo",
+                            QuestionId = 9
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Content = "Zack Snyder",
+                            QuestionId = 9
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Content = "Joss Whedon",
+                            QuestionId = 9
                         });
                 });
 
@@ -218,6 +314,34 @@ namespace Antila.Data.Migrations
                             Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
                             CorrectId = 18,
                             TestId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Content = "Wskaż reżysera, który zdobył najwięcej Oskarów za reżyserię",
+                            CorrectId = 21,
+                            TestId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Content = "Z którego filmu pochodzi cytat 'Oh, hi Mark!'?",
+                            CorrectId = 27,
+                            TestId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Content = "Wskaż film, który został wybrany przez redakcję BBC najlepszym filmem XX wieku ",
+                            CorrectId = 30,
+                            TestId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Content = "Który z wymienionych reżyserów słynie z używania w filmie praktycznych efektów specjalnych?",
+                            CorrectId = 33,
+                            TestId = 9
                         });
                 });
 
@@ -260,6 +384,26 @@ namespace Antila.Data.Migrations
                         {
                             Id = 5,
                             Category = "Społeczeństwo"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Category = "Kinematografia"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Category = "Kinematografia"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Category = "Kinematografia"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Category = "Kinematografia"
                         });
                 });
 

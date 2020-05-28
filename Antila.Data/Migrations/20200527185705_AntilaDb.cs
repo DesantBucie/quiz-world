@@ -69,7 +69,11 @@ namespace Antila.Data.Migrations
                     { 2, "Kinematografia" },
                     { 3, "Społeczeństwo" },
                     { 4, "Społeczeństwo" },
-                    { 5, "Społeczeństwo" }
+                    { 5, "Społeczeństwo" },
+                    { 6, "Kinematografia" },
+                    { 7, "Kinematografia" },
+                    { 8, "Kinematografia" },
+                    { 9, "Kinematografia" }
                 });
 
             migrationBuilder.InsertData(
@@ -81,7 +85,11 @@ namespace Antila.Data.Migrations
                     { 2, "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?", 7, 2 },
                     { 3, "Czym rzeczywiście jest choroba wywoływana przez COVID-19?", 10, 3 },
                     { 4, "Jakie są efekty uboczne 5G?", 15, 4 },
-                    { 5, "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie", 18, 5 }
+                    { 5, "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie", 18, 5 },
+                    { 6, "Wskaż reżysera, który zdobył najwięcej Oskarów za reżyserię", 21, 6 },
+                    { 7, "Z którego filmu pochodzi cytat 'Oh, hi Mark!'?", 27, 7 },
+                    { 8, "Wskaż film, który został wybrany przez redakcję BBC najlepszym filmem XX wieku ", 30, 8 },
+                    { 9, "Który z wymienionych reżyserów słynie z używania w filmie praktycznych efektów specjalnych?", 33, 9 }
                 });
 
             migrationBuilder.InsertData(
@@ -90,25 +98,41 @@ namespace Antila.Data.Migrations
                 values: new object[,]
                 {
                     { 1, "Boeing 737", 1 },
+                    { 21, "Martin Scorsese", 6 },
+                    { 22, "Quentin Tarantino", 6 },
+                    { 23, "Stanley Kubrick", 6 },
+                    { 24, "David Fincher", 6 },
+                    { 25, "Casablanca", 7 },
+                    { 26, "Pulp Fiction", 7 },
+                    { 20, "TZN", 5 },
+                    { 27, "The Room", 7 },
+                    { 29, "Incepcja", 8 },
+                    { 30, "Mulholland Drive", 8 },
+                    { 31, "Joker", 8 },
+                    { 32, "Django", 8 },
+                    { 33, "Christopher Nolan", 9 },
+                    { 34, "Anthony Russo", 9 },
+                    { 28, "The Mark", 7 },
+                    { 19, "Traugutt", 5 },
                     { 18, "Sienkiewicz", 5 },
                     { 17, "Norwid", 5 },
-                    { 16, "Nie ma takich", 4 },
-                    { 15, "COVID-19", 4 },
-                    { 14, "Wysypka na twarzy", 4 },
-                    { 13, "Śmierć", 4 },
-                    { 12, "Atakiem USA na gospodarkę Chin", 3 },
-                    { 11, "Efektem ubocznym chemitrails", 3 },
-                    { 10, "Groźną chorobą", 3 },
-                    { 9, "Zwykłą grypą", 3 },
-                    { 8, "Replikantem", 2 },
-                    { 7, "Jest", 2 },
-                    { 6, "Deckard", 2 },
-                    { 5, "Rick", 2 },
-                    { 4, "DC-9", 1 },
-                    { 3, "Tu-154", 1 },
                     { 2, "Airbus 380", 1 },
-                    { 19, "Traugutt", 5 },
-                    { 20, "TZN", 5 }
+                    { 3, "Tu-154", 1 },
+                    { 4, "DC-9", 1 },
+                    { 5, "Rick", 2 },
+                    { 6, "Deckard", 2 },
+                    { 7, "Jest", 2 },
+                    { 8, "Replikantem", 2 },
+                    { 9, "Zwykłą grypą", 3 },
+                    { 10, "Groźną chorobą", 3 },
+                    { 11, "Efektem ubocznym chemitrails", 3 },
+                    { 12, "Atakiem USA na gospodarkę Chin", 3 },
+                    { 13, "Śmierć", 4 },
+                    { 14, "Wysypka na twarzy", 4 },
+                    { 15, "COVID-19", 4 },
+                    { 16, "Nie ma takich", 4 },
+                    { 35, "Zack Snyder", 9 },
+                    { 36, "Joss Whedon", 9 }
                 });
 
             migrationBuilder.CreateIndex(
