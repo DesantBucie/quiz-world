@@ -10,7 +10,7 @@ const Home = () => (
         <Container>
                 <div style={styles.header}>
                     <h1>Witaj na QuizWorld</h1>
-                    <Link to='/quiz'><button style={styles.button}>Zaczynajmy!</button></Link>
+                    <Link to='/category'><button style={styles.button}>Zaczynajmy!</button></Link>
                 </div>
         </Container>
     </section>

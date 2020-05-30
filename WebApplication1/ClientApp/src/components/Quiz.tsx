@@ -184,7 +184,7 @@ export class Quiz extends React.Component<State> {
 			},
 			id: {
 				textAlign:'right' as 'right',
-			}
+			},	
 		};    
 		if (loading) {
 			return (

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import './NavMenu.scss';
 import { Spring } from 'react-spring/renderprops';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome,faQuestion,faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome,faQuestion,faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import './NavMenu.scss';
 
 export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }> {
     public state = {
@@ -33,7 +33,7 @@ export default class NavMenu extends React.PureComponent<{}, { isOpen: boolean }
                                         <NavLink tag={Link} className="text-dark" to="/">Strona Główna <FontAwesomeIcon icon={faHome}/></NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink tag={Link} className="text-dark" to="/quiz">Quiz <FontAwesomeIcon icon={faQuestion}/></NavLink>
+                                        <NavLink tag={Link} className="text-dark" to="/category">Quiz <FontAwesomeIcon icon={faQuestion}/></NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink tag={Link} className="text-dark" to="/help">Pomoc <FontAwesomeIcon icon={faInfoCircle}/></NavLink>
