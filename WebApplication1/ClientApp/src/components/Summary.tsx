@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
-import { PieChart, XAxis, Tooltip, CartesianGrid, Pie} from 'recharts';
+import { PieChart, Pie} from 'recharts';
+
 type State = {
     test?:any,
     chart:any,
@@ -22,7 +23,7 @@ class Summary extends React.Component<State> {
         })
         .then (res => {
             this.setState({
-                test:res.data
+                good:res.data
             })           
         })
     };
@@ -38,7 +39,7 @@ class Summary extends React.Component<State> {
             <section>
                 {this.state.test}
                 <PieChart width={400} height={400}>
-                    <Pie dataKey="value" startAngle={180} endAngle={0} data={data} cx={200} cy={200} outerRadius={80} fill="#8884d8" label />
+                    <Pie dataKey="value" startAngle={180} endAngle={0} data={data} cx={200} cy={200} outerRadius={80} fill="#57c21d" label />
                 </PieChart>
                 <Link to='/quiz'><button>Spróbuj jeszcze raz!</button></Link>
                 <Link to='/'><button>Wracam do strony głównej</button></Link>             
