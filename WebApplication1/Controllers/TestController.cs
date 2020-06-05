@@ -41,12 +41,12 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("summary")]
-        public int GetSummary()
+        public List<int> GetSummary()
         { 
             //string summary  = "Odpowiedziałeś poprawnie na " + testData.PointsCount()
             //    + " z " +testData.QuestionsCount() + " pytań.";
             //testData.ResetCount();
-            int count = testData.PointsCount();
+            var count = testData.PointsCount();
             return count;
         }
     }

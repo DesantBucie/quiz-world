@@ -13,7 +13,7 @@ namespace Antila.Data
         IEnumerable<TestModel> GetTest();
         bool CheckAnswer(int testId, int answerId);
         void CalculateNumberOfPoints(int testId, int answerId);
-        int PointsCount();
+        List<int> PointsCount();
         int QuestionsCount();
         void MapModel();
         void ResetCount();

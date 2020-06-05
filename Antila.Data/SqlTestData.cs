@@ -17,6 +17,7 @@ namespace Antila.Data
         private readonly AntilaDbContext db;
         private readonly static Random rng = new Random();
         private List<TestModel> testModels;
+        private List<int> points;
 
         public SqlTestData(AntilaDbContext db)
         {
@@ -54,9 +55,12 @@ namespace Antila.Data
             return shuffledTests;
         }
 
-        public int PointsCount()
+        public List<int> PointsCount()
         {
-            return PointCount;
+            points = new List<int>();
+            points[0] = PointCount;
+            points[1] = QuestionsCount() - PointCount;
+            return points;
         }
 
         public int QuestionsCount()
