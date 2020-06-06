@@ -1,2 +1,2 @@
 # antila
-React Redux .NET test project with bootstrap
+React Redux .NET Core 3.1 test project with bootstrap

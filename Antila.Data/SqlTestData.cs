@@ -57,9 +57,11 @@ namespace Antila.Data
 
         public List<int> PointsCount()
         {
-            points = new List<int>();
-            points[0] = PointCount;
-            points[1] = QuestionsCount() - PointCount;
+            points = new List<int>
+            {
+                PointCount,
+                QuestionsCount() - PointCount
+            };
             return points;
         }
 
