@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
-import { PieChart, Pie} from 'recharts';
+import { PieChart, Pie,Cell} from 'recharts';
 
 type State = {
     test?:any,
@@ -23,7 +23,8 @@ class Summary extends React.Component<State> {
         })
         .then (res => {
             this.setState({
-                good:res.data
+                good:res.data[0],
+                bad:res.data[1],
             })           
         })
     };
@@ -35,11 +36,26 @@ class Summary extends React.Component<State> {
         const data = [
             { name: 'Poprawne odpowiedzi', value: good }, { name: 'Złe odpowiedzi', value: bad },
           ];
+        const COLORS = ['#00FF00', '#FF0000'];
         return (
             <section>
                 {this.state.test}
                 <PieChart width={400} height={400}>
-                    <Pie dataKey="value" startAngle={180} endAngle={0} data={data} cx={200} cy={200} outerRadius={80} fill="#57c21d" label />
+                    <Pie
+                    data={data}
+                    cx={200}
+                    cy={200}
+                    labelLine={false}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    startAngle={180} 
+                    endAngle={0}
+                    dataKey="value"
+                    >
+                    {
+                        data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                    }
+                    </Pie>
                 </PieChart>
                 <Link to='/quiz'><button>Spróbuj jeszcze raz!</button></Link>
                 <Link to='/'><button>Wracam do strony głównej</button></Link>             
