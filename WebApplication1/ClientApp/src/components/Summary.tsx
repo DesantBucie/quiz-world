@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie,Cell} from 'recharts';
+import { Container,Row,Col } from 'reactstrap';
 
 type State = {
     test?:any,
@@ -36,15 +37,31 @@ class Summary extends React.Component<State> {
         const data = [
             { name: 'Poprawne odpowiedzi', value: good }, { name: 'Złe odpowiedzi', value: bad },
           ];
+        const screenwidth = window.screen.width;
+       console.log(screenwidth);
         const COLORS = ['#00FF00', '#FF0000'];
+        const styles = {
+            button: {
+                width:'50%',
+                padding:'1.5em',
+				border:'1px solid transparent',
+                borderRadius:'4px',
+                marginTop:'.3em',
+            },
+            section:{
+                textAlign: 'center' as 'center',
+            }
+        }
         return (
-            <section>
+            <section style={styles.section}>
+                <Container>
+                    <Row>
                 {this.state.test}
-                <PieChart width={400} height={400}>
+                <Col xs={12}><PieChart width={screenwidth} height={300}>
                     <Pie
                     data={data}
-                    cx={200}
-                    cy={200}
+                    cx={screenwidth/2 - 150}
+                    cy={150}
                     labelLine={false}
                     outerRadius={80}
                     fill="#8884d8"
@@ -56,9 +73,15 @@ class Summary extends React.Component<State> {
                         data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
                     }
                     </Pie>
-                </PieChart>
-                <Link to='/quiz'><button>Spróbuj jeszcze raz!</button></Link>
-                <Link to='/'><button>Wracam do strony głównej</button></Link>             
+                </PieChart></Col>
+                <Col xs={12}>
+                    Dobrych odpowiedzi: {good} <br/>
+                    Złych odpowiedzi: {bad}
+                </Col>
+                <Col xs={12} sm={6}><Link to='/quiz'><button style={styles.button}>Spróbuj jeszcze raz!</button></Link></Col>
+                <Col xs={12} sm={6}><Link to='/'><button style={styles.button}>Wracam do strony głównej</button></Link></Col>
+                </Row>
+                </Container>             
             </section>
         )
 
