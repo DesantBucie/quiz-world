@@ -10,14 +10,13 @@ namespace Antila.Data
 {
     public interface ITestData
     {
-        IEnumerable<TestModel> GetTest();
+        IEnumerable<TestModel> GetTest(string category);
         bool CheckAnswer(int testId, int answerId);
         void CalculateNumberOfPoints(int testId, int answerId);
         List<int> PointsCount();
         int QuestionsCount();
         void MapModel();
         void ResetCount();
-
 
     }
 }

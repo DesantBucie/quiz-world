@@ -25,29 +25,31 @@ namespace WebApplication1.Controllers
             this.testData = testData;
         }
 
-        [HttpGet]
-        public IEnumerable<TestModel> GetTests()
+        [HttpGet("{category?}")]
+        public IEnumerable<TestModel> GetTests([FromRoute] string category)
         {
             testData.MapModel();
-            return Test = testData.GetTest();
+            return Test = testData.GetTest(category);
         }
 
         [HttpPost]
-        public void PostTests([FromBody] Test test)
+        public void PostTests( Test test)
         {
-          
             testData.CalculateNumberOfPoints(test.Id,
-                                             test.Question.Answers.Select(x => x.Id).FirstOrDefault());
+                                        test.Question.Answers.Select(x => x.Id).FirstOrDefault());
         }
 
         [HttpGet("summary")]
         public List<int> GetSummary()
         { 
-            //string summary  = "Odpowiedziałeś poprawnie na " + testData.PointsCount()
-            //    + " z " +testData.QuestionsCount() + " pytań.";
-            //testData.ResetCount();
             var pointsCount = testData.PointsCount();
             return pointsCount;
+        }
+
+        [HttpPost("category")]
+        public void Category(string category)
+        {
+            string s = category;
         }
     }
 }
