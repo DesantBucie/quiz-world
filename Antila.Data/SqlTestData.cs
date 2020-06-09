@@ -50,7 +50,7 @@ namespace Antila.Data
            
             if (category != null)
             {
-                var shuffledTests = testModels.Where(t => t.Category.Equals(category)).
+                var shuffledTests = testModels.Where(t => t.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).
                 OrderBy(a => rng.Next()).ToList();
                 return shuffledTests;
             }
