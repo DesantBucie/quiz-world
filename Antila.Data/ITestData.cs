@@ -14,7 +14,7 @@ namespace Antila.Data
         bool CheckAnswer(int testId, int answerId);
         void CalculateNumberOfPoints(int testId, int answerId);
         List<int> PointsCount();
-        int QuestionsCount();
+        void QuestionsCount(List<TestModel> testModels);
         void MapModel();
         void ResetCount();
 
