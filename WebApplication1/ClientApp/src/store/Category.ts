@@ -22,10 +22,8 @@ export const reducer: Reducer<CategoryState> = (state: CategoryState | undefined
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'GET_CATEGORY':
-            console.log('Akcja ' + action.category);
             return { category:action.category };
-        case 'RECIEVE_CATEGORY':
-            console.log('state ' + state.category);
+        case 'RECIEVE_CATEGORY':           
             return {category:state.category};
         default:
             return state;

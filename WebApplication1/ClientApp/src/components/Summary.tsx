@@ -38,7 +38,6 @@ class Summary extends React.Component<State> {
             { name: 'Poprawne odpowiedzi', value: good }, { name: 'Złe odpowiedzi', value: bad },
           ];
         const screenwidth = window.screen.width;
-       console.log(screenwidth);
         const COLORS = ['#00FF00', '#FF0000'];
         const styles = {
             button: {
