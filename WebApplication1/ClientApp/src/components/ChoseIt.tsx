@@ -1,26 +1,29 @@
 import * as React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
+import { ApplicationState } from '../store';
+import * as Category from '../store/Category';
 
 type State = {
     category:string,
     redirect:boolean,
 }
-class ChoseIt extends React.Component {
+type CategoryProps =
+    Category.CategoryState &
+    typeof Category.actionCreators &
+    RouteComponentProps<{}>;
+
+class ChoseIt extends React.Component<CategoryProps> {
     readonly state : State = {
         category:'społeczeństwo',
         redirect:false,
     }
     ChooseCategory = async() => {
-        const category= this.state.category;
-        const apiLink = `https://localhost:44322/api/Test/` + category;
-        console.log(apiLink);
-        axios.post(apiLink,{
-            category
-        })
-        .then(res => {console.log(res.data);})
-        .catch(err => {console.error(err);})
+        const category = this.state.category;
+        console.log(category);
+        this.props.getcategory(category);
         await this.setState({redirect:true})
     }
     handleChange = async(event:any) => {
@@ -77,4 +80,7 @@ class ChoseIt extends React.Component {
     }
     
 }
-export default ChoseIt;
+export default connect(
+    (state: ApplicationState) => state.category,
+    Category.actionCreators
+) (ChoseIt as any);

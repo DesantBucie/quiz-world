@@ -1,10 +1,11 @@
 import * as WeatherForecasts from './WeatherForecasts';
 import * as Counter from './Counter';
-//import * as QuestionStorage from './QuestionStorage';
+import * as Category from './Category';
 //top level interface 
 export interface ApplicationState {
     counter: Counter.CounterState | undefined;
     weatherForecasts: WeatherForecasts.WeatherForecastsState | undefined;
+    category: Category.CategoryState | undefined;
    // quizstorage: QuizStorage.QuizStorageState | undefined;
 }
 
@@ -14,7 +15,7 @@ export interface ApplicationState {
 export const reducers = {
     counter: Counter.reducer,
     weatherForecasts: WeatherForecasts.reducer,
-    //quizStorage: QuizStoreage.reducer,
+    category: Category.reducer,
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are

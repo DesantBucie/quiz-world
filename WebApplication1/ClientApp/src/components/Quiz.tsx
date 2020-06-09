@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { Container,Row,Col } from 'reactstrap';
 import { Spring } from 'react-spring/renderprops';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import { ApplicationState } from '../store';
+import { RouteComponentProps } from 'react-router';
+import * as Category from '../store/Category';
+
 import './Quiz.scss';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
@@ -18,6 +22,11 @@ render() - well render
 
  and typescript may need :any
 */
+type CategoryProps =
+    Category.CategoryState &
+    typeof Category.actionCreators &
+	RouteComponentProps<{}>;
+	
 type State = {
 	loading: boolean,
 	error: boolean,
@@ -39,7 +48,7 @@ type State = {
 
 
 
-export class Quiz extends React.Component<State> {
+export class Quiz extends React.Component<CategoryProps> {
 	
    	readonly  state : State = {
         loading: true,
@@ -72,8 +81,11 @@ export class Quiz extends React.Component<State> {
 	};
 
     loadData = async() => {
-        this.setState({ loading: true });
-        await axios.get(`https://localhost:44322/api/Test`)
+		this.setState({ loading: true });
+		const category = this.props.category;
+		const apiLink = 'https://localhost:44322/api/Test/' + category;
+		console.log(apiLink); 
+        await axios.get(apiLink)
         .then(res=> {
 			console.log(JSON.stringify(res.data))
             this.setState({
@@ -250,4 +262,7 @@ export class Quiz extends React.Component<State> {
 	};
 }
 
-export default connect() (Quiz);
+export default connect(
+	(state: ApplicationState) => state.category,
+    Category.actionCreators
+) (Quiz as any);
