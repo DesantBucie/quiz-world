@@ -74,6 +74,18 @@ namespace WebApplication1
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+
+            SeedDatabase();
+        
+        }
+        
+        //Jeœli baza danych nie instnieje, tworzy j¹
+        public void SeedDatabase()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AntilaDbContext>();
+            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("AntilaDb"));
+            using var context = new AntilaDbContext(optionsBuilder.Options);
+            context.Database.Migrate();
         }
     }
 }

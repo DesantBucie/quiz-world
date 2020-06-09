@@ -45,14 +45,21 @@ namespace Antila.Data
             return isAnswerMatched;
         }
 
-        public IEnumerable<TestModel> GetTest()
+        public IEnumerable<TestModel> GetTest(string category)
         {
-            var shuffledTests = testModels.OrderBy(a => rng.Next()).ToList();
-            //await db.Tests.Include(shuffledTests => shuffledTests.Question)
-            //                            .Include(shuffledTests => shuffledTests.Question.Answers)
-            //                            .ToListAsync();
-
-            return shuffledTests;
+           
+            if (category != null)
+            {
+                var shuffledTests = testModels.Where(t => t.Category.Equals(category)).
+                OrderBy(a => rng.Next()).ToList();
+                return shuffledTests;
+            }
+            else
+            {
+                var shuffledTests = testModels.OrderBy(a => rng.Next()).ToList();
+                return shuffledTests;
+            }
+               
         }
 
         public List<int> PointsCount()
