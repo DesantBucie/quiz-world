@@ -13,22 +13,21 @@ namespace Antila.Data
 {
     public class SqlTestData : ITestData
     {
-        private static int PointCount;
         private readonly AntilaDbContext db;
         private readonly static Random rng = new Random();
         private List<TestModel> testModels;
+        private static int PointCount;
+        private static int QuestionCount;
         private List<int> points;
-
+        
         public SqlTestData(AntilaDbContext db)
         {
             this.db = db;
         }
         public void CalculateNumberOfPoints(int testId, int answerId)
         {
-
             if (CheckAnswer(testId, answerId))
-                PointCount++;
-                
+                PointCount++;             
         }
 
         public bool CheckAnswer(int testId, int answerId)
@@ -52,14 +51,16 @@ namespace Antila.Data
             {
                 var shuffledTests = testModels.Where(t => t.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).
                 OrderBy(a => rng.Next()).ToList();
+                QuestionsCount(shuffledTests);
                 return shuffledTests;
             }
             else
             {
                 var shuffledTests = testModels.OrderBy(a => rng.Next()).ToList();
+                QuestionsCount(shuffledTests);
                 return shuffledTests;
             }
-               
+            
         }
 
         public List<int> PointsCount()
@@ -67,21 +68,14 @@ namespace Antila.Data
             points = new List<int>
             {
                 PointCount,
-                QuestionsCount() - PointCount
+                QuestionCount - PointCount
             };
             return points;
         }
 
-        public int QuestionsCount()
+        public void QuestionsCount(List<TestModel> testModels)
         {
-            int questionCount = 0;
-
-            for (int i = 0; i < db.Tests.Count(); i++)
-            {
-                questionCount++;
-            }
-
-            return questionCount;
+            QuestionCount = testModels.Count();
         }
 
         public void MapModel()
@@ -106,6 +100,7 @@ namespace Antila.Data
         public void ResetCount()
         {
             PointCount = 0;
+            QuestionCount = 0;
         }
     }
 }

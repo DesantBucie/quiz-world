@@ -29,6 +29,7 @@ namespace WebApplication1.Controllers
         public IEnumerable<TestModel> GetTests([FromRoute] string category)
         {
             testData.MapModel();
+            testData.ResetCount();
             return Test = testData.GetTest(category);
         }
 
@@ -42,14 +43,8 @@ namespace WebApplication1.Controllers
         [HttpGet("summary")]
         public List<int> GetSummary()
         { 
-            var pointsCount = testData.PointsCount();
-            return pointsCount;
+            return testData.PointsCount();
         }
 
-        [HttpPost("category")]
-        public void Category(string category)
-        {
-            string s = category;
-        }
     }
 }
