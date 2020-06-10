@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Antila.Data
@@ -49,9 +51,12 @@ namespace Antila.Data
            
             if (category != null)
             {
-                var shuffledTests = testModels.Where(t => t.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).
+                string normalised = Regex.Replace(category, @"\-", " ");
+
+                var shuffledTests = testModels.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
                 OrderBy(a => rng.Next()).ToList();
                 QuestionsCount(shuffledTests);
+
                 return shuffledTests;
             }
             else
