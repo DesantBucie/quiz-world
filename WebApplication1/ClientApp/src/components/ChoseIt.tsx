@@ -22,7 +22,6 @@ class ChoseIt extends React.Component<CategoryProps> {
     }
     ChooseCategory = async() => {
         const category = this.state.category;
-        console.log(category);
         this.props.getcategory(category);
         await this.setState({redirect:true})
     }
@@ -67,6 +66,7 @@ class ChoseIt extends React.Component<CategoryProps> {
                     <Col xs={12}>Wybierz kategorię:</Col>
                     <form onSubmit={this.ChooseCategory} style={styles.form}>
                         <Col xs={12}><select value={this.state.category} onChange={this.handleChange} style={styles.form__select}>
+                            <option value=''>Wszystkie</option>
                             <option value="społeczeństwo">Społeczeństwo</option>
                             <option value="fakty-autentyczne">Fakty Autentyczne</option>
                             <option value="kinematografia">Kinematografia</option>

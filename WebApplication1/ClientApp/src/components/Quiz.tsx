@@ -83,11 +83,9 @@ export class Quiz extends React.Component<CategoryProps> {
     loadData = async() => {
 		this.setState({ loading: true });
 		const category = this.props.category;
-		const apiLink = 'https://localhost:44322/api/Test/' + category;
-		console.log(apiLink); 
+		const apiLink = 'https://localhost:44322/api/Test/' + category; 
         await axios.get(apiLink)
         .then(res=> {
-			console.log(JSON.stringify(res.data))
             this.setState({
 				allquestions: res.data,
                 loading: false,
@@ -106,7 +104,6 @@ export class Quiz extends React.Component<CategoryProps> {
 	currentQuestion = async() => {
 		const it = this.state.it;
 		const all = this.state.allquestions[it];
-		console.log(all); 
 		await this.setState({
 			currentquestion: {
 				category: all.category,
@@ -136,7 +133,6 @@ export class Quiz extends React.Component<CategoryProps> {
 				] 
 			}	 
 		});
-		console.log(this.state.question)
 		this.sendId();
 	}
 	sendId = async () => {
