@@ -37,7 +37,7 @@ class Summary extends React.Component<State> {
         const data = [
             { name: 'Poprawne odpowiedzi', value: good }, { name: 'Złe odpowiedzi', value: bad },
           ];
-        const screenwidth = window.screen.width;
+        const screenwidth = window.outerWidth;
         const COLORS = ['#00FF00', '#FF0000'];
         const styles = {
             button: {
@@ -59,7 +59,7 @@ class Summary extends React.Component<State> {
                 <Col xs={12}><PieChart width={screenwidth} height={300}>
                     <Pie
                     data={data}
-                    cx={screenwidth/2 - 150}
+                    cx={(screenwidth/2) - 150}
                     cy={150}
                     labelLine={false}
                     outerRadius={80}
