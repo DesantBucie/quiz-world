@@ -40,30 +40,6 @@ namespace Antila.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Content = "Boeing 737",
-                            QuestionId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Content = "Airbus 380",
-                            QuestionId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Content = "Tu-154",
-                            QuestionId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Content = "DC-9",
-                            QuestionId = 1
-                        },
-                        new
-                        {
                             Id = 5,
                             Content = "Rick",
                             QuestionId = 2
@@ -109,30 +85,6 @@ namespace Antila.Data.Migrations
                             Id = 12,
                             Content = "Atakiem USA na gospodarkę Chin",
                             QuestionId = 3
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Content = "Śmierć",
-                            QuestionId = 4
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Content = "Wysypka na twarzy",
-                            QuestionId = 4
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Content = "COVID-19",
-                            QuestionId = 4
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Content = "Nie ma takich",
-                            QuestionId = 4
                         },
                         new
                         {
@@ -253,6 +205,54 @@ namespace Antila.Data.Migrations
                             Id = 36,
                             Content = "Joss Whedon",
                             QuestionId = 9
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Content = "Japonia",
+                            QuestionId = 10
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Content = "Niemcy",
+                            QuestionId = 10
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Content = "Włochy",
+                            QuestionId = 10
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Content = "Hiszpania",
+                            QuestionId = 10
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Content = "Brazylia",
+                            QuestionId = 11
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Content = "Argentyna",
+                            QuestionId = 11
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Content = "Polska",
+                            QuestionId = 11
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Content = "Estonia",
+                            QuestionId = 11
                         });
                 });
 
@@ -282,13 +282,6 @@ namespace Antila.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
-                            CorrectId = 1,
-                            TestId = 1
-                        },
-                        new
-                        {
                             Id = 2,
                             Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
                             CorrectId = 7,
@@ -300,13 +293,6 @@ namespace Antila.Data.Migrations
                             Content = "Czym rzeczywiście jest choroba wywoływana przez COVID-19?",
                             CorrectId = 10,
                             TestId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Content = "Jakie są efekty uboczne 5G?",
-                            CorrectId = 15,
-                            TestId = 4
                         },
                         new
                         {
@@ -342,6 +328,20 @@ namespace Antila.Data.Migrations
                             Content = "Który z wymienionych reżyserów słynie z używania w filmie praktycznych efektów specjalnych?",
                             CorrectId = 33,
                             TestId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Content = "W jakim z podanych krajów średnia długość życia wynosi najwięcej?",
+                            CorrectId = 37,
+                            TestId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Content = "Który z poniższych krajów nie jest zaliczany do 'wchodzącego i rozwijającego się' według Międzynarodowego Funduszu Walutowego?",
+                            CorrectId = 44,
+                            TestId = 11
                         });
                 });
 
@@ -362,22 +362,12 @@ namespace Antila.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Category = "Fakty Autentyczne"
-                        },
-                        new
-                        {
                             Id = 2,
                             Category = "Kinematografia"
                         },
                         new
                         {
                             Id = 3,
-                            Category = "Społeczeństwo"
-                        },
-                        new
-                        {
-                            Id = 4,
                             Category = "Społeczeństwo"
                         },
                         new
@@ -404,6 +394,16 @@ namespace Antila.Data.Migrations
                         {
                             Id = 9,
                             Category = "Kinematografia"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Category = "Społeczeństwo"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Category = "Społeczeństwo"
                         });
                 });
 

@@ -138,32 +138,32 @@ namespace Antila.Data
            
         }
         //Haszowanie
-        public HashSalt GenerateSaltedHash(int size, string password)
-        {
-            var saltBytes = new byte[size];
-            var provider = new RNGCryptoServiceProvider();
-            provider.GetNonZeroBytes(saltBytes);
-            var salt = Convert.ToBase64String(saltBytes);
+        //public HashSalt GenerateSaltedHash(int size, string password)
+        //{
+        //    var saltBytes = new byte[size];
+        //    var provider = new RNGCryptoServiceProvider();
+        //    provider.GetNonZeroBytes(saltBytes);
+        //    var salt = Convert.ToBase64String(saltBytes);
 
-            var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, saltBytes, 10000);
-            var hashPassword = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256));
+        //    var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, saltBytes, 10000);
+        //    var hashPassword = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256));
 
-            HashSalt hashSalt = new HashSalt { Hash = hashPassword, Salt = salt };
-            return hashSalt;
-        }
+        //    HashSalt hashSalt = new HashSalt { Hash = hashPassword, Salt = salt };
+        //    return hashSalt;
+        //}
 
-        public bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt)
-        {
-            var saltBytes = Convert.FromBase64String(storedSalt);
-            var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
-            return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == storedHash;
-        }
+        //public bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt)
+        //{
+        //    var saltBytes = Convert.FromBase64String(storedSalt);
+        //    var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
+        //    return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == storedHash;
+        //}
 
-        public void CalculateNumberOfPoints(int testId, int answerId)
-        {
-            if (CheckAnswer(testId, answerId))
-                PointCount++;
-        }
+        //public void CalculateNumberOfPoints(int testId, int answerId)
+        //{
+        //    if (CheckAnswer(testId, answerId))
+        //        PointCount++;
+        //}
 
         public int PointsCount()
         {

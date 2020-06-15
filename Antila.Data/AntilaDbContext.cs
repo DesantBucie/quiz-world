@@ -21,25 +21,25 @@ namespace Antila.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Test>().HasData(
-                new Test
-                {
-                    Id = 1,
-                    Category = "Fakty Autentyczne"
-                });    
-            modelBuilder.Entity<Question>().HasData(
-                new Question
-                {
-                    Id = 1,
-                    TestId = 1,
-                    Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
-                    CorrectId = 1
-                });
-            modelBuilder.Entity<Answer>().HasData(
-                new Answer { Id = 1, Content = "Boeing 737", QuestionId = 1 },                                            
-                new Answer { Id = 2, Content = "Airbus 380", QuestionId = 1 },                
-                new Answer { Id = 3, Content = "Tu-154", QuestionId = 1 },                                      
-                new Answer { Id = 4, Content = "DC-9", QuestionId = 1 });
+            //modelBuilder.Entity<Test>().HasData(
+            //    new Test
+            //    {
+            //        Id = 1,
+            //        Category = "Fakty Autentyczne"
+            //    });    
+            //modelBuilder.Entity<Question>().HasData(
+            //    new Question
+            //    {
+            //        Id = 1,
+            //        TestId = 1,
+            //        Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
+            //        CorrectId = 1
+            //    });
+            //modelBuilder.Entity<Answer>().HasData(
+            //    new Answer { Id = 1, Content = "Boeing 737", QuestionId = 1 },                                            
+            //    new Answer { Id = 2, Content = "Airbus 380", QuestionId = 1 },                
+            //    new Answer { Id = 3, Content = "Tu-154", QuestionId = 1 },                                      
+            //    new Answer { Id = 4, Content = "DC-9", QuestionId = 1 });
 
 
             modelBuilder.Entity<Test>().HasData(
@@ -84,25 +84,25 @@ namespace Antila.Data
                 new Answer { Id = 12, Content = "Atakiem USA na gospodarkę Chin", QuestionId = 3 });
 
 
-            modelBuilder.Entity<Test>().HasData(
-             new Test
-             {
-                 Id = 4,
-                 Category = "Społeczeństwo"
-             });
-            modelBuilder.Entity<Question>().HasData(
-                new Question
-                {
-                    Id = 4,
-                    TestId = 4,
-                    Content = "Jakie są efekty uboczne 5G?",
-                    CorrectId = 15
-                });
-            modelBuilder.Entity<Answer>().HasData(
-                new Answer { Id = 13, Content = "Śmierć", QuestionId = 4 },
-                new Answer { Id = 14, Content = "Wysypka na twarzy", QuestionId = 4 },
-                new Answer { Id = 15, Content = "COVID-19", QuestionId = 4 },
-                new Answer { Id = 16, Content = "Nie ma takich", QuestionId = 4 });
+            //modelBuilder.Entity<Test>().HasData(
+            // new Test
+            // {
+            //     Id = 4,
+            //     Category = "Społeczeństwo"
+            // });
+            //modelBuilder.Entity<Question>().HasData(
+            //    new Question
+            //    {
+            //        Id = 4,
+            //        TestId = 4,
+            //        Content = "Jakie są efekty uboczne 5G?",
+            //        CorrectId = 15
+            //    });
+            //modelBuilder.Entity<Answer>().HasData(
+            //    new Answer { Id = 13, Content = "Śmierć", QuestionId = 4 },
+            //    new Answer { Id = 14, Content = "Wysypka na twarzy", QuestionId = 4 },
+            //    new Answer { Id = 15, Content = "COVID-19", QuestionId = 4 },
+            //    new Answer { Id = 16, Content = "Nie ma takich", QuestionId = 4 });
 
 
             modelBuilder.Entity<Test>().HasData(
@@ -208,6 +208,49 @@ namespace Antila.Data
                 new Answer { Id = 34, Content = "Anthony Russo", QuestionId = 9 },
                 new Answer { Id = 35, Content = "Zack Snyder", QuestionId = 9 },
                 new Answer { Id = 36, Content = "Joss Whedon", QuestionId = 9 });
+
+            //Test 10
+            modelBuilder.Entity<Test>().HasData(
+                new Test
+                {
+                    Id = 10,
+                    Category = "Społeczeństwo"
+                });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 10,
+                    TestId = 10,
+                    Content = "W jakim z podanych krajów średnia długość życia wynosi najwięcej?",
+                    CorrectId = 37
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 37, Content = "Japonia", QuestionId = 10 },
+                new Answer { Id = 38, Content = "Niemcy", QuestionId = 10 },
+                new Answer { Id = 39, Content = "Włochy", QuestionId = 10 },
+                new Answer { Id = 40, Content = "Hiszpania", QuestionId = 10 });
+  
+            //Test 11
+            modelBuilder.Entity<Test>().HasData(
+                new Test
+                {
+                    Id = 11,
+                    Category = "Społeczeństwo"
+                });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 11,
+                    TestId = 11,
+                    Content = "Który z poniższych krajów nie jest zaliczany do 'wchodzącego i rozwijającego się'" +
+                    " według Międzynarodowego Funduszu Walutowego?",
+                    CorrectId = 44
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 41, Content = "Brazylia", QuestionId = 11 },
+                new Answer { Id = 42, Content = "Argentyna", QuestionId = 11 },
+                new Answer { Id = 43, Content = "Polska", QuestionId = 11 },
+                new Answer { Id = 44, Content = "Estonia", QuestionId = 11 });
         }
     }
 }
