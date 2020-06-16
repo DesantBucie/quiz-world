@@ -48,9 +48,10 @@ namespace Antila.Data
 
         public IEnumerable<TestModel> GetTest(string category)
         {
-           
+            
             if (category != null)
             {
+                //Usuń "-" z adresu url
                 string normalised = Regex.Replace(category, @"\-", " ");
 
                 var shuffledTests = testModels.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
