@@ -21,25 +21,25 @@ namespace Antila.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Test>().HasData(
-            //    new Test
-            //    {
-            //        Id = 1,
-            //        Category = "Fakty Autentyczne"
-            //    });    
-            //modelBuilder.Entity<Question>().HasData(
-            //    new Question
-            //    {
-            //        Id = 1,
-            //        TestId = 1,
-            //        Content = "Wskaż samolot najczęściej używany do zrzutu chemitrails",
-            //        CorrectId = 1
-            //    });
-            //modelBuilder.Entity<Answer>().HasData(
-            //    new Answer { Id = 1, Content = "Boeing 737", QuestionId = 1 },                                            
-            //    new Answer { Id = 2, Content = "Airbus 380", QuestionId = 1 },                
-            //    new Answer { Id = 3, Content = "Tu-154", QuestionId = 1 },                                      
-            //    new Answer { Id = 4, Content = "DC-9", QuestionId = 1 });
+            modelBuilder.Entity<Test>().HasData(
+                new Test
+                {
+                    Id = 1,
+                    Category = "Fakty Autentyczne"
+                });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 1,
+                    TestId = 1,
+                    Content = "Czy Rick Deckard jest replikanetm?",
+                    CorrectId = 4
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 1, Content = "Trudno powiedzieć", QuestionId = 1 },
+                new Answer { Id = 2, Content = "Tak", QuestionId = 1 },
+                new Answer { Id = 3, Content = "Nie", QuestionId = 1 },
+                new Answer { Id = 4, Content = "Nie ma jednoznacznej odpowiedzi", QuestionId = 1 });
 
 
             modelBuilder.Entity<Test>().HasData(
@@ -54,13 +54,13 @@ namespace Antila.Data
                     Id = 2,
                     TestId = 2,
                     Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
-                    CorrectId = 7
+                    CorrectId = 8
                 });
             modelBuilder.Entity<Answer>().HasData(
-                new Answer { Id = 5, Content = "Rick", QuestionId = 2 },
-                new Answer { Id = 6, Content = "Deckard", QuestionId = 2 },
-                new Answer { Id = 7, Content = "Jest", QuestionId = 2 },
-                new Answer { Id = 8, Content = "Replikantem", QuestionId = 2 });
+                new Answer { Id = 5, Content = "Roy Batty", QuestionId = 2 },
+                new Answer { Id = 6, Content = "J.F. Sebastian", QuestionId = 2 },
+                new Answer { Id = 7, Content = "Bryant", QuestionId = 2 },
+                new Answer { Id = 8, Content = "Rick Deckard", QuestionId = 2 });
 
 
             modelBuilder.Entity<Test>().HasData(
@@ -74,35 +74,35 @@ namespace Antila.Data
                 {
                     Id = 3,
                     TestId = 3,
-                    Content = "Czym rzeczywiście jest choroba wywoływana przez COVID-19?",
+                    Content = "Osób jakiej mniejszości narodowej było w Polsce najwięcej według spisu powszechnego z 2011 roku?",
                     CorrectId = 10
                 });
             modelBuilder.Entity<Answer>().HasData(
-                new Answer { Id = 9, Content = "Zwykłą grypą", QuestionId = 3 },
-                new Answer { Id = 10, Content = "Groźną chorobą", QuestionId = 3 },
-                new Answer { Id = 11, Content = "Efektem ubocznym chemitrails", QuestionId = 3 },
-                new Answer { Id = 12, Content = "Atakiem USA na gospodarkę Chin", QuestionId = 3 });
+                new Answer { Id = 9, Content = "Kaszubskiej", QuestionId = 3 },
+                new Answer { Id = 10, Content = "Śląskiej", QuestionId = 3 },
+                new Answer { Id = 11, Content = "Niemieckiej", QuestionId = 3 },
+                new Answer { Id = 12, Content = "Ukraińskiej", QuestionId = 3 });
 
 
-            //modelBuilder.Entity<Test>().HasData(
-            // new Test
-            // {
-            //     Id = 4,
-            //     Category = "Społeczeństwo"
-            // });
-            //modelBuilder.Entity<Question>().HasData(
-            //    new Question
-            //    {
-            //        Id = 4,
-            //        TestId = 4,
-            //        Content = "Jakie są efekty uboczne 5G?",
-            //        CorrectId = 15
-            //    });
-            //modelBuilder.Entity<Answer>().HasData(
-            //    new Answer { Id = 13, Content = "Śmierć", QuestionId = 4 },
-            //    new Answer { Id = 14, Content = "Wysypka na twarzy", QuestionId = 4 },
-            //    new Answer { Id = 15, Content = "COVID-19", QuestionId = 4 },
-            //    new Answer { Id = 16, Content = "Nie ma takich", QuestionId = 4 });
+            modelBuilder.Entity<Test>().HasData(
+             new Test
+             {
+                 Id = 4,
+                 Category = "Społeczeństwo"
+             });
+            modelBuilder.Entity<Question>().HasData(
+                new Question
+                {
+                    Id = 4,
+                    TestId = 4,
+                    Content = "Najpopularniejszy kierunek studiów w Polsce w 2019 roku to?",
+                    CorrectId = 16
+                });
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer { Id = 13, Content = "Zarządzanie", QuestionId = 4 },
+                new Answer { Id = 14, Content = "Psychologia", QuestionId = 4 },
+                new Answer { Id = 15, Content = "Ekonomia", QuestionId = 4 },
+                new Answer { Id = 16, Content = "Informatyka", QuestionId = 4 });
 
 
             modelBuilder.Entity<Test>().HasData(
@@ -116,7 +116,7 @@ namespace Antila.Data
                 {
                     Id = 5,
                     TestId = 5,
-                    Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
+                    Content = "Wskaż częstochowską szkołę, która jest najstarsza ",
                     CorrectId = 18
                 });
             modelBuilder.Entity<Answer>().HasData(

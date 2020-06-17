@@ -8,11 +8,11 @@ For polish documentation check readme-pl.md
 ## Runnning Project
 1. Open Visual Studio, and open WebAplication.sln
 1. After that try to run the project without debug (Known bugs, will descript later), everything will be now building and compiling for first time, so it will take a little.
-1. Go to VS packet manager and run: `update-database`
 1. Everything should be running now.
 
 ## Known bugs
 When running project few times and closing it there are often multiple node.js proccesses. Unfortunately you need to kill them manually.
+You can avoid this behaviour by running project without debugging mode(Ctrl + F5).
 Eslint can be buggy, when getting data of unknown lenght, simple ? in types should do.
 
 ![Alt text](.github/React1.png?raw=true "Strona Główna")
