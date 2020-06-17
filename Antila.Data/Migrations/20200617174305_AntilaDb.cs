@@ -2,7 +2,7 @@
 
 namespace Antila.Data.Migrations
 {
-    public partial class AnilaDb : Migration
+    public partial class AntilaDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,8 +65,10 @@ namespace Antila.Data.Migrations
                 columns: new[] { "Id", "Category" },
                 values: new object[,]
                 {
+                    { 1, "Fakty Autentyczne" },
                     { 2, "Kinematografia" },
                     { 3, "Społeczeństwo" },
+                    { 4, "Społeczeństwo" },
                     { 5, "Społeczeństwo" },
                     { 6, "Kinematografia" },
                     { 7, "Kinematografia" },
@@ -81,9 +83,11 @@ namespace Antila.Data.Migrations
                 columns: new[] { "Id", "Content", "CorrectId", "TestId" },
                 values: new object[,]
                 {
-                    { 2, "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?", 7, 2 },
-                    { 3, "Czym rzeczywiście jest choroba wywoływana przez COVID-19?", 10, 3 },
-                    { 5, "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie", 18, 5 },
+                    { 1, "Czy Rick Deckard jest replikanetm?", 4, 1 },
+                    { 2, "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?", 8, 2 },
+                    { 3, "Osób jakiej mniejszości narodowej było w Polsce najwięcej według spisu powszechnego z 2011 roku?", 10, 3 },
+                    { 4, "Najpopularniejszy kierunek studiów w Polsce w 2019 roku to?", 16, 4 },
+                    { 5, "Wskaż częstochowską szkołę, która jest najstarsza ", 18, 5 },
                     { 6, "Wskaż reżysera, który zdobył najwięcej Oskarów za reżyserię", 21, 6 },
                     { 7, "Z którego filmu pochodzi cytat 'Oh, hi Mark!'?", 27, 7 },
                     { 8, "Wskaż film, który został wybrany przez redakcję BBC najlepszym filmem XX wieku ", 30, 8 },
@@ -97,40 +101,48 @@ namespace Antila.Data.Migrations
                 columns: new[] { "Id", "Content", "QuestionId" },
                 values: new object[,]
                 {
-                    { 5, "Rick", 2 },
+                    { 1, "Trudno powiedzieć", 1 },
+                    { 25, "Casablanca", 7 },
+                    { 26, "Pulp Fiction", 7 },
+                    { 27, "The Room", 7 },
+                    { 28, "The Mark", 7 },
                     { 29, "Incepcja", 8 },
                     { 30, "Mulholland Drive", 8 },
                     { 31, "Joker", 8 },
                     { 32, "Django", 8 },
+                    { 24, "David Fincher", 6 },
                     { 33, "Christopher Nolan", 9 },
-                    { 34, "Anthony Russo", 9 },
-                    { 28, "The Mark", 7 },
                     { 35, "Zack Snyder", 9 },
+                    { 36, "Joss Whedon", 9 },
                     { 37, "Japonia", 10 },
                     { 38, "Niemcy", 10 },
                     { 39, "Włochy", 10 },
                     { 40, "Hiszpania", 10 },
                     { 41, "Brazylia", 11 },
                     { 42, "Argentyna", 11 },
-                    { 36, "Joss Whedon", 9 },
-                    { 27, "The Room", 7 },
-                    { 26, "Pulp Fiction", 7 },
-                    { 25, "Casablanca", 7 },
-                    { 6, "Deckard", 2 },
-                    { 7, "Jest", 2 },
-                    { 8, "Replikantem", 2 },
-                    { 9, "Zwykłą grypą", 3 },
-                    { 10, "Groźną chorobą", 3 },
-                    { 11, "Efektem ubocznym chemitrails", 3 },
-                    { 12, "Atakiem USA na gospodarkę Chin", 3 },
+                    { 34, "Anthony Russo", 9 },
+                    { 23, "Stanley Kubrick", 6 },
+                    { 22, "Quentin Tarantino", 6 },
+                    { 21, "Martin Scorsese", 6 },
+                    { 2, "Tak", 1 },
+                    { 3, "Nie", 1 },
+                    { 4, "Nie ma jednoznacznej odpowiedzi", 1 },
+                    { 5, "Roy Batty", 2 },
+                    { 6, "J.F. Sebastian", 2 },
+                    { 7, "Bryant", 2 },
+                    { 8, "Rick Deckard", 2 },
+                    { 9, "Kaszubskiej", 3 },
+                    { 10, "Śląskiej", 3 },
+                    { 11, "Niemieckiej", 3 },
+                    { 12, "Ukraińskiej", 3 },
+                    { 13, "Zarządzanie", 4 },
+                    { 14, "Psychologia", 4 },
+                    { 15, "Ekonomia", 4 },
+                    { 16, "Informatyka", 4 },
                     { 17, "Norwid", 5 },
                     { 18, "Sienkiewicz", 5 },
                     { 19, "Traugutt", 5 },
                     { 20, "TZN", 5 },
-                    { 21, "Martin Scorsese", 6 },
-                    { 22, "Quentin Tarantino", 6 },
-                    { 23, "Stanley Kubrick", 6 },
-                    { 24, "David Fincher", 6 },
                     { 43, "Polska", 11 },
                     { 44, "Estonia", 11 }
                 });

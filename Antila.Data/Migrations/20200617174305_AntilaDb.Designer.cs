@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Antila.Data.Migrations
 {
     [DbContext(typeof(AntilaDbContext))]
-    [Migration("20200615194136_AnilaDb")]
-    partial class AnilaDb
+    [Migration("20200617174305_AntilaDb")]
+    partial class AntilaDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,51 +42,99 @@ namespace Antila.Data.Migrations
                     b.HasData(
                         new
                         {
+                            Id = 1,
+                            Content = "Trudno powiedzieć",
+                            QuestionId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "Tak",
+                            QuestionId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Content = "Nie",
+                            QuestionId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Content = "Nie ma jednoznacznej odpowiedzi",
+                            QuestionId = 1
+                        },
+                        new
+                        {
                             Id = 5,
-                            Content = "Rick",
+                            Content = "Roy Batty",
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 6,
-                            Content = "Deckard",
+                            Content = "J.F. Sebastian",
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 7,
-                            Content = "Jest",
+                            Content = "Bryant",
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 8,
-                            Content = "Replikantem",
+                            Content = "Rick Deckard",
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 9,
-                            Content = "Zwykłą grypą",
+                            Content = "Kaszubskiej",
                             QuestionId = 3
                         },
                         new
                         {
                             Id = 10,
-                            Content = "Groźną chorobą",
+                            Content = "Śląskiej",
                             QuestionId = 3
                         },
                         new
                         {
                             Id = 11,
-                            Content = "Efektem ubocznym chemitrails",
+                            Content = "Niemieckiej",
                             QuestionId = 3
                         },
                         new
                         {
                             Id = 12,
-                            Content = "Atakiem USA na gospodarkę Chin",
+                            Content = "Ukraińskiej",
                             QuestionId = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Content = "Zarządzanie",
+                            QuestionId = 4
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Content = "Psychologia",
+                            QuestionId = 4
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Content = "Ekonomia",
+                            QuestionId = 4
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Content = "Informatyka",
+                            QuestionId = 4
                         },
                         new
                         {
@@ -284,22 +332,36 @@ namespace Antila.Data.Migrations
                     b.HasData(
                         new
                         {
+                            Id = 1,
+                            Content = "Czy Rick Deckard jest replikanetm?",
+                            CorrectId = 4,
+                            TestId = 1
+                        },
+                        new
+                        {
                             Id = 2,
                             Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
-                            CorrectId = 7,
+                            CorrectId = 8,
                             TestId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Content = "Czym rzeczywiście jest choroba wywoływana przez COVID-19?",
+                            Content = "Osób jakiej mniejszości narodowej było w Polsce najwięcej według spisu powszechnego z 2011 roku?",
                             CorrectId = 10,
                             TestId = 3
                         },
                         new
                         {
+                            Id = 4,
+                            Content = "Najpopularniejszy kierunek studiów w Polsce w 2019 roku to?",
+                            CorrectId = 16,
+                            TestId = 4
+                        },
+                        new
+                        {
                             Id = 5,
-                            Content = "Wymień częstochowską szkołę, w której brakuje drzwi w toalecie",
+                            Content = "Wskaż częstochowską szkołę, która jest najstarsza ",
                             CorrectId = 18,
                             TestId = 5
                         },
@@ -364,12 +426,22 @@ namespace Antila.Data.Migrations
                     b.HasData(
                         new
                         {
+                            Id = 1,
+                            Category = "Fakty Autentyczne"
+                        },
+                        new
+                        {
                             Id = 2,
                             Category = "Kinematografia"
                         },
                         new
                         {
                             Id = 3,
+                            Category = "Społeczeństwo"
+                        },
+                        new
+                        {
+                            Id = 4,
                             Category = "Społeczeństwo"
                         },
                         new
