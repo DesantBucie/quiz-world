@@ -40,7 +40,10 @@ type State = {
 1.5. Bootstrap - framework css stworzony przez programistów twittera, steruje szerokościami elementów 
 w zależności od wielkości ekranu. 
 1.6.npm - node packet manager - wszystkie powyższe pakiety poza gitem są pobrane dzięki temu narzędziu
-1.7 C# - używany na backendzie czyli do bardziej złożonych operacji na zmiennych niż te dostępne na "froncie"
+1.7 C# - używany na backendzie jak WebAPI i biblioteki. Aplikacja składa się z trzech części - WebAPI, Antila.Core 
+i Antila.Data. WebAPI wystawia kilka adresów URL, z których frontend może konsumować dane. W Antila.Core znajduje się
+rdzeń aplikacji, czyli podstawowe modele danych. Antila.Data służy do komunikacji z bazą danych przy użyciu Entity 
+Framework. Znajduje się w niej interfejs, który używany jest do komunikacji z WebAPI.
 1.8 Baza danych MS SQL - baza danych typu SQL z której pytania wysyłane są dzieki backendowi do frontu i odbierane
 interfejsem programistycznym tzw API przez axios. 
 1.9 Axios - Odbiera pytania z bazy danych i ustawia dla nich zmienne
