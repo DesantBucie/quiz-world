@@ -28,6 +28,9 @@ namespace Antila.Data.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsCorrect")
+                        .HasColumnType("bit");
+
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
@@ -42,264 +45,308 @@ namespace Antila.Data.Migrations
                         {
                             Id = 1,
                             Content = "Trudno powiedzieć",
+                            IsCorrect = false,
                             QuestionId = 1
                         },
                         new
                         {
                             Id = 2,
                             Content = "Tak",
+                            IsCorrect = false,
                             QuestionId = 1
                         },
                         new
                         {
                             Id = 3,
                             Content = "Nie",
+                            IsCorrect = false,
                             QuestionId = 1
                         },
                         new
                         {
                             Id = 4,
                             Content = "Nie ma jednoznacznej odpowiedzi",
+                            IsCorrect = true,
                             QuestionId = 1
                         },
                         new
                         {
                             Id = 5,
                             Content = "Roy Batty",
+                            IsCorrect = false,
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 6,
                             Content = "J.F. Sebastian",
+                            IsCorrect = false,
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 7,
                             Content = "Bryant",
+                            IsCorrect = false,
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 8,
                             Content = "Rick Deckard",
+                            IsCorrect = true,
                             QuestionId = 2
                         },
                         new
                         {
                             Id = 9,
                             Content = "Kaszubskiej",
+                            IsCorrect = false,
                             QuestionId = 3
                         },
                         new
                         {
                             Id = 10,
                             Content = "Śląskiej",
+                            IsCorrect = true,
                             QuestionId = 3
                         },
                         new
                         {
                             Id = 11,
                             Content = "Niemieckiej",
+                            IsCorrect = false,
                             QuestionId = 3
                         },
                         new
                         {
                             Id = 12,
                             Content = "Ukraińskiej",
+                            IsCorrect = false,
                             QuestionId = 3
                         },
                         new
                         {
                             Id = 13,
                             Content = "Zarządzanie",
+                            IsCorrect = false,
                             QuestionId = 4
                         },
                         new
                         {
                             Id = 14,
                             Content = "Psychologia",
+                            IsCorrect = false,
                             QuestionId = 4
                         },
                         new
                         {
                             Id = 15,
                             Content = "Ekonomia",
+                            IsCorrect = false,
                             QuestionId = 4
                         },
                         new
                         {
                             Id = 16,
                             Content = "Informatyka",
+                            IsCorrect = true,
                             QuestionId = 4
                         },
                         new
                         {
                             Id = 17,
                             Content = "Norwid",
+                            IsCorrect = false,
                             QuestionId = 5
                         },
                         new
                         {
                             Id = 18,
                             Content = "Sienkiewicz",
+                            IsCorrect = true,
                             QuestionId = 5
                         },
                         new
                         {
                             Id = 19,
                             Content = "Traugutt",
+                            IsCorrect = false,
                             QuestionId = 5
                         },
                         new
                         {
                             Id = 20,
                             Content = "TZN",
+                            IsCorrect = false,
                             QuestionId = 5
                         },
                         new
                         {
                             Id = 21,
                             Content = "Martin Scorsese",
+                            IsCorrect = true,
                             QuestionId = 6
                         },
                         new
                         {
                             Id = 22,
                             Content = "Quentin Tarantino",
+                            IsCorrect = false,
                             QuestionId = 6
                         },
                         new
                         {
                             Id = 23,
                             Content = "Stanley Kubrick",
+                            IsCorrect = false,
                             QuestionId = 6
                         },
                         new
                         {
                             Id = 24,
                             Content = "David Fincher",
+                            IsCorrect = false,
                             QuestionId = 6
                         },
                         new
                         {
                             Id = 25,
                             Content = "Casablanca",
+                            IsCorrect = false,
                             QuestionId = 7
                         },
                         new
                         {
                             Id = 26,
                             Content = "Pulp Fiction",
+                            IsCorrect = false,
                             QuestionId = 7
                         },
                         new
                         {
                             Id = 27,
                             Content = "The Room",
+                            IsCorrect = true,
                             QuestionId = 7
                         },
                         new
                         {
                             Id = 28,
                             Content = "The Mark",
+                            IsCorrect = false,
                             QuestionId = 7
                         },
                         new
                         {
                             Id = 29,
                             Content = "Incepcja",
+                            IsCorrect = false,
                             QuestionId = 8
                         },
                         new
                         {
                             Id = 30,
                             Content = "Mulholland Drive",
+                            IsCorrect = true,
                             QuestionId = 8
                         },
                         new
                         {
                             Id = 31,
                             Content = "Joker",
+                            IsCorrect = false,
                             QuestionId = 8
                         },
                         new
                         {
                             Id = 32,
                             Content = "Django",
+                            IsCorrect = false,
                             QuestionId = 8
                         },
                         new
                         {
                             Id = 33,
                             Content = "Christopher Nolan",
+                            IsCorrect = true,
                             QuestionId = 9
                         },
                         new
                         {
                             Id = 34,
                             Content = "Anthony Russo",
+                            IsCorrect = false,
                             QuestionId = 9
                         },
                         new
                         {
                             Id = 35,
                             Content = "Zack Snyder",
+                            IsCorrect = false,
                             QuestionId = 9
                         },
                         new
                         {
                             Id = 36,
                             Content = "Joss Whedon",
+                            IsCorrect = false,
                             QuestionId = 9
                         },
                         new
                         {
                             Id = 37,
                             Content = "Japonia",
+                            IsCorrect = true,
                             QuestionId = 10
                         },
                         new
                         {
                             Id = 38,
                             Content = "Niemcy",
+                            IsCorrect = false,
                             QuestionId = 10
                         },
                         new
                         {
                             Id = 39,
                             Content = "Włochy",
+                            IsCorrect = false,
                             QuestionId = 10
                         },
                         new
                         {
                             Id = 40,
                             Content = "Hiszpania",
+                            IsCorrect = false,
                             QuestionId = 10
                         },
                         new
                         {
                             Id = 41,
                             Content = "Brazylia",
+                            IsCorrect = false,
                             QuestionId = 11
                         },
                         new
                         {
                             Id = 42,
                             Content = "Argentyna",
+                            IsCorrect = false,
                             QuestionId = 11
                         },
                         new
                         {
                             Id = 43,
                             Content = "Polska",
+                            IsCorrect = false,
                             QuestionId = 11
                         },
                         new
                         {
                             Id = 44,
                             Content = "Estonia",
+                            IsCorrect = true,
                             QuestionId = 11
                         });
                 });
@@ -313,9 +360,6 @@ namespace Antila.Data.Migrations
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CorrectId")
-                        .HasColumnType("int");
 
                     b.Property<int>("TestId")
                         .HasColumnType("int");
@@ -332,77 +376,66 @@ namespace Antila.Data.Migrations
                         {
                             Id = 1,
                             Content = "Czy Rick Deckard jest replikanetm?",
-                            CorrectId = 4,
                             TestId = 1
                         },
                         new
                         {
                             Id = 2,
                             Content = "Jak nazywa się postać w którą wciela się Harrison Ford w 'Łowcy Androidów'?",
-                            CorrectId = 8,
                             TestId = 2
                         },
                         new
                         {
                             Id = 3,
                             Content = "Osób jakiej mniejszości narodowej było w Polsce najwięcej według spisu powszechnego z 2011 roku?",
-                            CorrectId = 10,
                             TestId = 3
                         },
                         new
                         {
                             Id = 4,
                             Content = "Najpopularniejszy kierunek studiów w Polsce w 2019 roku to?",
-                            CorrectId = 16,
                             TestId = 4
                         },
                         new
                         {
                             Id = 5,
                             Content = "Wskaż częstochowską szkołę, która jest najstarsza ",
-                            CorrectId = 18,
                             TestId = 5
                         },
                         new
                         {
                             Id = 6,
                             Content = "Wskaż reżysera, który zdobył najwięcej Oskarów za reżyserię",
-                            CorrectId = 21,
                             TestId = 6
                         },
                         new
                         {
                             Id = 7,
                             Content = "Z którego filmu pochodzi cytat 'Oh, hi Mark!'?",
-                            CorrectId = 27,
                             TestId = 7
                         },
                         new
                         {
                             Id = 8,
                             Content = "Wskaż film, który został wybrany przez redakcję BBC najlepszym filmem XX wieku ",
-                            CorrectId = 30,
                             TestId = 8
                         },
                         new
                         {
                             Id = 9,
                             Content = "Który z wymienionych reżyserów słynie z używania w filmie praktycznych efektów specjalnych?",
-                            CorrectId = 33,
                             TestId = 9
                         },
                         new
                         {
                             Id = 10,
                             Content = "W jakim z podanych krajów średnia długość życia wynosi najwięcej?",
-                            CorrectId = 37,
                             TestId = 10
                         },
                         new
                         {
                             Id = 11,
                             Content = "Który z poniższych krajów nie jest zaliczany do 'wchodzącego i rozwijającego się' według Międzynarodowego Funduszu Walutowego?",
-                            CorrectId = 44,
                             TestId = 11
                         });
                 });

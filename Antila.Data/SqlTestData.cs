@@ -26,26 +26,29 @@ namespace Antila.Data
         {
             this.db = db;
         }
-        public void CalculateNumberOfPoints(int testId, int answerId)
+
+        //Mapowanie danych z bazy danych do modelu danych w celu uniknięcia obnażenia
+        //prawidłowej odpowiedzi na pytanie podczas HTTP GET
+        public void MapModel()
         {
-            if (CheckAnswer(testId, answerId))
-                PointCount++;             
+            
+            testModels = db.Tests.Select(s => new TestModel()
+            {
+                Id = s.Id,
+                Category = s.Category,
+                Question = new QuestionModel()
+                {
+                    Content = s.Question.Content,
+                    Answers = s.Question.Answers.Select(a => new AnswerModel()
+                    {
+                        Id = a.Id,
+                        Content = a.Content
+                    })
+                }
+            }).ToList();
         }
 
-        public bool CheckAnswer(int testId, int answerId)
-        {
-            var correctId = db.Tests.Where(t => t.Id.Equals(testId))
-                                        .Select(t => t.Question.CorrectId)   
-                                        .SingleOrDefault();
-
-            bool isAnswerMatched = false;
-
-            if (answerId.Equals(correctId))
-                isAnswerMatched = true;
-
-            return isAnswerMatched;
-        }
-
+        //Zwróc losowy zestaw testów lub zestaw testów z danej kategorii 
         public IEnumerable<TestModel> GetTest(string category)
         {
             
@@ -69,6 +72,14 @@ namespace Antila.Data
             
         }
 
+        public Test AddTest(Test test)
+        {
+            db.Tests.Add(test);
+            db.SaveChanges();
+            return test;
+        }
+
+        //Trzeba to przenieść do innej klasy 
         public List<int> PointsCount()
         {
             points = new List<int>
@@ -84,29 +95,26 @@ namespace Antila.Data
             QuestionCount = testModels.Count();
         }
 
-        public void MapModel()
-        {
-            //Mapowanie danych z bazy danych do modelu danych
-            testModels = db.Tests.Select(s => new TestModel()
-            {
-                Id = s.Id,
-                Category = s.Category,
-                Question = new QuestionModel()
-                {
-                    Content = s.Question.Content,
-                    Answers = s.Question.Answers.Select(a => new AnswerModel()
-                    {
-                        Id = a.Id,
-                        Content = a.Content
-                    })
-                }
-            }).ToList();
-        }
-
         public void ResetCount()
         {
             PointCount = 0;
             QuestionCount = 0;
+        }
+
+        public void CalculateNumberOfPoints(int testId, int answerId)
+        {
+            if (CheckAnswer(testId, answerId))
+                PointCount++;
+        }
+
+        public bool CheckAnswer(int testId, int answerId)
+        {
+            var correctId = db.Tests.Where(t => t.Id.Equals(testId))
+                                        .Select(t => t.Question.Answers.Where(a => a.Id == answerId)
+                                        .Select(a => a.IsCorrect))
+                                        .SingleOrDefault();
+
+            return correctId.SingleOrDefault();
         }
     }
 }

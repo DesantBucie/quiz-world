@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public void PostTests( Test test)
+        public void PostTests(Test test)
         {
             testData.CalculateNumberOfPoints(test.Id,
                                         test.Question.Answers.Select(x => x.Id).FirstOrDefault());
@@ -44,6 +44,12 @@ namespace WebApplication1.Controllers
         public List<int> GetSummary()
         { 
             return testData.PointsCount();
+        }
+
+        [HttpPost("AddTest")]
+        public void PostTest(Test test)
+        {
+             testData.AddTest(test);
         }
 
     }
