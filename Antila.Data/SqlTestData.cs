@@ -18,17 +18,13 @@ namespace Antila.Data
         private readonly AntilaDbContext db;
         private readonly static Random rng = new Random();
         private List<TestModel> testModels;
-        private static int PointCount;
-        private static int QuestionCount;
-        private List<int> points;
         
         public SqlTestData(AntilaDbContext db)
         {
             this.db = db;
         }
 
-        //Mapowanie danych z bazy danych do modelu danych w celu uniknięcia obnażenia
-        //prawidłowej odpowiedzi na pytanie podczas HTTP GET
+        //Map data model to avoid exposing database's model
         public void MapModel()
         {
             
@@ -48,25 +44,22 @@ namespace Antila.Data
             }).ToList();
         }
 
-        //Zwróc losowy zestaw testów lub zestaw testów z danej kategorii 
+        //Return random set of tests from choosen category
         public IEnumerable<TestModel> GetTest(string category)
         {
             
             if (category != null)
             {
-                //Usuń "-" z adresu url
+                //Delete "-" form URL address
                 string normalised = Regex.Replace(category, @"\-", " ");
 
                 var shuffledTests = testModels.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
                 OrderBy(a => rng.Next()).ToList();
-                QuestionsCount(shuffledTests);
-
                 return shuffledTests;
             }
             else
             {
                 var shuffledTests = testModels.OrderBy(a => rng.Next()).ToList();
-                QuestionsCount(shuffledTests);
                 return shuffledTests;
             }
             
@@ -79,42 +72,5 @@ namespace Antila.Data
             return test;
         }
 
-        //Trzeba to przenieść do innej klasy 
-        public List<int> PointsCount()
-        {
-            points = new List<int>
-            {
-                PointCount,
-                QuestionCount - PointCount
-            };
-            return points;
-        }
-
-        public void QuestionsCount(List<TestModel> testModels)
-        {
-            QuestionCount = testModels.Count();
-        }
-
-        public void ResetCount()
-        {
-            PointCount = 0;
-            QuestionCount = 0;
-        }
-
-        public void CalculateNumberOfPoints(int testId, int answerId)
-        {
-            if (CheckAnswer(testId, answerId))
-                PointCount++;
-        }
-
-        public bool CheckAnswer(int testId, int answerId)
-        {
-            var correctId = db.Tests.Where(t => t.Id.Equals(testId))
-                                        .Select(t => t.Question.Answers.Where(a => a.Id == answerId)
-                                        .Select(a => a.IsCorrect))
-                                        .SingleOrDefault();
-
-            return correctId.SingleOrDefault();
-        }
     }
 }

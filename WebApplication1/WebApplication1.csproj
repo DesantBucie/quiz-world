@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Antila.AnswerService\Antila.AnswerService.csproj" />
     <ProjectReference Include="..\Antila.Data\Antila.Data.csproj" />
   </ItemGroup>
 

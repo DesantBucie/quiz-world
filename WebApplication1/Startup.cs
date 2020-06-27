@@ -1,3 +1,4 @@
+using Antila.AnswerService;
 using Antila.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace WebApplication1
             
             services.AddControllersWithViews();
             services.AddScoped<ITestData, SqlTestData/*InMemoryTestData*/>();
+            services.AddScoped<IAnswerService, AnswerService>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

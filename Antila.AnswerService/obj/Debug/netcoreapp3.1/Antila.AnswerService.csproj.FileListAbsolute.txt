@@ -1,0 +1,14 @@
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\bin\Debug\netcoreapp3.1\Antila.AnswerService.deps.json
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\bin\Debug\netcoreapp3.1\Antila.AnswerService.dll
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\bin\Debug\netcoreapp3.1\Antila.AnswerService.pdb
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\bin\Debug\netcoreapp3.1\Antila.Core.dll
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\bin\Debug\netcoreapp3.1\Antila.Data.dll
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\bin\Debug\netcoreapp3.1\Antila.Data.pdb
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\bin\Debug\netcoreapp3.1\Antila.Core.pdb
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\obj\Debug\netcoreapp3.1\Antila.AnswerService.csprojAssemblyReference.cache
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\obj\Debug\netcoreapp3.1\Antila.AnswerService.csproj.CoreCompileInputs.cache
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\obj\Debug\netcoreapp3.1\Antila.AnswerService.AssemblyInfoInputs.cache
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\obj\Debug\netcoreapp3.1\Antila.AnswerService.AssemblyInfo.cs
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\obj\Debug\netcoreapp3.1\Antila.AnswerService.csproj.CopyComplete
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\obj\Debug\netcoreapp3.1\Antila.AnswerService.dll
+C:\Users\zero\Source\Repos\antila\Antila.AnswerService\obj\Debug\netcoreapp3.1\Antila.AnswerService.pdb
