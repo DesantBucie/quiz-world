@@ -27,21 +27,22 @@ namespace Antila.Data
         //Map data model to avoid exposing database's model
         public void MapModel()
         {
-            
-            testModels = db.Tests.Select(s => new TestModel()
-            {
-                Id = s.Id,
-                Category = s.Category,
-                Question = new QuestionModel()
-                {
-                    Content = s.Question.Content,
-                    Answers = s.Question.Answers.Select(a => new AnswerModel()
-                    {
-                        Id = a.Id,
-                        Content = a.Content
-                    })
-                }
-            }).ToList();
+
+            //testModels = db.Tests.Select(s => new TestModel()
+            //{
+            //    Id = s.Id,
+            //    Category = s.Category,
+            //    Question = new QuestionModel()
+            //    {
+            //        Content = s.Question.Content,
+            //        Answers = s.Question.Answers.Select(a => new AnswerModel()
+            //        {
+            //            Id = a.Id,
+            //            Content = a.Content
+            //        })
+            //    }
+            //}).ToList();
+            throw new NotImplementedException();
         }
 
         //Return random set of tests from choosen category
@@ -53,9 +54,28 @@ namespace Antila.Data
                 //Delete "-" form URL address
                 string normalised = Regex.Replace(category, @"\-", " ");
 
-                var shuffledTests = testModels.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
-                OrderBy(a => rng.Next()).ToList();
-                return shuffledTests;
+                //var shuffledTests = testModels.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
+                //OrderBy(a => rng.Next()).ToList();
+
+                var tests = db.Tests.Where(t => t.Category.Equals(normalised)).Select(t => new TestModel() 
+                    {
+                        Id = t.Id,
+                        Category = t.Category,
+                        Question = new QuestionModel()
+                        {
+                            Content = t.Question.Content,
+                            Answers = t.Question.Answers.Select(a => new AnswerModel()
+                            {
+                                Id = a.Id,
+                                Content = a.Content
+                            })
+                        }
+                    }).ToList();
+
+                tests.OrderBy(a => rng.Next());
+
+                return tests;
+                //return shuffledTests;
             }
             else
             {

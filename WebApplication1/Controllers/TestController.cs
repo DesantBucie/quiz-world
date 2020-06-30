@@ -33,7 +33,7 @@ namespace WebApplication1.Controllers
         [HttpGet("{category?}")]
         public IEnumerable<TestModel> GetTests([FromRoute] string category)
         {
-            testData.MapModel();
+            //testData.MapModel();
             Test = testData.GetTest(category);
 
             answerService.ResetCount();
