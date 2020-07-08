@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -17,7 +19,6 @@ namespace Antila.Data
     {
         private readonly AntilaDbContext db;
         private readonly static Random rng = new Random();
-        private List<TestModel> testModels;
         
         public SqlTestData(AntilaDbContext db)
         {
@@ -57,20 +58,7 @@ namespace Antila.Data
                 //var shuffledTests = testModels.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
                 //OrderBy(a => rng.Next()).ToList();
 
-                var tests = db.Tests.Where(t => t.Category.Equals(normalised)).Select(t => new TestModel() 
-                    {
-                        Id = t.Id,
-                        Category = t.Category,
-                        Question = new QuestionModel()
-                        {
-                            Content = t.Question.Content,
-                            Answers = t.Question.Answers.Select(a => new AnswerModel()
-                            {
-                                Id = a.Id,
-                                Content = a.Content
-                            })
-                        }
-                    }).ToList();
+                var tests = ModelMapping(normalised);
 
                 tests.OrderBy(a => rng.Next());
 
@@ -79,8 +67,7 @@ namespace Antila.Data
             }
             else
             {
-                var shuffledTests = testModels.OrderBy(a => rng.Next()).ToList();
-                return shuffledTests;
+                return ModelMapping();
             }
             
         }
@@ -92,5 +79,29 @@ namespace Antila.Data
             return test;
         }
 
+        private IEnumerable<TestModel> ModelMapping(string normalised = null)
+        {
+            var shuffled = db.Tests.Select(t => new TestModel()
+            {
+                Id = t.Id,
+                Category = t.Category,
+                Question = new QuestionModel()
+                {
+                    Content = t.Question.Content,
+                    Answers = t.Question.Answers.Select(a => new AnswerModel()
+                    {
+                        Id = a.Id,
+                        Content = a.Content
+                    })
+                }
+            });
+
+            if (normalised != null)
+            {
+                return shuffled.Where(t => t.Category.Equals(normalised)).ToList();
+            }
+
+            return shuffled.ToList();
+        }
     }
 }
