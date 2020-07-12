@@ -13,14 +13,9 @@ import './Quiz.scss';
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
 There is a main class with variables stored inside state, no redux is used yet. 
 
-state - most of the variables used to fetch and send data
 loadData() - function which loads question and answers
 sendIt() -function which sends selected answer
-render() - well render
 
- REMEMBER ABOUT SETTING STATE WHEN PASSING VARIABLES
-
- and typescript may need :any
 */
 type CategoryProps =
     Category.CategoryState &
@@ -154,8 +149,10 @@ export class Quiz extends React.Component<CategoryProps> {
 	};
 	molonLabe = async () => {
 		const it = this.state.it;
-		const amount = this.state.allquestions.length;
-		if (it < amount - 1) {
+		const amount = this.state.allquestions.length - 1;
+		// DEPRECATED
+        if (it < amount - 1) {
+
 			await this.setState({
 				it : this.state.it + 1
 			})
@@ -163,9 +160,13 @@ export class Quiz extends React.Component<CategoryProps> {
 		}
 		else {
 			await this.setState({
-					redirect:true
+				redirect:true
 			})
 		}
+       // !Possible later solution
+       //const isTrue = ite < amount;
+       //console.log(isTrue);
+       // (isTrue ? await this.setState({it: this.state.it + 1}) && this.currentQuestion() :  await this.setState({redirect:true}));
 	}
 	componentDidMount() {
 		this.loadData();
@@ -214,12 +215,7 @@ export class Quiz extends React.Component<CategoryProps> {
 		}
 		return (
 		<section>
-			<Spring
-			from={{ opacity: 0 }}
-			to={{ opacity: 1 }}
-			config={{duration:700}}>
-			{props => 
-		<Container style={props}>
+		<Container>
 			<Row style={styles.top}>
 				<Col sm={6}>
 					<p>Kategoria: {category}</p>
@@ -251,8 +247,7 @@ export class Quiz extends React.Component<CategoryProps> {
 					</div>
 				</Col>
 			</Row>
-  </Container>} 
-		</Spring>
+  </Container>
 		</section>
 		);
 	};

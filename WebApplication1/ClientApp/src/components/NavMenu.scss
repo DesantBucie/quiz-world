@@ -1,15 +1,25 @@
-﻿a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
+﻿.navbar {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-between;
+    a {
+        text-decoration:none;
+        color:black;
+    }
 }
-
-.text-dark {
-    font-size: 17px; 
+.navbar__logo {
+    width:20%;
 }
+.navbar__menu {
 
-@media (min-width: 768px) {
-    html { font-size: 16px; }
 }
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.navbar__login {
+    width:20%;
+}
+.darkmode {
+        background:#000;    
+        a ,i{
+            color:white;
+        }
+}
