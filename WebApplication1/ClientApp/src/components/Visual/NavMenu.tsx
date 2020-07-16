@@ -9,8 +9,6 @@ export default class NavMenu extends React.PureComponent<{},{icon:boolean}> {
     public state = {
         icon: true,
     };
-    readonly styles = {
-    }
     public render() {
         const icon = this.state.icon;
         return (
@@ -26,7 +24,7 @@ export default class NavMenu extends React.PureComponent<{},{icon:boolean}> {
                 </div>
 
                 <div className="navbar__login">
-                    <FontAwesomeIcon  onClick={this.togglemodes} icon={icon ? faMoon : faSun}/>&ensp;
+                    <FontAwesomeIcon className="navbar__icon" onClick={this.togglemodes} icon={icon ? faMoon : faSun}/>&ensp;
                     <Link to="/login">Login &ensp;</Link>
                     <Link to="/register">Zarejestruj się!</Link>
                 </div>

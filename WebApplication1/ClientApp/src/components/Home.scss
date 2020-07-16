@@ -1,0 +1,25 @@
+.header {
+  text-align:center;
+  background:#dadedf;
+  padding:40px;
+}
+.header__button {
+  border-radius:4px;
+  background:lightblue;
+  border:1px solid transparent;
+  padding:20px;
+  paddingTop:15px;
+  paddingBottom:15px;
+  marginTop:10px;
+}
+.darkmode {
+  .header {
+    background:#333;
+  }
+  .header__button{
+    background:#222;
+    color:white;
+  }
+}
+
+

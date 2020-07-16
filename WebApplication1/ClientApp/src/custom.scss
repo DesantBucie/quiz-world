@@ -1,14 +1,22 @@
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-code {
-  color: #E01A76;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.darkmode {
+    background:#111;
+    & input {
+        background:#eee;
+        color:black;
+        border-radius:4px;
+        border:1px solid #aaa;
+        padding:.25em;
+    }
+    & a, i {
+        color:white;
+    }
+    & h1 {
+        color:white;
+    }
+    & p {
+        color: white;
+    }
+    & label {
+        color:white;
+    }
 }

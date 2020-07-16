@@ -4,9 +4,9 @@ import { Container,Row,Col } from 'reactstrap';
 import { Spring } from 'react-spring/renderprops';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { ApplicationState } from '../store';
+import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
-import * as Category from '../store/Category';
+import * as Category from '../../store/Category';
 
 import './Quiz.scss';
 /*
