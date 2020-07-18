@@ -5,10 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -25,27 +25,6 @@ namespace Antila.Data
             this.db = db;
         }
 
-        //Map data model to avoid exposing database's model
-        public void MapModel()
-        {
-
-            //testModels = db.Tests.Select(s => new TestModel()
-            //{
-            //    Id = s.Id,
-            //    Category = s.Category,
-            //    Question = new QuestionModel()
-            //    {
-            //        Content = s.Question.Content,
-            //        Answers = s.Question.Answers.Select(a => new AnswerModel()
-            //        {
-            //            Id = a.Id,
-            //            Content = a.Content
-            //        })
-            //    }
-            //}).ToList();
-            throw new NotImplementedException();
-        }
-
         //Return random set of tests from choosen category
         public IEnumerable<TestModel> GetTest(string category)
         {
@@ -55,7 +34,7 @@ namespace Antila.Data
                 //Delete "-" form URL address
                 string normalised = Regex.Replace(category, @"\-", " ");
 
-                //var shuffledTests = testModels.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
+                //var shuffledTests = db.Tests.Where(t => t.Category.Equals(normalised, StringComparison.OrdinalIgnoreCase)).
                 //OrderBy(a => rng.Next()).ToList();
 
                 var tests = ModelMapping(normalised);
@@ -66,7 +45,7 @@ namespace Antila.Data
                 //return shuffledTests;
             }
             else
-            {
+            {  
                 return ModelMapping();
             }
             
@@ -100,7 +79,7 @@ namespace Antila.Data
             {
                 return shuffled.Where(t => t.Category.Equals(normalised)).ToList();
             }
-
+   
             return shuffled.ToList();
         }
     }

@@ -10,7 +10,6 @@ namespace Antila.Data
 {
     public interface ITestData
     {
-        void MapModel();
         IEnumerable<TestModel> GetTest(string category);
         Test AddTest(Test test);
     }
