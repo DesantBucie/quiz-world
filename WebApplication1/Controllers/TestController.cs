@@ -11,12 +11,15 @@ using Antila.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
+using WebApplication1.Filters;
 
 namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+
+   // [HandleException] czy to coś robi? 
     public class TestController : ControllerBase
     {
         private readonly ITestData testData;
@@ -46,9 +49,6 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult PostTests(Test test)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
-            
             answerService.CalculateNumberOfPoints(test.Id,
                                         test.Question.Answers.Select(x => x.Id).FirstOrDefault());
             return Ok();
@@ -61,9 +61,11 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost("AddTest")]
-        public void PostTest(Test test)
+        public IActionResult PostTest(Test test)
         {
-             testData.AddTest(test);
+            testData.AddTest(test);
+
+            return Ok();
         }
 
     }
