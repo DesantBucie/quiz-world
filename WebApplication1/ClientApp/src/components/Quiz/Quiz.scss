@@ -24,14 +24,27 @@
 }
 .darkmode {
     & .but1 {
+        background:#8b6c28;
+        &:hover {
+            background:#9c7d39;  
+        }
     }
     & .but2 {
-
+        background-color:#492586;
+        &:hover {
+            background:#5a3697;  
+        }
     }
     & .but3 {
-
+        background: #7e225c;
+        &:hover {
+            background: #8f336d;
+        }
     }
     & .but4 {
-
+        background-color:#56771c;
+        &:hover {
+            background:#67882d;
+        }
     }
 }

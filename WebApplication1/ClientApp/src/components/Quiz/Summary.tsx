@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie,Cell} from 'recharts';
 import { Container,Row,Col } from 'reactstrap';
-
+import './Summary.scss';
 type State = {
     test?:any,
     chart:any,
@@ -39,47 +38,37 @@ class Summary extends React.Component<State> {
           ];
         const screenwidth = window.outerWidth;
         const COLORS = ['#00FF00', '#FF0000'];
-        const styles = {
-            button: {
-                width:'50%',
-                padding:'1.5em',
-				border:'1px solid transparent',
-                borderRadius:'4px',
-                marginTop:'.3em',
-            },
-            section:{
-                textAlign: 'center' as 'center',
-            }
-        }
+        
         return (
-            <section style={styles.section}>
+            <section className="summary">
                 <Container>
                     <Row>
-                {this.state.test}
-                <Col xs={12}><PieChart width={screenwidth} height={300}>
-                    <Pie
-                    data={data}
-                    cx={(screenwidth/2) - 150}
-                    cy={150}
-                    labelLine={false}
-                    outerRadius={80}
-                    fill="#8884d8"
-                    startAngle={180} 
-                    endAngle={0}
-                    dataKey="value"
-                    >
-                    {
-                        data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-                    }
-                    </Pie>
-                </PieChart></Col>
-                <Col xs={12}>
-                    Dobrych odpowiedzi: {good} <br/>
-                    Złych odpowiedzi: {bad}
-                </Col>
-                <Col xs={12} sm={6}><Link to='/quiz'><button style={styles.button}>Spróbuj jeszcze raz!</button></Link></Col>
-                <Col xs={12} sm={6}><Link to='/'><button style={styles.button}>Wracam do strony głównej</button></Link></Col>
-                </Row>
+                        <Col xs={12}>
+                            <PieChart width={screenwidth/2} height={300}>
+                                <Pie
+                                data={data}
+                                cx={(screenwidth/2) - 150}
+                                cy={150}
+                                labelLine={false}
+                                outerRadius={80}
+                                fill="#8884d8"
+                                startAngle={180} 
+                                endAngle={0}
+                                dataKey="value"
+                                >
+                                {
+                                    data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                                }
+                                </Pie>
+                            </PieChart>
+                        </Col>
+                        <Col xs={12}>
+                            Dobrych odpowiedzi: {good} <br/>
+                            Złych odpowiedzi: {bad}
+                        </Col>
+                        <Col xs={12} sm={6}><Link to='/category'><button className="summary__button--green">Spróbuj jeszcze raz!</button></Link></Col>
+                        <Col xs={12} sm={6}><Link to='/'><button className="summary__button--red">Wracam do strony głównej</button></Link></Col>
+                    </Row>
                 </Container>             
             </section>
         )
