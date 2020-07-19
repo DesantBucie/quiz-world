@@ -9,9 +9,9 @@ const Register = () => {
 
     const handleChange = (evt:any) => {
         evt.preventDefault();
-        const isMailGood = mail == mailconf ? true : false;
+        const isMailGood = mail === mailconf ? true : false;
         console.log(isMailGood);
-        const isPassGood = pass == passconf ? true : false;
+        const isPassGood = pass === passconf ? true : false;
         console.log(isPassGood);
     }
     return (

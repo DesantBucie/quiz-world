@@ -19,4 +19,4 @@ const Help = () => (
     </section>
 );
 
-export default connect()(Help);
+export default Help;

@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import './Home.scss';
 
 
-const Home = () => (
+const Home = () => {
+    return (
     <section>
         <Container>
                 <div className="header">
@@ -14,6 +15,7 @@ const Home = () => (
                 </div>
         </Container>
     </section>
+    );
 
-);
+};
 export default connect()(Home);

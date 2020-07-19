@@ -204,7 +204,7 @@ export class Quiz extends React.Component<CategoryProps> {
 			return (
 				<p>
 				Wystąpił problem podczas ładowania{" "}
-				<button style={styles.buttons} onClick={this.loadData}>Spróbuj ponownie!</button>
+				<button className="buttons" onClick={this.loadData}>Spróbuj ponownie!</button>
 				</p>
 			);
 		}

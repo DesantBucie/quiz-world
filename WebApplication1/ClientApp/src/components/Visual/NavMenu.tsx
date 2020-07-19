@@ -1,41 +1,54 @@
-import * as React from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome,faQuestion,faInfoCircle,faMoon,faSun } from '@fortawesome/free-solid-svg-icons';
+import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faBars } from '@fortawesome/free-solid-svg-icons';
 import './NavMenu.scss';
 
-export default class NavMenu extends React.PureComponent<{},{icon:boolean}> {
-    public state = {
-        icon: true,
-    };
-    public render() {
-        const icon = this.state.icon;
-        return (
-            <nav className="navbar">
-                <div className="navbar__logo">
-                    <Link to="/"><h5>QW</h5></Link>
-                </div>
 
-                <div className="navbar__menu">
-                    <Link to="/">Strona Główna <FontAwesomeIcon icon={faHome}/></Link>&ensp;
-                    <Link to="/category">Quiz <FontAwesomeIcon icon={faQuestion}/></Link>&ensp;
-                    <Link to="/help">Pomoc <FontAwesomeIcon icon={faInfoCircle}/></Link>&ensp;
-                </div>
+const NavMenu = () => {
 
-                <div className="navbar__login">
-                    <FontAwesomeIcon className="navbar__icon" onClick={this.togglemodes} icon={icon ? faMoon : faSun}/>&ensp;
-                    <Link to="/login">Login &ensp;</Link>
-                    <Link to="/register">Zarejestruj się!</Link>
-                </div>
+    const [icon,setIcon] = useState(true);
+    const [width, setWidth] = useState(window.innerWidth);
+    const breakpoint = 1000;
 
-            </nav>
-        );
-    }
+    useEffect( () => {
+        window.addEventListener("resize", () => setWidth(window.innerWidth));
+    });
 
-    private togglemodes = async () => {
+    const togglemodes = () => {
         document.body.classList.toggle('darkmode');
-        const icon = this.state.icon;
-        (icon ? await this.setState({icon:false}) : await this.setState({icon:true}) );
+        (icon ? setIcon(false) : setIcon(true) );
+    }
+    if (width > breakpoint) {
+    return (
+        <nav className="navbar">
+            <div className="navbar__logo">
+                <Link to="/"><h5>QW</h5></Link>
+            </div>
+
+            <div className="navbar__menu">
+              <Link to="/"> Strona Główna <FontAwesomeIcon icon={faHome}/></Link>&ensp;
+                <Link to="/category">Quiz <FontAwesomeIcon icon={faQuestion}/></Link>&ensp;
+                <Link to="/help">Pomoc <FontAwesomeIcon icon={faInfoCircle}/></Link>&ensp;
+            </div>
+
+            <div className="navbar__login">
+                <FontAwesomeIcon className="navbar__icon" onClick={togglemodes} icon={icon ? faMoon : faSun}/>&ensp;
+                <Link to="/login">Login &ensp;</Link>
+                <Link to="/register">Zarejestruj się!</Link>
+            </div>
+
+        </nav>
+    )
+}
+    else {
+    return (
+        <nav className="mobileNavbar">
+            <div className="mobileNavbar__logo"><Link to="/"><h5>QW</h5></Link></div>
+
+            <div className="mobileNavbar__menu"><FontAwesomeIcon icon={faBars}/></div>
+        </nav>
+    )
     }
 }
+export default NavMenu;
