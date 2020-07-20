@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-
+import axios from 'axios';
 
 const Register = () => {
     const [mail,setMail] = useState('');
@@ -9,29 +9,30 @@ const Register = () => {
 
     const handleChange = (evt:any) => {
         evt.preventDefault();
-        const isMailGood = mail === mailconf ? true : false;
-        console.log(isMailGood);
-        const isPassGood = pass === passconf ? true : false;
-        console.log(isPassGood);
+        axios.post(`https://ocalhost:44322/Account/Register`,{mail,pass,passconf
+        })
+        .then(res => {
+            console.log(res.data);
+        })
     }
     return (
     <section>
         <form onSubmit={handleChange}>
             <div>
-                <input 
+                <input
                 placeholder="Nick" 
                 type="text"/>
             </div>
             <div>
                 <input 
-                value={mail} 
+                value={mail}
                 onChange={e => setMail(e.target.value)}
                 placeholder="Email"
                 type="email"/>
             </div>
             <div>
-                <input 
-                value={mailconf} 
+                <input
+                value={mailconf}
                 onChange={e => setMailconf(e.target.value)} 
                 placeholder="Potwierdź Email" 
                 type="email"/>

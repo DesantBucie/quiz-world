@@ -1,45 +1,30 @@
-import * as React from 'react';
+import React,{useState,useEffect} from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie,Cell} from 'recharts';
 import { Container,Row,Col } from 'reactstrap';
 import './Summary.scss';
-type State = {
-    test?:any,
-    chart:any,
-    good:number,
-    bad:number
-}
-class Summary extends React.Component<State> {
-    readonly state : State = {
-        test:'',
-        chart:'',
-        good:0,
-        bad:0,
-    }
-    loadSum = async () => {
-        await axios.get(`https://localhost:44322/api/Test/summary`,{
+
+const Summary = () =>  {
+    const [good, setGood] = useState(0);
+    const [bad, setBad] = useState(0);
+    useEffect(() => loadSum(),[]);
+    const loadSum = () => {
+        axios.get(`https://localhost:44322/api/Test/summary`,{
         })
         .then (res => {
-            this.setState({
-                good:res.data[0],
-                bad:res.data[1],
-            })           
+            setGood(res.data[0])
+            setBad(res.data[1])
         })
-    };
-    componentDidMount(){
-        this.loadSum();
     }
-    render()  {
-        const {good, bad} = this.state;
-        const data = [
-            { name: 'Poprawne odpowiedzi', value: good }, { name: 'Złe odpowiedzi', value: bad },
-          ];
-        const screenwidth = window.outerWidth;
-        const COLORS = ['#00FF00', '#FF0000'];
+    const data = [
+        { name: 'Poprawne odpowiedzi', value: good }, { name: 'Złe odpowiedzi', value: bad },
+    ];
+    const screenwidth = window.outerWidth;
+    const COLORS = ['#00FF00', '#FF0000'];
         
-        return (
+    return (
             <section className="summary">
                 <Container>
                     <Row>
@@ -71,8 +56,6 @@ class Summary extends React.Component<State> {
                     </Row>
                 </Container>             
             </section>
-        )
-
-    }
+    );
 }
 export default connect() (Summary);

@@ -8,7 +8,9 @@ const Login = () => {
 
     const handleChange= (evt:any) => {
         evt.preventDefault();
-        axios.post(`https:localhost:44322/api/Account/Login`)
+        axios.post(`https:localhost:44322/Account/Login`,{
+        login,token
+        })
         .then (res => {
             console.log(res.data);
         })
@@ -20,22 +22,22 @@ const Login = () => {
         <section>
             <form onSubmit={handleChange}>
                 <div>
-                    <input 
+                    <input
                     value={login}
                     onChange={e => setLogin(e.target.value)}
-                    placeholder="Email" 
+                    placeholder="Email"
                     type='email' />
                 </div>
                 <div>
                     <input
                     value={token}
                     onChange={e => setToken(e.target.value)}
-                    placeholder="Password" 
+                    placeholder="Password"
                     type='password'/>
                 </div>
                 <div>
-                    <input 
-                    value="Zaloguj się!" 
+                    <input
+                    value="Zaloguj się!"
                     type='submit'/>
                 </div>
             </form>
