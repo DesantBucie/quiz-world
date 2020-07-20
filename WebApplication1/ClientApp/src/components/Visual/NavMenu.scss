@@ -18,6 +18,10 @@
 .navbar__login {
     width:20%;
 }
+.navbar__icon {
+    cursor: pointer;
+}
+.navbar__user {}
 .mobileNavbar {
     display:flex;
     flex-direction:row;

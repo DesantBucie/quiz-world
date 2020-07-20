@@ -3,13 +3,13 @@ import axios from 'axios';
 import "./Login.scss";
 
 const Login = () => {
-    const [login,setLogin] = useState('');
-    const [token,setToken] = useState('');
+    const [Email,setEmail] = useState('');
+    const [Password,setPassword] = useState('');
 
     const handleChange= (evt:any) => {
         evt.preventDefault();
         axios.post(`https:localhost:44322/Account/Login`,{
-        login,token
+        Email,Password
         })
         .then (res => {
             console.log(res.data);
@@ -23,15 +23,15 @@ const Login = () => {
             <form onSubmit={handleChange}>
                 <div>
                     <input
-                    value={login}
-                    onChange={e => setLogin(e.target.value)}
+                    value={Email}
+                    onChange={e => setEmail(e.target.value)}
                     placeholder="Email"
                     type='email' />
                 </div>
                 <div>
                     <input
-                    value={token}
-                    onChange={e => setToken(e.target.value)}
+                    value={Password}
+                    onChange={e => setPassword(e.target.value)}
                     placeholder="Password"
                     type='password'/>
                 </div>

@@ -2,15 +2,14 @@ import React,{useState} from 'react';
 import axios from 'axios';
 
 const Register = () => {
-    const [mail,setMail] = useState('');
-    const [mailconf, setMailconf] = useState('');
-    const [pass, setPass] = useState('');
-    const [passconf, setPassconf] = useState('');
+    const [Email,setEmail] = useState('');
+    const [ConfirmEmail, setConfirmEmail] = useState('');
+    const [Password, setPassword] = useState('');
+    const [ConfirmPassword, setConfirmPassword] = useState('');
 
     const handleChange = (evt:any) => {
         evt.preventDefault();
-        axios.post(`https://ocalhost:44322/Account/Register`,{mail,pass,passconf
-        })
+        axios.post(`https://ocalhost:44322/Account/Register`,{Email,Password,ConfirmPassword})
         .then(res => {
             console.log(res.data);
         })
@@ -19,35 +18,30 @@ const Register = () => {
     <section>
         <form onSubmit={handleChange}>
             <div>
-                <input
-                placeholder="Nick" 
-                type="text"/>
-            </div>
-            <div>
                 <input 
-                value={mail}
-                onChange={e => setMail(e.target.value)}
+                value={Email}
+                onChange={e => setEmail(e.target.value)}
                 placeholder="Email"
                 type="email"/>
             </div>
             <div>
                 <input
-                value={mailconf}
-                onChange={e => setMailconf(e.target.value)} 
+                value={ConfirmEmail}
+                onChange={e => setConfirmEmail(e.target.value)} 
                 placeholder="Potwierdź Email" 
                 type="email"/>
             </div>
             <div>
                 <input 
-                value={pass} 
-                onChange={e => setPass(e.target.value)}
+                value={Password} 
+                onChange={e => setPassword(e.target.value)}
                 placeholder="Hasło" 
                 type="password"/>
             </div>
             <div>
                 <input 
-                value={passconf} 
-                onChange={e => setPassconf(e.target.value)}
+                value={ConfirmPassword} 
+                onChange={e => setConfirmPassword(e.target.value)}
                 placeholder="Potwierdź Hasło"
                 type="password"/>
             </div>
