@@ -9,7 +9,7 @@ const NavMenu = () => {
 
     const [icon,setIcon] = useState(true);
     const [userIcon, setUserIcon] = useState(true);
-    const [session, setSession] = useState(true);
+    const [session, setSession] = useState(false);
 
     const [width, setWidth] = useState(window.innerWidth);
     const username = useState("desantbucie");
