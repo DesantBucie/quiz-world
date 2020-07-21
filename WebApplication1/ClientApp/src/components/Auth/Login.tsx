@@ -8,7 +8,7 @@ const Login = () => {
 
     const handleChange= (evt:any) => {
         evt.preventDefault();
-        axios.post(`https:localhost:44322/Account/Login`,{
+        axios.post(`https://localhost:44322/Account/Login`,{
         Email,Password
         })
         .then (res => {
