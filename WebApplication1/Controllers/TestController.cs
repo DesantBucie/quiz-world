@@ -11,9 +11,9 @@ using Antila.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
-using WebApplication1.Filters;
+using AntilaWebApp.Filters;
 
-namespace WebApplication1.Controllers
+namespace AntilaWebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

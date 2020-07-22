@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{D6F8FA5B-2AAB-44E4-AC0E-14E94CA1CA37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AntilaWebApp", "WebApplication1\AntilaWebApp.csproj", "{D6F8FA5B-2AAB-44E4-AC0E-14E94CA1CA37}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Antila.Core", "Antila.Core\Antila.Core.csproj", "{F5F4C77C-0448-439B-BDE0-801180962476}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Antila.Data", "Antila.Data\Antila.Data.csproj", "{EEB4F0F8-6A57-4624-89FD-6F361C5CEF66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antila.AnswerService", "Antila.AnswerService\Antila.AnswerService.csproj", "{50050F38-8AA9-4D4D-9B02-242FF26C16DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Antila.AnswerService", "Antila.AnswerService\Antila.AnswerService.csproj", "{50050F38-8AA9-4D4D-9B02-242FF26C16DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
