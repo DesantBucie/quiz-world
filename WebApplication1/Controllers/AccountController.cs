@@ -78,8 +78,7 @@ namespace AntilaWebApp.Controllers
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model, string returnUrl = null)
-        {
-            bool isLogged = true;
+        {      
             returnUrl = returnUrl ?? Url.Content("~/");
 
             if (ModelState.IsValid)
@@ -90,8 +89,8 @@ namespace AntilaWebApp.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    //return Redirect(returnUrl);   
-                    return Ok(isLogged);
+                    return Redirect(returnUrl);   
+                   // return Ok(isLogged);
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -104,8 +103,9 @@ namespace AntilaWebApp.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Ok();
+                    //ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    //return Ok();
+                    return Redirect(returnUrl);
                 }
             }
            
