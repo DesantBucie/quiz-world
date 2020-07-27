@@ -25,7 +25,7 @@ const Login = () => {
         <section className="login">
             <form onSubmit={handleChange}>
                 <div className="login__email">
-                    <label for="email">Email:</label><br/>
+                    <label htmlFor="email">Email:</label><br/>
                     <input
                     value={Email}
                     onChange={e => setEmail(e.target.value)}
@@ -33,7 +33,7 @@ const Login = () => {
                     name="email"/>
                 </div>
                 <div className="login__email">
-                    <label for="password">Hasło:</label><br/>
+                    <label htmlFor="password">Hasło:</label><br/>
                     <input
                     value={Password}
                     onChange={e => setPassword(e.target.value)}

@@ -21,7 +21,7 @@ const Register = () => {
         <section className="login">
         <form onSubmit={handleChange}>
             <div>
-                <label for="email">Email:</label><br/>
+                <label htmlFor="email">Email:</label><br/>
                 <input 
                 value={Email}
                 onChange={e => setEmail(e.target.value)}
@@ -29,7 +29,7 @@ const Register = () => {
                 type="email"/>
             </div>
             <div>
-                <label for="emailconf">Potwierdź Email:</label><br/>
+                <label htmlFor="emailconf">Potwierdź Email:</label><br/>
                 <input
                 value={ConfirmEmail}
                 onChange={e => setConfirmEmail(e.target.value)} 
@@ -37,7 +37,7 @@ const Register = () => {
                 type="email"/>
             </div>
             <div>
-                <label for="password">Hasło:</label><br/>
+                <label htmlFor="password">Hasło:</label><br/>
                 <input 
                 value={Password} 
                 onChange={e => setPassword(e.target.value)}
@@ -45,7 +45,7 @@ const Register = () => {
                 type="password"/>
             </div>
             <div>
-                <label for="confpassword">Potwierdź Hasło:</label><br/>
+                <label htmlFor="confpassword">Potwierdź Hasło:</label><br/>
                 <input
                 value={ConfirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
