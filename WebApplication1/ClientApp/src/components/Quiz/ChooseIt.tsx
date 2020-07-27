@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Container, Row, Col } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -29,34 +28,29 @@ class ChoseIt extends React.Component<CategoryProps> {
     handleChange = async(event:any) => {
         await this.setState({category: event.target.value});
     }
-    
+
     render()  {
         const redirect = this.state.redirect;
         if(redirect){
             return (<Redirect to='/quiz'/>)
         }
-        
+
         return (
             <section>
-                <Container>
-                    <Row>
 
-                    <Col xs={12}>Wybierz kategorię:</Col>
+                   Wybierz kategorię:
                     <form onSubmit={this.ChooseCategory} className="form">
-                        <Col xs={12}><select value={this.state.category} onChange={this.handleChange} className="form__select">
+                        <select value={this.state.category} onChange={this.handleChange} className="form__select">
                             <option value=''>Wszystkie</option>
                             <option value="społeczeństwo">Społeczeństwo</option>
                             <option value="fakty-autentyczne">Fakty Autentyczne</option>
                             <option value="kinematografia">Kinematografia</option>
-                        </select></Col>
-                   <Col xs={12}><input className="form__button" type="submit" value="Dalej!" /></Col>
-                    </form>
-                    </Row>
-                </Container>
+                        </select>
+                   <button className="form__button" type="submit">Dalej!</button>
+                   </form>
             </section>
         )
     }
-    
 }
 export default connect(
     (state: ApplicationState) => state.category,

@@ -15,42 +15,49 @@ const Register = () => {
         })
     }
     return (
-    <section>
+    <section className="loginpageheader">
+        <h4>QW</h4>
+        <p>Zarejestruj się!</p>
+        <section className="login">
         <form onSubmit={handleChange}>
             <div>
+                <label for="email">Email:</label><br/>
                 <input 
                 value={Email}
                 onChange={e => setEmail(e.target.value)}
-                placeholder="Email"
+                name="email"
                 type="email"/>
             </div>
             <div>
+                <label for="emailconf">Potwierdź Email:</label><br/>
                 <input
                 value={ConfirmEmail}
                 onChange={e => setConfirmEmail(e.target.value)} 
-                placeholder="Potwierdź Email" 
+                name="emailconf"
                 type="email"/>
             </div>
             <div>
+                <label for="password">Hasło:</label><br/>
                 <input 
                 value={Password} 
                 onChange={e => setPassword(e.target.value)}
-                placeholder="Hasło" 
+                name="password" 
                 type="password"/>
             </div>
             <div>
-                <input 
-                value={ConfirmPassword} 
+                <label for="confpassword">Potwierdź Hasło:</label><br/>
+                <input
+                value={ConfirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
-                placeholder="Potwierdź Hasło"
+                name="password"
                 type="password"/>
             </div>
-            <div>
-                <input 
-                value="Zarejestruj się" 
-                type="submit"/>
+            <div className="login__button">
+                <button
+                type="submit">Zarejestruj się</button>
             </div>
         </form>
+        </section>
     </section>
     )
 }

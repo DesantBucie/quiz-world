@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie,Cell} from 'recharts';
-import { Container,Row,Col } from 'reactstrap';
 import './Summary.scss';
 
 const Summary = () =>  {
@@ -26,9 +25,6 @@ const Summary = () =>  {
         
     return (
             <section className="summary">
-                <Container>
-                    <Row>
-                        <Col xs={12}>
                             <PieChart width={screenwidth/2} height={300}>
                                 <Pie
                                 data={data}
@@ -46,15 +42,10 @@ const Summary = () =>  {
                                 }
                                 </Pie>
                             </PieChart>
-                        </Col>
-                        <Col xs={12}>
                             Dobrych odpowiedzi: {good} <br/>
                             Złych odpowiedzi: {bad}
-                        </Col>
-                        <Col xs={12} sm={6}><Link to='/category'><button className="summary__button--green">Spróbuj jeszcze raz!</button></Link></Col>
-                        <Col xs={12} sm={6}><Link to='/'><button className="summary__button--red">Wracam do strony głównej</button></Link></Col>
-                    </Row>
-                </Container>             
+                        <Link to='/category'><button className="summary__button--green">Spróbuj jeszcze raz!</button></Link>
+                        <Link to='/'><button className="summary__button--red">Wracam do strony głównej</button></Link>
             </section>
     );
 }

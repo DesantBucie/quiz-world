@@ -12,35 +12,39 @@ const Login = () => {
         Email,Password
         })
         .then (res => {
-            console.log(res.data);
+            console.log(res);
         })
         .catch(err => {
             console.error(err);
         })
     }
     return(
-        <section>
+        <section className="loginpageheader">
+            <h4>QW</h4>
+            <div><p>Panel Logowania</p></div>
+        <section className="login">
             <form onSubmit={handleChange}>
-                <div>
+                <div className="login__email">
+                    <label for="email">Email:</label><br/>
                     <input
                     value={Email}
                     onChange={e => setEmail(e.target.value)}
-                    placeholder="Email"
-                    type='email' />
+                    type='email'
+                    name="email"/>
                 </div>
-                <div>
+                <div className="login__email">
+                    <label for="password">Hasło:</label><br/>
                     <input
                     value={Password}
                     onChange={e => setPassword(e.target.value)}
-                    placeholder="Password"
-                    type='password'/>
+                    type='password'
+                    name="password"/>
                 </div>
-                <div>
-                    <input
-                    value="Zaloguj się!"
-                    type='submit'/>
+                <div className="login__button">
+                    <button type="submit">Zaloguj się</button>
                 </div>
             </form>
+        </section>
         </section>
     )
 }

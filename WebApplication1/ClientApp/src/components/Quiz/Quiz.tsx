@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Container,Row,Col } from 'reactstrap';
-import { Spring } from 'react-spring/renderprops';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { ApplicationState } from '../../store';
@@ -175,26 +173,6 @@ export class Quiz extends React.Component<CategoryProps> {
 	render() {
 		const {category, answer1, content, answer2, answer3, answer4,id1,id2,id3,id4,id} = this.state.currentquestion;
 		const {redirect,loading, error} = this.state;
-		const styles = {
-			answers:{
-				marginBottom:"10px",
-			},
-			buttons: {
-				width:"100%",
-				padding:'30px',
-				border:'1px solid transparent',
-				borderRadius:'4px'
-			},
-			top: {
-				marginTop:'30px'
-			},
-			question: {
-				marginBottom:'30px'
-			},
-			id: {
-				textAlign:'right' as 'right',
-			},	
-		};    
 		if (loading) {
 			return (
 			<h2>Ładowanie...</h2>
@@ -215,39 +193,24 @@ export class Quiz extends React.Component<CategoryProps> {
 		}
 		return (
 		<section>
-		<Container>
-			<Row style={styles.top}>
-				<Col sm={6}>
+		
+			<div className="quiz__top">
 					<p>Kategoria: {category}</p>
-				</Col>
-				<Col sm={6}>
-					<p style={styles.id}>ID z bazy danych: {id}</p>
-				</Col>
-				<Col sm={12}>
-					<h2 style={styles.question}>{content}</h2>
-				</Col>
-				<Col xs={6}>
-					<div style={styles.answers}>
-						<button id={id1} className={'but1'} onClick={this.selectAnswer} style={styles.buttons} >A. {answer1}</button>
+					<p className="quiz__id">ID z bazy danych: {id}</p>
+					<h2 className="quiz__question">{content}</h2>
+					<div className="quiz__answers">
+						<button id={id1} className={'quiz__buttons quiz__buttons--but1'} onClick={this.selectAnswer}>A. {answer1}</button>
 					</div>
-				</Col>
-				<Col xs={6}>
-					<div style={styles.answers}>
-						<button id={id2} className={'but2'} onClick={this.selectAnswer} style={styles.buttons} >B. {answer2}</button>
+					<div className="quiz__answers">
+						<button id={id2} className={'quiz__buttons quiz__buttons--but2'} onClick={this.selectAnswer}>B. {answer2}</button>
 					</div>
-				</Col>
-				<Col xs={6}>
-					<div style={styles.answers}>
-						<button id={id3} className={'but3'} onClick={this.selectAnswer} style={styles.buttons} >C. {answer3}</button>
+					<div className="quiz__answers">
+						<button id={id3} className={'quiz__buttons quiz__buttons--but3'} onClick={this.selectAnswer}>C. {answer3}</button>
 					</div>
-				</Col>
-				<Col xs={6}>
-					<div style={styles.answers}>
-						<button  id={id4} className={'but4'} onClick={this.selectAnswer} style={styles.buttons}>D. {answer4}</button>
+					<div className="quiz__answers">
+						<button  id={id4} className={'quiz__buttons quiz__buttons--but4'} onClick={this.selectAnswer}>D. {answer4}</button>
 					</div>
-				</Col>
-			</Row>
-  </Container>
+			</div>
 		</section>
 		);
 	};

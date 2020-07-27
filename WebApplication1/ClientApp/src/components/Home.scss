@@ -1,25 +1,24 @@
 .header {
-  text-align:center;
-  background:#dadedf;
-  padding:40px;
+    text-align:center;
+    background:#dadedf;
+    padding:40px;
 }
 .header__button {
-  border-radius:4px;
-  background:lightblue;
-  border:1px solid transparent;
-  padding:20px;
-  padding-top:15px;
-  padding-bottom:15px;
-  margin-top:10px;
+    border-radius:4px;
+    background:lightblue;
+    border:1px solid transparent;
+    padding:20px;
+    padding-top:15px;
+    padding-bottom:15px;
+    margin-top:10px;
 }
 .darkmode {
-  .header {
-    background:#333;
-  }
-  .header__button{
-    background:#222;
-    color:white;
-  }
+    .header {
+        background:#333;
+    }
+    .header__button{
+        background:#222;
+        color:white;
+    }
 }
-
 

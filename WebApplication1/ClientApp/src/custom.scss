@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin:auto;
+    font-weight:600;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight:700;
+}
+button,select{
+    font-weight:600;
+}
+input {
+    background:#eee;
+    color:black;
+    border-radius:4px;
+    border:1px solid #aaa;
+    padding:.25em;
+}
+.content {
+    width:80%;
+    margin:auto;
+}
 .darkmode {
     background:#111;
     color:white;

@@ -4,18 +4,14 @@ import { Container, Row } from 'reactstrap';
 
 const Help = () => (
     <section>
-        <Container>
-            <Row>
         <h1>Potrzebujesz pomocy?</h1>
-        <p><b>Strona dopiero się rozwija(lub już nie)</b>ale automat powinien wylosować ci pytanie i cztery odpowiedzi, jeśli natrafisz na błąd, zgłoś go w formularzu.</p>
-       {/*} <form>
-            <h2>Opisz Bug</h2>
-            <textarea>
+        <p><b>Strona dopiero się rozwija(lub już nie)</b>ale automat powinien wylosować Co kilka pytań a do każdego z nich cztery odpowiedzi, jeśli natrafisz na błąd, zgłoś go w formularzu.</p>
+        <h2>Opisz Bug</h2>
+        <form action="MAILTO:mattrusz@gmail.com" method="post" className="helpform">
+            <textarea className="helpform__textarea">
             </textarea>
-            <input type='mail'>przyklad@mail.com</input>
-</form>{*/}
-        </Row>
-        </Container>
+            <button type="submit">Zgłoś!</button>
+</form>
     </section>
 );
 

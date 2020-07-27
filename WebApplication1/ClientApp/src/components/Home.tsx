@@ -1,21 +1,20 @@
 import * as React from 'react';
-import { Button, Container,Row,Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import './Home.scss';
 
 
 const Home = () => {
     return (
     <section>
-        <Container>
                 <div className="header">
                     <h1>Witaj na QuizWorld</h1>
-                    <Link to='/category'><button className="header__button">Zaczynajmy!</button></Link>
+                    <Link to='/category'><button className="header__button">Zaczynajmy <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/></button></Link>
                 </div>
-        </Container>
     </section>
     );
 
 };
-export default connect()(Home);
+export default Home;

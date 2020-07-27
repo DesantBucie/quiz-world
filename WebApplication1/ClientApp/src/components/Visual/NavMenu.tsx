@@ -13,10 +13,13 @@ const NavMenu = () => {
 
     const [width, setWidth] = useState(window.innerWidth);
     const username = useState("desantbucie");
+    const hour = new Date().getHours();
     const breakpoint = 1000;
-
+    
     useEffect( () => {
         window.addEventListener("resize", () => setWidth(window.innerWidth));
+        if (hour > 21 && hour < 6) toggleModes();
+        
     });
 
     const toggleModes = () => {
@@ -59,7 +62,7 @@ const NavMenu = () => {
         <nav className="mobileNavbar">
             <div className="mobileNavbar__logo"><Link to="/"><h5>QW</h5></Link></div>
 
-            <div className="mobileNavbar__menu"><FontAwesomeIcon icon={faBars}/></div>
+            <div className="mobileNavbar__menu">Menu <FontAwesomeIcon icon={faBars}/></div>
         </nav>
     )
     }
