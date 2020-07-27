@@ -89,7 +89,7 @@ namespace AntilaWebApp.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return Redirect(returnUrl);   
+                    return Ok(returnUrl);   
                    // return Ok(isLogged);
                 }
                 if (result.RequiresTwoFactor)
@@ -105,7 +105,7 @@ namespace AntilaWebApp.Controllers
                 {
                     //ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     //return Ok();
-                    return Redirect(returnUrl);
+                    return Ok(returnUrl);
                 }
             }
            
@@ -195,6 +195,24 @@ namespace AntilaWebApp.Controllers
 
             // If we got this far, something failed, redisplay form
             return Ok();
+        }
+
+        // POST: /Account/Logout
+        [HttpPost("Logout")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout(string returnUrl = null)
+        {
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out.");
+            if (returnUrl != null)
+            {
+                return LocalRedirect(returnUrl);
+            }
+            else
+            {
+                //return RedirectToPage();
+                return LocalRedirect(returnUrl);
+            }
         }
     }
 }
