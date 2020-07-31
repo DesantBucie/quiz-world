@@ -1,4 +1,4 @@
-# Aplikacja QuizWorld - pod nazwą kodową Antila - jest to prosty quiz onile, który posiada kategorie pytań.
+# Aplikacja QuizWorld
 
 Używaliśmy do tworzenia aplikacji programu Visual Studio oraz Visual Studio Code.
 
