@@ -48,15 +48,15 @@ interfejsem programistycznym tzw API przez axios. <br/>
 1.9 Axios - Odbiera pytania z bazy danych i ustawia dla nich zmienne <br/>
 
 ## Napotkane Problemy:
-1.Frontend <br/>
-1.1- Idea Reacta jest odmienna w stosunku do normalnego html, kod html/xml zwracają funkcje JS/TS. <br/> 
-1.2- Style jeśli używane w pliku TSX są przypisywane do zmiennych, i mają inne nazwy lub wartości niż normalny css. <br/>
-1.3- axios jest tylko obietnicą, wiec może zawieść, dlatego potrzeba ekranu ponownego załadowania. <br/>
-1.4- setState funkcja ustawiania stanu zmiennej, jest asynchroniczna, co oznacza, że wykona się tylko na zawołanie, <br/>
+* Frontend <br/>
+* Idea Reacta jest odmienna w stosunku do normalnego html, kod html/xml zwracają funkcje JS/TS. <br/> 
+* Style jeśli używane w pliku TSX są przypisywane do zmiennych, i mają inne nazwy lub wartości niż normalny css. <br/>
+* axios jest tylko obietnicą, wiec może zawieść, dlatego potrzeba ekranu ponownego załadowania. <br/>
+* setState funkcja ustawiania stanu zmiennej, jest asynchroniczna, co oznacza, że wykona się tylko na zawołanie, <br/>
 dopiero poźniej zmieniając stan, użyte zostało await co oznacza oczekiwanie na zwrot wyniku funkcji. <br/>
-1.5. - iteracja przez tablicę pytań zawodziła, szczególnie gdy ilośc pytań jest zmienna od sesji. <br/>
-1.6 - Typescript jak nazwa wskazuje jest bezpiecznie typowany, co zmusza do określania typów zmiennych. <br/>
-1.7- Redux był czymś kompletnie niezrozumiałym i nadal trochę jest, do przechowywania jednej zmiennej potrzebny było <br/>
+* iteracja przez tablicę pytań zawodziła, szczególnie gdy ilośc pytań jest zmienna od sesji. <br/>
+* Typescript jak nazwa wskazuje jest bezpiecznie typowany, co zmusza do określania typów zmiennych. <br/>
+* Redux był czymś kompletnie niezrozumiałym i nadal trochę jest, do przechowywania jednej zmiennej potrzebny było <br/>
 bardzo duzo kodu, ale jest szybko.
 
 ![Alt text](.github/React1.png?raw=true "Strona Główna")
