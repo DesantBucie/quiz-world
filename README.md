@@ -12,7 +12,7 @@ aplikacja korzysta z nich.
 
 
 ## Użyte narzędzia:
--Reactjs - framework, <br/>
+*Reactjs - framework, <br/>
 -typescirpt - tworzenie interfejsu użytkownika i zapewnienia bezpieczeństwa typów danych. <br/>
 -git - system rozwoju <br/>
 -redux - szybki zapis stanu zmiennych <br/>
