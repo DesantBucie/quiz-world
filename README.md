@@ -13,14 +13,14 @@ aplikacja korzysta z nich.
 
 ## Użyte narzędzia:
 * Reactjs - framework, <br/>
--typescirpt - tworzenie interfejsu użytkownika i zapewnienia bezpieczeństwa typów danych. <br/>
--git - system rozwoju <br/>
--redux - szybki zapis stanu zmiennych <br/>
--bootstrap - biblioteka css, aby zapewnić stronie kompatybilność na różnych urządzeniach. <br/>
--npm - menedżer pakietów JS/TS <br/>
--C# - klasowy język podobny do Javy, rozwijany jako wielkofunkcyjne zastępstwo c++ <br/>
--Entity - framework służący połączeniu bazy danych z aplikacją <br/>
--axios - klient odbierający lub wysyłąjący dane przez API. <br/>
+* typescirpt - tworzenie interfejsu użytkownika i zapewnienia bezpieczeństwa typów danych. <br/>
+* git - system rozwoju <br/>
+* redux - szybki zapis stanu zmiennych <br/>
+* bootstrap - biblioteka css, aby zapewnić stronie kompatybilność na różnych urządzeniach. <br/>
+* npm - menedżer pakietów JS/TS <br/>
+* C# - klasowy język podobny do Javy, rozwijany jako wielkofunkcyjne zastępstwo c++ <br/>
+* Entity - framework służący połączeniu bazy danych z aplikacją <br/>
+* axios - klient odbierający lub wysyłąjący dane przez API. <br/>
 
 1.1 React to biblioteka javascript rozwijana przez facebook, zapewnia pewne szablony rozwoju aplikacji, 
 podział na komponenty poszczególnych składników <br/>
