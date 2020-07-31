@@ -2,7 +2,9 @@
 
 Używaliśmy do tworzenia aplikacji programu Visual Studio oraz Visual Studio Code.
 
-Samuel Kalwik (qalvik) - backend Jakub Truszkowski (DesantBucie) - frontend
+## Autorzy
+* Samuel Kalwik (qalvik) - backend <br/>
+* Jakub Truszkowski (DesantBucie) - frontend
 
 Aplikacja zbudowana jest z dwóch modułów - Frontend i Backend. Frontent wykonany jest przy użyciu frameworka
 React.js. Backend to zasadniczo WebAPI - wykonane przy użyciu frameworka .Net Core. Wystwia one kilka adresów
