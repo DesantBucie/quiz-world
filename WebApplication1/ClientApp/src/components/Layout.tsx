@@ -3,7 +3,7 @@ import NavMenu from './Visual/NavMenu';
 
 export default (props: { children?: React.ReactNode }) => (
     <React.Fragment>
-        <NavMenu/>
+        <NavMenu />
             <div className="content">{props.children}</div>
     </React.Fragment>
 );
