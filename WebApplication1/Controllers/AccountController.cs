@@ -77,9 +77,9 @@ namespace AntilaWebApp.Controllers
         [HttpPost("Login")]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginModel model, string returnUrl = null)
+        public async Task<IActionResult> Login(LoginModel model)//, string returnUrl = null)
         {      
-            returnUrl = returnUrl ?? Url.Content("~/");
+           string returnUrl =  Url.Content("~/");
 
             if (ModelState.IsValid)
             {
