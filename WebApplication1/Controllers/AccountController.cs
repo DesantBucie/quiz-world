@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using AntilaWebApp.Models.AccountModels;
+using System.Threading;
 
 namespace AntilaWebApp.Controllers
 {
@@ -181,6 +182,18 @@ namespace AntilaWebApp.Controllers
                 //return RedirectToPage();
                 return LocalRedirect(returnUrl);
             }
+        }
+
+        // POST: /Account/Username
+        [HttpGet("Username")]
+        public List<string> GetUsername()
+        {
+            List<string> lista = new List<string>();
+            string username =  _userManager.GetUserAsync(User).ToString();
+            string returnUrl = Url.Content("~/");
+            lista.Add(username);
+            lista.Add(returnUrl);
+            return lista;
         }
     }
 }
