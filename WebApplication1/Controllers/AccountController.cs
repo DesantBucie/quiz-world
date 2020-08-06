@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using AntilaWebApp.Models.AccountModels;
 
 namespace AntilaWebApp.Controllers
 {
@@ -41,20 +42,6 @@ namespace AntilaWebApp.Controllers
 
         [TempData]
         public string ErrorMessage { get; set; }
-
-        public class LoginModel
-        {
-            [Required]
-            [EmailAddress]
-            public string Email { get; set; }
-
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
-
-            [Display(Name = "Remember me?")]
-            public bool RememberMe { get; set; }
-        }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -121,26 +108,7 @@ namespace AntilaWebApp.Controllers
             bool isSingned =_signInManager.IsSignedIn(User);
             return Ok(isSingned);
         }
-
-        public class RegisterModel
-        {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
-            public string Email { get; set; }
-
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
-            [DataType(DataType.Password)]
-            [Display(Name = "Password")]
-            public string Password { get; set; }
-
-            [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-            public string ConfirmPassword { get; set; }
-        }
-
+ 
         public async Task OnGtAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
