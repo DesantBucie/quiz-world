@@ -1,6 +1,4 @@
 ﻿import * as React from 'react';
-import { connect } from 'react-redux';
-import { Container, Row } from 'reactstrap';
 
 const Help = () => (
     <section>
@@ -10,8 +8,9 @@ const Help = () => (
         <form action="MAILTO:mattrusz@gmail.com" method="post" className="helpform">
             <textarea className="helpform__textarea">
             </textarea>
-            <button type="submit">Zgłoś!</button>
-</form>
+
+            <div className="login__button"><button type="submit">Zgłoś!</button></div>
+        </form>
     </section>
 );
 

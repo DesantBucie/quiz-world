@@ -1,7 +1,9 @@
 import * as Category from './Category';
+import * as Session from './Session';
 //top level interface 
 export interface ApplicationState {
     category: Category.CategoryState | undefined;
+    session:Session.SessionState | undefined;
    // quizstorage: QuizStorage.QuizStorageState | undefined;
 }
 
@@ -10,6 +12,7 @@ export interface ApplicationState {
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
     category: Category.reducer,
+    session: Session.reducer,
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are

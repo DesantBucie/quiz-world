@@ -2,35 +2,44 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faBars,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { ApplicationState } from '../../store';
+import { RouteComponentProps } from 'react-router';
+import * as Session from '../../store/Session';
+import { connect } from 'react-redux';
 import './NavMenu.scss';
 
+type SessionProps = 
+    Session.SessionState &
+    typeof Session.actionCreators &
+    RouteComponentProps<{}>;
 
-const NavMenu = () => {
-
-    const [icon,setIcon] = useState(true);
-    const [userIcon, setUserIcon] = useState(true);
-    const [session, setSession] = useState(false);
-
-    const [width, setWidth] = useState(window.innerWidth);
-    const username = useState("desantbucie");
-    const hour = new Date().getHours();
-    const breakpoint = 1000;
-    
-    useEffect( () => {
-        window.addEventListener("resize", () => setWidth(window.innerWidth));
-        if (hour > 21 && hour < 6) toggleModes();
+type State = {
+    icon:boolean,
+    userIcon:boolean,
+    session:boolean,
+}
+class NavMenu extends React.Component <SessionProps> {
+    readonly state : State = {
+        icon:true,
+        userIcon:true,
+        session:false,
+    }
+    componentDidUpdate() {
         
-    });
-
-    const toggleModes = () => {
+    }
+    toggleModes = () => {
+        const icon = this.state.icon;
         document.body.classList.toggle('darkmode');
-        (icon ? setIcon(false) : setIcon(true) );
+        (icon ? this.setState({icon:false}) : this.setState({icon:true}) );
     }
-    const toggleUser = () => {
-        (userIcon ? setUserIcon(false) : setUserIcon(true))
+    toggleUser = () => {
+        const userIcon = this.state.userIcon;
+        (userIcon ? this.setState({userIcon:false}) : this.setState({userIcon:true}) )
     }
-    if (width > breakpoint) {
-    return (
+    render() {
+        const {session,username} = this.props;
+        const {icon,userIcon} = this.state;
+        return (       
         <nav className="navbar">
             <div className="navbar__logo">
                 <Link to="/"><h5>QW</h5></Link>
@@ -43,28 +52,22 @@ const NavMenu = () => {
             </div>
 
             <div className="navbar__login">
-                <FontAwesomeIcon className="navbar__icon" onClick={toggleModes} icon={icon ? faMoon : faSun}/>&ensp;
+                <FontAwesomeIcon className="navbar__icon" onClick={this.toggleModes} icon={icon ? faMoon : faSun}/>&ensp;
                 <span style={{display: session ? 'none' : 'inline'}} className="navbar__authpanel">
                     <Link to="/login">Login &ensp;</Link>
                     <Link to="/register">Zarejestruj się!</Link>
                 </span>
-                <span style={{display: session ? 'inline' : 'none'}}className="navbar__user" onClick={toggleUser}>{username} 
+                <span style={{display: session ? 'inline' : 'none'}}className="navbar__user" onClick={this.toggleUser}>{username} 
                     <FontAwesomeIcon className="navbar__user" icon={userIcon ? faSortDown : faSortUp}/>
                 </span>
                 <div className="navbar__userbar"></div>
             </div>
 
         </nav>
-    )
-}
-    else {
-    return (
-        <nav className="mobileNavbar">
-            <div className="mobileNavbar__logo"><Link to="/"><h5>QW</h5></Link></div>
-
-            <div className="mobileNavbar__menu">Menu <FontAwesomeIcon icon={faBars}/></div>
-        </nav>
-    )
+        )
     }
 }
-export default NavMenu;
+export default connect(
+    (state: ApplicationState) => state.session,
+    Session.actionCreators
+) (NavMenu as any);

@@ -1,9 +1,8 @@
 import * as React from 'react';
-import NavMenu from './Visual/NavMenu';
-
+import NavBarSwitch from './Visual/NavBarSwitch';
 export default (props: { children?: React.ReactNode }) => (
     <React.Fragment>
-        <NavMenu />
+            <NavBarSwitch/>
             <div className="content">{props.children}</div>
     </React.Fragment>
 );
