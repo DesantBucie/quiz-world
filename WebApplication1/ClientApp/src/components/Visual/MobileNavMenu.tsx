@@ -35,12 +35,10 @@ class MobileNavMenu extends React.Component<SessionProps> {
         (userIcon ? this.setState({userIcon:false}) : this.setState({userIcon:true}) )
     }
     openNavBar = () => {
-        document.getElementById("mobileNavbar__menu")!.style.width='50%';
-        document.getElementById("mobileNavbar__menu")!.style.minWidth="300";
+        document.getElementById("mobileNavbar__menu")!.style.display="block";
     }
     closeNavbar = () => {
-        document.getElementById("mobileNavbar__menu")!.style.width="0";
-        document.getElementById("mobileNavbar__menu")!.style.minWidth="0";
+        document.getElementById("mobileNavbar__menu")!.style.display="none";
     }
     render() {
         const {userIcon,icon} = this.state;

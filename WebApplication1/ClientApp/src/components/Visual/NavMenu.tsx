@@ -6,6 +6,7 @@ import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
+import {toggleModes} from '../../modules/NavFunctions';
 import './NavMenu.scss';
 
 type SessionProps = 
@@ -23,11 +24,6 @@ class NavMenu extends React.Component <SessionProps> {
         icon:true,
         userIcon:true,
         session:false,
-    }
-    toggleModes = () => {
-        const icon = this.state.icon;
-        document.body.classList.toggle('darkmode');
-        (icon ? this.setState({icon:false}) : this.setState({icon:true}) );
     }
     toggleUser = () => {
         const userIcon = this.state.userIcon;
@@ -49,7 +45,7 @@ class NavMenu extends React.Component <SessionProps> {
             </div>
 
             <div className="navbar__login">
-                <FontAwesomeIcon className="navbar__icon" onClick={this.toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
+                <FontAwesomeIcon className="navbar__icon" onClick={toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
                 <span style={{display: session ? 'none' : 'inline'}} className="navbar__authpanel">
                     <Link to="/login">Login &ensp;</Link>
                     <Link to="/register">Zarejestruj się!</Link>
