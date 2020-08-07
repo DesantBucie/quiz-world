@@ -184,15 +184,14 @@ namespace AntilaWebApp.Controllers
             }
         }
 
-        // POST: /Account/Username
+        // GET: /Account/Username
         [HttpGet("Username")]
-        public List<string> GetUsername()
+        [AllowAnonymous]
+        public List<string> GetUserName()
         {
             List<string> lista = new List<string>();
-            string username =  _userManager.GetUserAsync(User).ToString();
-            string returnUrl = Url.Content("~/");
-            lista.Add(username);
-            lista.Add(returnUrl);
+            lista.Add(_userManager.GetUserName(User));
+            lista.Add(Url.Content("~/"));
             return lista;
         }
     }
