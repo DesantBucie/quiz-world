@@ -38,8 +38,8 @@ class Login extends React.Component<SessionProps> {
         email,password
         })
         .then (res => {
-           this.setState({route:res.data,})
-           this.props.sendsession(email);
+           this.setState({route:res.data[0]})
+           this.props.sendsession(res.data[1]);
            this.setState({redirect:true,loading:false})
         })
         .catch(err => {

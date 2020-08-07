@@ -24,9 +24,6 @@ class NavMenu extends React.Component <SessionProps> {
         userIcon:true,
         session:false,
     }
-    componentDidUpdate() {
-        
-    }
     toggleModes = () => {
         const icon = this.state.icon;
         document.body.classList.toggle('darkmode');
@@ -52,7 +49,7 @@ class NavMenu extends React.Component <SessionProps> {
             </div>
 
             <div className="navbar__login">
-                <FontAwesomeIcon className="navbar__icon" onClick={this.toggleModes} icon={icon ? faMoon : faSun}/>&ensp;
+                <FontAwesomeIcon className="navbar__icon" onClick={this.toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
                 <span style={{display: session ? 'none' : 'inline'}} className="navbar__authpanel">
                     <Link to="/login">Login &ensp;</Link>
                     <Link to="/register">Zarejestruj się!</Link>

@@ -1,0 +1,36 @@
+$navcolor: #3b92cc;
+$darknavbar: #232323;
+
+.mobileNavbar {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:space-between;
+    margin-bottom:2em;
+    padding:0.5em;
+    background:$navcolor;
+}
+.mobileNavbar__logo {
+    padding-left:20px;
+}
+.mobileNavbar__trigger {
+    padding-right:20px;
+}
+.mobileNavbar__menu {
+    position:absolute;
+    right:0;
+    bottom:0;
+    top:0;
+    min-width:300px;
+    width:50%;
+    background:#333;
+    font-size:1.2em;
+    & div {
+        padding-left: 2em;
+    }
+}
+.darkmode {
+    .mobileNavbar {
+        background:$darknavbar;
+    }
+}

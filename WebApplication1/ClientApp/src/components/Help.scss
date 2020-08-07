@@ -1,0 +1,7 @@
+.helpform__textarea {
+    width:100%;
+    text-align: center;
+    & textarea {
+        width:50%;
+    }
+}

@@ -27,29 +27,13 @@ $darknavbar: #232323;
     cursor: pointer;
 }
 .navbar__user {}
-.mobileNavbar {
-    display:flex;
-    flex-direction:row;
-    flex-wrap:nowrap;
-    justify-content:space-between;
-    margin-bottom:2em;
-    background:$navcolor;
-}
-.mobileNavbar__logo {
-    padding-left:20px;
-}
-.mobileNavbar__menu {
-    padding-right:20px;
-}
+
 .darkmode {
     .navbar__icon {
         color:yellow;
     }
     .navbar {
       background:$darknavbar;
-    }
-    .mobileNavbar {
-        background:$darknavbar;
     }
 }
 
