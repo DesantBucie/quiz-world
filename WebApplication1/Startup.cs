@@ -1,5 +1,6 @@
 using Antila.AnswerService;
 using Antila.Data;
+using AntilaWebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,7 +44,7 @@ namespace AntilaWebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager)
         {
             if (env.IsDevelopment())
             {
@@ -83,7 +84,8 @@ namespace AntilaWebApp
             });
 
             SeedDatabase();
-        
+            SeedIdenity();
+            ApplicationDbInitializer.SeedUsers(userManager);
         }
         
         //Jeœli baza danych nie instnieje, tworzy j¹
@@ -93,6 +95,32 @@ namespace AntilaWebApp
             optionsBuilder.UseSqlServer(Configuration.GetConnectionString("AntilaDb"));
             using var context = new AntilaDbContext(optionsBuilder.Options);
             context.Database.Migrate();
+        }
+        //CHANGE IT!!!!! Integrate databases
+        public void SeedIdenity()
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AntilaWebAppContext>();
+            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("AntilaWebAppContextConnection"));
+            using var context = new AntilaWebAppContext(optionsBuilder.Options);
+            context.Database.Migrate();
+        }
+
+        public static class ApplicationDbInitializer
+        {
+            public static void SeedUsers(UserManager<IdentityUser> userManager)
+            {
+                if (userManager.FindByEmailAsync("admin@antila.com").Result == null)
+                {
+                    IdentityUser user = new IdentityUser
+                    {
+                        UserName = "admin@antila.com",
+                        Email = "admin@antila.com"
+                    };
+
+                    userManager.CreateAsync(user, "Antila01@Admin");
+
+                }
+            }
         }
     }
 }
