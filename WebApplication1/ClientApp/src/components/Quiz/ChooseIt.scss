@@ -19,6 +19,7 @@
     padding:1.5em;
     border:1px solid transparent;
     border-radius:4px;
+    background:#AAA;
 }
 .darkmode {
     & .form__button {
@@ -26,5 +27,6 @@
         padding:1.5em;
         border:1px solid transparent;
         border-radius:4px;
+        background:#777;
     }
 }

@@ -1,9 +1,20 @@
-.header {
-    text-align:center;
-    background:#dadedf;
-    padding:40px;
+.home{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-.header__button {
+.home__header {
+    text-align:center;
+    background:#4d974d8c;
+    padding:3em;
+    margin:1em;
+    width:100%;
+}
+.home__header--register {
+    width:45%;
+    background:#98a52667
+}
+.home__button {
     border-radius:4px;
     background:#3b92cc;
     border:1px solid transparent;
@@ -13,10 +24,10 @@
     margin-top:10px;
 }
 .darkmode {
-    .header {
+    .home__header {
         background:#333;
     }
-    .header__button{
+    .home__button{
         background:#222;
         color:white;
     }

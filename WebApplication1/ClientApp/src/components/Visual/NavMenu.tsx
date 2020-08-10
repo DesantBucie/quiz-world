@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faBars,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
@@ -19,6 +19,7 @@ type State = {
     userIcon:boolean,
     session:boolean,
 }
+
 class NavMenu extends React.Component <SessionProps> {
     readonly state : State = {
         icon:true,

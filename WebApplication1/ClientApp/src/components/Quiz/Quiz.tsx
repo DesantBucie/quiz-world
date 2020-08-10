@@ -6,6 +6,7 @@ import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Category from '../../store/Category';
 
+import {apiUrl} from '../../modules/ApiUrl';
 import './Quiz.scss';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
@@ -76,7 +77,7 @@ export class Quiz extends React.Component<CategoryProps> {
     loadData = async() => {
 		this.setState({ loading: true });
 		const category = this.props.category;
-		const apiLink = 'https://localhost:44322/api/Test/' + category; 
+		const apiLink = apiUrl + 'api/Test/' + category; 
         await axios.get(apiLink)
         .then(res=> {
             this.setState({
@@ -131,7 +132,7 @@ export class Quiz extends React.Component<CategoryProps> {
 	sendId = async () => {
 		const {question} = this.state;
 		const id = this.state.currentquestion.id;
-		await axios.post(`https://localhost:44322/api/Test`, {id,question})
+		await axios.post(apiUrl + `api/Test`, {id,question})
 		.then( res => {
 				this.setState({
 				response:res.data
@@ -181,8 +182,8 @@ export class Quiz extends React.Component<CategoryProps> {
 		if (error) {
 			return (
 				<p>
-				Wystąpił problem podczas ładowania{" "}
-				<button className="buttons" onClick={this.loadData}>Spróbuj ponownie!</button>
+				Wystąpił problem podczas ładowania{" "}<br/>
+				<button className="home__button" onClick={this.loadData}>Spróbuj ponownie!</button>
 				</p>
 			);
 		}
