@@ -1,3 +1,1 @@
-export const apiUrl = () => {
-    return 'https://localhost:44322/'
-}
+export const apiUrl = 'https://localhost:44322/'

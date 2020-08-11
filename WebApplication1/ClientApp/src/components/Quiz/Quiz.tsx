@@ -77,7 +77,8 @@ export class Quiz extends React.Component<CategoryProps> {
     loadData = async() => {
 		this.setState({ loading: true });
 		const category = this.props.category;
-		const apiLink = apiUrl + 'api/Test/' + category; 
+		const apiLink = apiUrl + 'api/Test/' + category;
+		console.log(apiLink);
         await axios.get(apiLink)
         .then(res=> {
             this.setState({
