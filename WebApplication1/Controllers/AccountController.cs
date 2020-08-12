@@ -88,21 +88,22 @@ namespace AntilaWebApp.Controllers
                 return Ok(returnUrl);   
                 // return Ok(isLogged);
             }
-            if (result.RequiresTwoFactor)
-            {
-                return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-            }
-            if (result.IsLockedOut)
-            {
-                _logger.LogWarning("User account locked out.");
-                return RedirectToPage("./Lockout");
-            }
+            //if (result.RequiresTwoFactor)
+            //{
+            //    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            //}
+            //if (result.IsLockedOut)
+            //{
+            //    _logger.LogWarning("User account locked out.");
+            //    return RedirectToPage("./Lockout");
+            //}
             else
             {
                 //ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 //return Ok();
                 return Ok(invalidLogin);
             }
+            
             // If we got this far, something failed, redisplay form
             //return Ok();
         }
@@ -120,50 +121,47 @@ namespace AntilaWebApp.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            bool isRegistered = true; 
             string returnUrl = Url.Content("~/");
 
             //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            if (ModelState.IsValid)
+         
+            var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
             {
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
+                _logger.LogInformation("User created a new account with password.");
 
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    //var callbackUrl = Url.Page(
-                    //    "/Account/ConfirmEmail",
-                    //    pageHandler: null,
-                    //    values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                    //    protocol: Request.Scheme);
+                //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                //var callbackUrl = Url.Page(
+                //    "/Account/ConfirmEmail",
+                //    pageHandler: null,
+                //    values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                //    protocol: Request.Scheme);
 
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
-                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                //await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
+                //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    //if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    //{
-                    //    return RedirectToPage("RegisterConfirmation", new { email = model.Email, returnUrl = returnUrl });
-                    //}
-                    //else
-                    //{
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                    //return LocalRedirect(returnUrl);
-                    return Ok(returnUrl);
-                    // }
+                //if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                //{
+                //    return RedirectToPage("RegisterConfirmation", new { email = model.Email, returnUrl = returnUrl });
+                //}
+                //else
+                //{
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                //return LocalRedirect(returnUrl);
+                return Ok(returnUrl);
+                // }
                 }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-                return Ok(result.Errors);
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
             }
+            return Ok(result.Errors);
+      
 
             // If we got this far, something failed, redisplay form
-            return Ok();
         }
 
         // POST: /Account/Logout
@@ -174,15 +172,16 @@ namespace AntilaWebApp.Controllers
             string returnUrl = Url.Content("~/");
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            if (returnUrl != null)
-            {
-                return LocalRedirect(returnUrl);
-            }
-            else
-            {
-                //return RedirectToPage();
-                return LocalRedirect(returnUrl);
-            }
+            //if (returnUrl != null)
+            //{
+            //    return LocalRedirect(returnUrl);
+            //}
+            //else
+            //{
+            //    //return RedirectToPage();
+            //    return LocalRedirect(returnUrl);
+            //}
+            return Ok(returnUrl);
         }
 
         // GET: /Account/Username

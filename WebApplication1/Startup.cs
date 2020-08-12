@@ -117,8 +117,8 @@ namespace AntilaWebApp
                         Email = "admin@antila.com"
                     };
 
-                    userManager.CreateAsync(user, "Antila01@Admin");
-
+                   // userManager.CreateAsync(user, "Antila01@Admin");
+                    IdentityResult result = userManager.CreateAsync(user, "Antila01@Admin").Result;
                 }
             }
         }
