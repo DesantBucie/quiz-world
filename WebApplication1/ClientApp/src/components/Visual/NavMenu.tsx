@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
+import {Redirect} from 'react-router-dom';
 import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
@@ -43,13 +44,13 @@ class NavMenu extends React.Component <SessionProps> {
             this.setState({route:res.data});
         })
         const route = this.state.route;
-        if(route === '/'){
-            
-        }
     }
     render() {
         const {session,username} = this.props;
-        const {icon,userIcon} = this.state;
+        const {icon,userIcon,route} = this.state;
+        if(route === '/'){
+            window.location.href= '/';
+        } 
         return (       
         <nav className="navbar">
             <div className="navbar__logo">

@@ -66,9 +66,9 @@ class Login extends React.Component<SessionProps> {
     }
     invalidLogin = async () => {
         (document.getElementById("login__form") as any).reset();
-        (document.getElementById("login__wrong") as HTMLFormElement ).style.display="block";
+        (document.getElementById("login__wrong") as any )!.style.display="block";
         await sleep(10000);
-        (document.getElementById("login__wrong") as HTMLFormElement ).style.display="none";
+        (document.getElementById("login__wrong") as any )!.style.display="none";
     }
     handleMail = async(e:any) => {
         await this.setState({
