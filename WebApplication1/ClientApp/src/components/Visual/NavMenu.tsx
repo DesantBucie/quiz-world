@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faBars,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
 import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
 import {toggleModes} from '../../modules/NavFunctions';
+import axios from 'axios';
+
+import {apiUrl} from '../../modules/ApiUrl';
 import './NavMenu.scss';
 
 type SessionProps = 
@@ -18,6 +21,7 @@ type State = {
     icon:boolean,
     userIcon:boolean,
     session:boolean,
+    route:string,
 }
 
 class NavMenu extends React.Component <SessionProps> {
@@ -25,10 +29,23 @@ class NavMenu extends React.Component <SessionProps> {
         icon:true,
         userIcon:true,
         session:false,
+        route:'',
+    }
+    componentDidMount(){
     }
     toggleUser = () => {
         const userIcon = this.state.userIcon;
         (userIcon ? this.setState({userIcon:false}) : this.setState({userIcon:true}) )
+    }
+    logout = async() => {
+        await axios.post(`/Account/Logout`)
+        .then(res => {
+            this.setState({route:res.data});
+        })
+        const route = this.state.route;
+        if(route === '/'){
+            
+        }
     }
     render() {
         const {session,username} = this.props;
@@ -54,7 +71,7 @@ class NavMenu extends React.Component <SessionProps> {
                 <span style={{display: session ? 'inline' : 'none'}}className="navbar__user" onClick={this.toggleUser}>{username} 
                     <FontAwesomeIcon className="navbar__user" icon={userIcon ? faSortDown : faSortUp}/>
                 </span>
-                <div className="navbar__userbar"></div>
+                <div style={{display: userIcon ? 'none' : 'block'}} className="navbar__userbar"><button onClick={this.logout}>Logout</button></div>
             </div>
 
         </nav>

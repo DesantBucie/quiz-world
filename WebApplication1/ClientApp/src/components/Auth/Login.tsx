@@ -5,6 +5,9 @@ import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
+
+import {sleep} from '../../modules/Sleep';
+import { apiUrl } from '../../modules/ApiUrl';
 import "./Login.scss";
 
 type SessionProps = 
@@ -29,23 +32,43 @@ class Login extends React.Component<SessionProps> {
         loading:false,
         error:false,
     }
-
+    componentDidMount() {
+    }
+        
     handleSubmit = async (evt:any) =>{
         const {email,password} = this.state;
         evt.preventDefault();
         this.setState({loading:true,error:false});
-        await axios.post(`https://localhost:44322/Account/Login`,{
+        await axios.post(apiUrl + `Account/Login`,{
         email,password
         })
         .then (res => {
-           this.setState({route:res.data[0]})
-           this.props.sendsession(res.data[1]);
-           this.setState({redirect:true,loading:false})
+            this.setState({route:res.data})
         })
         .catch(err => {
             console.error(err);
             this.setState({error:true,loading:false})
         })
+        this.checkRoute();
+    }
+    checkRoute = () => {
+        const route:string = this.state.route;
+        console.log("Checking Route...", route);
+        (route === "/InvalidLogin" ? this.invalidLogin() : this.getUsername())
+    }
+    getUsername = async () => {
+        console.log("Getting username")
+        await axios.get(apiUrl + 'Account/username')
+        .then(res =>{
+            this.props.sendsession(res.data[0]);
+            this.setState({redirect:true,route:res.data[1],loading:false,error:false})
+        })
+    }
+    invalidLogin = async () => {
+        (document.getElementById("login__form") as any).reset();
+        (document.getElementById("login__wrong") as HTMLFormElement ).style.display="block";
+        await sleep(10000);
+        (document.getElementById("login__wrong") as HTMLFormElement ).style.display="none";
     }
     handleMail = async(e:any) => {
         await this.setState({
@@ -69,7 +92,10 @@ class Login extends React.Component<SessionProps> {
             <h4>QW</h4>
             <div><p>Panel Logowania</p></div>
             <section className="login">
-                <form onSubmit={this.handleSubmit}>
+                <form id="login__form" onSubmit={this.handleSubmit}>
+                    <div id="login__wrong" className="login__wrong">
+                        <p>Zły email lub hasło!</p>
+                    </div>
                     <div className="login__email">
                         <label htmlFor="email">Email:</label><br/>
                         <input

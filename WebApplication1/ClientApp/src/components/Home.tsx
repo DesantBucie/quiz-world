@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import './Home.scss';
+ interface props {
 
+} 
 //TODO:More Content
-const Home : React.FC = () => {
+const Home : React.FC<props> = () => {
     return (
     <section className="home">
                 <div className="home__header">
@@ -17,11 +18,11 @@ const Home : React.FC = () => {
                         </button>
                     </Link>
                 </div>
-                <div className="home__header home__header--register">
-                    <h2>Zajrejestruj się!</h2>
-                    <Link to='/register'>
+                <div className="home__header home__header--login">
+                    <h2>Zaloguj się!</h2>
+                    <Link to='/login'>
                         <button className="home__button">
-                            Rejestracja <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
+                           Login <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
                         </button>
                     </Link>
                 </div>

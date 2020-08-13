@@ -1,5 +1,6 @@
 ﻿import * as React from 'react';
 import './Help.scss';
+
 const Help = () => (
     <section>
         <h1>Potrzebujesz pomocy?</h1>
