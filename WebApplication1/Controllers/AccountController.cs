@@ -86,7 +86,6 @@ namespace AntilaWebApp.Controllers
             {
                 _logger.LogInformation("User logged in.");
                 return Ok(returnUrl);   
-                // return Ok(isLogged);
             }
             //if (result.RequiresTwoFactor)
             //{
@@ -99,8 +98,7 @@ namespace AntilaWebApp.Controllers
             //}
             else
             {
-                //ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                //return Ok();
+                _logger.LogWarning("Couldn't sign in.");
                 return Ok(invalidLogin);
             }
             
@@ -108,11 +106,11 @@ namespace AntilaWebApp.Controllers
             //return Ok();
         }
 
-        public async Task OnGtAsync(string returnUrl = null)
-        {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        }
+        //public async Task OnGetAsync(string returnUrl = null)
+        //{
+        //    ReturnUrl = returnUrl;
+        //    ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        //}
 
 
         // POST: /Account/Register
@@ -157,6 +155,7 @@ namespace AntilaWebApp.Controllers
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError(string.Empty, error.Description);
+                _logger.LogWarning("Registration failed.");
             }
             return Ok(result.Errors);
       

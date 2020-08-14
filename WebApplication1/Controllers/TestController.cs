@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using AntilaWebApp.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AntilaWebApp.Controllers
 {
@@ -22,25 +23,36 @@ namespace AntilaWebApp.Controllers
    // [HandleException] czy to coś robi? 
     public class TestController : ControllerBase
     {
-        private readonly ITestData testData;
-        private readonly IAnswerService answerService;
+        private readonly ITestData _testData;
+        private readonly IAnswerService _answerService;
+        private readonly ILogger<TestController> _logger;
 
         public IEnumerable<TestModel> Test { get; set; }
 
-        public TestController(ITestData testData, IAnswerService answerService)
+        public TestController(ITestData testData, IAnswerService answerService, 
+            ILogger<TestController> logger)
         {
-            this.testData = testData;
-            this.answerService = answerService;
+            this._testData = testData;
+            this._answerService = answerService;
+            this._logger = logger;
         }
 
         [HttpGet("{category?}")]
         public IEnumerable<TestModel> GetTests([FromRoute] string category)
         {
-            //testData.MapModel();
-            Test = testData.GetTest(category);
+            Test = _testData.GetTest(category);
 
-            answerService.ResetCount();
-            answerService.QuestionsCount(Test.ToList());
+            _answerService.ResetCount();
+            _answerService.QuestionsCount(Test.ToList());
+
+            if(Test == null)
+            {
+                _logger.LogWarning("Couldn't load any tests.");
+            }
+            else
+            {
+                _logger.LogInformation("Loaded {TestCount} tests.", Test.Count());
+            }  
 
             return Test;
         }
@@ -49,7 +61,7 @@ namespace AntilaWebApp.Controllers
         [HttpPost]
         public IActionResult PostTests(Test test)
         {
-            answerService.CalculateNumberOfPoints(test.Id,
+            _answerService.CalculateNumberOfPoints(test.Id,
                                         test.Question.Answers.Select(x => x.Id).FirstOrDefault());
             return Ok();
         }
@@ -57,13 +69,14 @@ namespace AntilaWebApp.Controllers
         [HttpGet("summary")]
         public List<int> GetSummary()
         { 
-            return answerService.PointsCount();
+            return _answerService.PointsCount();
         }
 
+        [Authorize]
         [HttpPost("AddTest")]
         public IActionResult PostTest(Test test)
         {
-            testData.AddTest(test);
+            _testData.AddTest(test);
 
             return Ok();
         }
