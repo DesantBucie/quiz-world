@@ -9,7 +9,7 @@ const Register = () => {
 
     const handleChange = (evt:any) => {
         evt.preventDefault();
-        axios.post(`https://localhost:44322/Account/Register`,{Email,Password,ConfirmPassword})
+        axios.post(`/Account/Register`,{Email,Password,ConfirmPassword})
         .then(res => {
             console.log(res.data);
         })

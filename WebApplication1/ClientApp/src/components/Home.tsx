@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import './Home.scss';
- interface props {
-
+interface props {
+    
 } 
 //TODO:More Content
 const Home : React.FC<props> = () => {
@@ -31,6 +31,14 @@ const Home : React.FC<props> = () => {
                     <Link to='/register'>
                         <button className="home__button">
                             Rejestracja <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
+                        </button>
+                    </Link>
+                </div>
+                <div className="home__header">
+                    <h2>Stwórz Quiz!</h2>
+                    <Link to='/create'>
+                        <button className="home__button">
+                            Dalej!<FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
                         </button>
                     </Link>
                 </div>

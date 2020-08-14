@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie,Cell} from 'recharts';
-import {apiUrl} from '../../modules/ApiUrl';
 import './Summary.scss';
 // TODO: styling, possibly redux;
 
@@ -13,7 +12,7 @@ const Summary : React.FC = () =>  {
     const [bad, setBad] = useState(0);
     useEffect(() => loadSum(),[]);
     const loadSum = () => {
-        axios.get( apiUrl + `api/Test/summary`,{
+        axios.get( `/api/Test/summary`,{
         })
         .then (res => {
             setGood(res.data[0])

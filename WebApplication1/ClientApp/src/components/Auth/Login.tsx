@@ -7,7 +7,6 @@ import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
 
 import {sleep} from '../../modules/Sleep';
-import { apiUrl } from '../../modules/ApiUrl';
 import "./Login.scss";
 
 type SessionProps = 
@@ -39,7 +38,7 @@ class Login extends React.Component<SessionProps> {
         const {email,password} = this.state;
         evt.preventDefault();
         this.setState({loading:true,error:false});
-        await axios.post(apiUrl + `Account/Login`,{
+        await axios.post(`/Account/Login`,{
         email,password
         })
         .then (res => {
@@ -58,7 +57,7 @@ class Login extends React.Component<SessionProps> {
     }
     getUsername = async () => {
         console.log("Getting username")
-        await axios.get(apiUrl + 'Account/username')
+        await axios.get('/Account/username')
         .then(res =>{
             this.props.sendsession(res.data[0]);
             this.setState({redirect:true,route:res.data[1],loading:false,error:false})
