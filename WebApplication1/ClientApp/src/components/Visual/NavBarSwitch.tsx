@@ -57,7 +57,7 @@ class NavBarSwitch extends React.Component<SessionProps> {
 
     render() {
         const {breakpoint,route, redirect} = this.state;
-        return breakpoint > 1000 ? (<NavMenu/>) : (<MobileNavMenu/>) || redirect ? <Redirect to={route}/> : redirect
+        return (breakpoint > 1000 ? (<NavMenu/>) : (<MobileNavMenu/>) ) ||   (redirect ? <Redirect to={route}/> : [])
     }
 }
 export default connect(

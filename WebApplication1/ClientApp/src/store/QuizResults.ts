@@ -1,6 +1,5 @@
 import { Action, Reducer } from 'redux';
 import { AppThunkAction } from '.';
-import {apiUrl} from './../modules/ApiUrl';
 import axios from 'axios';
 
 export interface QuizResultsState {
@@ -15,7 +14,7 @@ type KnownAction = GetQuizResultsAction|RecieveQuizResultsAction;
 
 export const actionCreators = {
     getQuizResults : ():AppThunkAction<KnownAction> => (dispatch) => {
-        axios.get( apiUrl + `api/Test/summary`,{
+        axios.get(`/api/Test/summary`,{
         })
         .then (res => {
             dispatch({type:"GET_QUIZ_RESULTS", goodAnswers:res.data[0], badAnswers:res.data[1] })

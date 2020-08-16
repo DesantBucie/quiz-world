@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 import {sleep} from '../../modules/Sleep';
 import "./Login.scss";
-
+// Redux props
 type SessionProps = 
     Session.SessionState &
     typeof Session.actionCreators &
@@ -22,6 +22,14 @@ type State = {
     loading:boolean,
     error:boolean,
 }
+/*
+! SESSION COOKIE IS SET IN VISUAL/NAVBARSWITCH DUE TO COMPONENT ALWAYS ACTIVE
+handleSubmit() => checkRoute() 
+                    /       \
+        invalidLogin()    getUsername()
+TODO: AFTER TEST WITH REDUX HOOKS, CHANGE COMPONENT TO FUNCITONAL
+*/
+
 class Login extends React.Component<SessionProps> {
     readonly state : State = {
         email:'',
@@ -30,11 +38,8 @@ class Login extends React.Component<SessionProps> {
         redirect:false,
         loading:false,
         error:false,
-    }
-    componentDidMount() {
-    }
-        
-    handleSubmit = async (evt:any) =>{
+    }   
+    handleSubmit = async (evt:any) => {
         const {email,password} = this.state;
         evt.preventDefault();
         this.setState({loading:true,error:false});
@@ -42,7 +47,7 @@ class Login extends React.Component<SessionProps> {
         email,password
         })
         .then (res => {
-            this.setState({route:res.data})
+            this.setState({route:res.data,loading:false})
         })
         .catch(err => {
             console.error(err);

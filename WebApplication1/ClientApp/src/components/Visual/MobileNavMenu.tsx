@@ -6,7 +6,6 @@ import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
-import { toggleModes } from '../../modules/NavFunctions';
 import './MobileNavMenu.scss';
 
 type SessionProps = 
@@ -36,6 +35,9 @@ class MobileNavMenu extends React.Component<SessionProps> {
     closeNavbar = () => {
         document.getElementById("mobileNavbar__menu")!.style.display="none";
     }
+    toggleModes = (icon?:any) => {
+       document.body.classList.toggle('darkmode'); 
+   	}
     render() {
         const {userIcon,icon} = this.state;
         const {username,session} = this.props;
@@ -49,7 +51,7 @@ class MobileNavMenu extends React.Component<SessionProps> {
                 <div><Link to="/"> Strona Główna <FontAwesomeIcon icon={faHome}/></Link></div>
                 <div><Link to="/category">Quiz <FontAwesomeIcon icon={faQuestion}/></Link></div>
                 <div><Link to="/help">Pomoc <FontAwesomeIcon icon={faInfoCircle}/></Link></div>
-                <div><FontAwesomeIcon className="navbar__icon" onClick={toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
+                <div><FontAwesomeIcon className="navbar__icon" onClick={this.toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
 
                 <div style={{display: session ? 'none' : 'inline'}} className="mobileNavbar__authpanel">
                     <div><Link to="/login">Login &ensp;</Link></div>

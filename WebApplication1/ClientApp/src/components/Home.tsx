@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import './Home.scss';
-interface props {
-    
-} 
+
+interface props {  
+}
 //TODO:More Content
 const Home : React.FC<props> = () => {
     return (
@@ -15,7 +15,7 @@ const Home : React.FC<props> = () => {
                     <Link to='/category'>
                         <button className="home__button">
                             Zaczynajmy <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
-                        </button>
+                       	</button>	
                     </Link>
                 </div>
                 <div className="home__header home__header--login">

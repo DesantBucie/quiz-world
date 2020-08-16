@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
 import {Redirect} from 'react-router-dom';
-import { ApplicationState } from '../../store';
-import { RouteComponentProps } from 'react-router';
-import * as Session from '../../store/Session';
-import { connect } from 'react-redux';
-import {toggleModes} from '../../modules/NavFunctions';
+
 import axios from 'axios';
 
-import {apiUrl} from '../../modules/ApiUrl';
+import { ApplicationState } from '../../store';
+import { RouteComponentProps } from 'react-router';
+import { connect } from 'react-redux';
+
+import * as Session from '../../store/Session';
+import * as DarkMode from '../../store/Darkmode';
+
 import './NavMenu.scss';
 
 type SessionProps = 
@@ -38,7 +40,12 @@ class NavMenu extends React.Component <SessionProps> {
         const userIcon = this.state.userIcon;
         (userIcon ? this.setState({userIcon:false}) : this.setState({userIcon:true}) )
     }
-    logout = async() => {
+    toggleModes = () => {
+       	document.body.classList.toggle('darkmode');
+		const {icon} = this.state;
+		(icon ? this.setState({icon:false}) : this.setState({icon:true}))
+   	}
+	logout = async() => {
         await axios.post(`/Account/Logout`)
         .then(res => {
             this.setState({route:res.data});
@@ -64,7 +71,7 @@ class NavMenu extends React.Component <SessionProps> {
             </div>
 
             <div className="navbar__login">
-                <FontAwesomeIcon className="navbar__icon" onClick={toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
+                <FontAwesomeIcon className="navbar__icon" onClick={this.toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
                 <span style={{display: session ? 'none' : 'inline'}} className="navbar__authpanel">
                     <Link to="/login">Login &ensp;</Link>
                     <Link to="/register">Zarejestruj się!</Link>
