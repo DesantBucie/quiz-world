@@ -7,7 +7,7 @@ import { RouteComponentProps } from 'react-router';
 import * as Category from '../../store/Category';
 
 import Loading from '../Shared/Loading';
-import './Quiz.scss';
+import '../../scss/components/Quiz.scss';
 /*
 This code differs a little bit from the rest of the project, as it current state of 03.05.20.
 There is a main class with variables stored inside state, no redux is used yet. 

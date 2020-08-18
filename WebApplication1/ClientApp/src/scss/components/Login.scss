@@ -12,8 +12,8 @@
     & form {
         margin:auto;
     }
-}
-.login__button {
+
+  &__button {
     padding:20px;
     & button {
         border:none;
@@ -21,23 +21,25 @@
         padding:5px 20px 5px 20px;
         background:#1393aaaf;
     }
-}
-.login__wrong {
+  }
+  &__wrong {
     background:rgba(255, 0, 0, 0.877);
     border-radius: .2em;
     display:none;
     & p {
         padding:0.4em;
     }
+  }
 }
 .loginpageheader {
     text-align:center;
 }
 .darkmode {
-    & .login {
-        background:#777;
-        & label {
-        color:black;
-        }
+  & .login {
+    background:#777;
+
+    & label {
+    color:black;
     }
+  }
 }

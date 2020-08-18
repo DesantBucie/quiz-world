@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { ApplicationState } from '../../store';
 import * as Category from '../../store/Category';
-import './ChooseIt.scss';
+import '../../scss/components/ChooseIt.scss';
 
 type State = {
     category:string,

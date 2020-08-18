@@ -8,7 +8,7 @@ import Summary from './components/Quiz/Summary';
 import Category from './components/Quiz/ChooseIt';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
-import './custom.scss';
+import './scss/main.scss';
 
 export default () => (
     <Layout>

@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import * as Session from '../../store/Session';
 import * as DarkMode from '../../store/Darkmode';
 
-import './NavMenu.scss';
+import '../../scss/layout/NavMenu.scss';
 
 type SessionProps = 
     Session.SessionState &

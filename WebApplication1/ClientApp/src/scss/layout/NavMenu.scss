@@ -1,5 +1,4 @@
-﻿$navcolor: #3b92cc;
-$darknavbar: #232323;
+﻿@import '../abstracts/variables';
 .navbar {
     display:flex;
     flex-direction:row;

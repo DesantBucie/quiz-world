@@ -7,7 +7,7 @@ import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
 
 import {sleep} from '../../modules/Sleep';
-import "./Login.scss";
+import "../../scss/components/Login.scss";
 // Redux props
 type SessionProps = 
     Session.SessionState &

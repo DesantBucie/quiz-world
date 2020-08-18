@@ -1,0 +1,8 @@
+@import '../abstracts/variables';
+
+@mixin button {
+  border:none;
+  border-radius:4px;
+  padding:0.5em 1.3em;
+  background:$apple-blue
+}

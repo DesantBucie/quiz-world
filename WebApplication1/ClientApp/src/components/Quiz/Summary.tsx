@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie,Cell} from 'recharts';
-import './Summary.scss';
+import '../../scss/components/Summary.scss';
 // TODO: styling, possibly redux;
 
 
@@ -46,8 +46,8 @@ const Summary : React.FC = () =>  {
                 </PieChart>
                 <span>Dobrych odpowiedzi: {good}
                 Złych odpowiedzi: {bad}</span>
-                <Link to='/category'><button className="summary__button--green">Spróbuj jeszcze raz!</button></Link>
-                <Link to='/'><button className="summary__button--red">Wracam do strony głównej</button></Link>
+                <Link to='/category'><button className="summary__button summary__button--green">Spróbuj jeszcze raz!</button></Link>
+                <Link to='/'><button className="summary__button">Wracam do strony głównej</button></Link>
             </section>
     );
 }
