@@ -64,9 +64,13 @@ namespace AntilaWebApp.Controllers
         // GET: /Account/Login
         [HttpGet("Login")]
         [AllowAnonymous]
-        public IActionResult IsLogged()
+        public async Task<IActionResult> IsLogged()
         {
             bool isSingned = _signInManager.IsSignedIn(User);
+
+            //Sprawdź to
+            if(!isSingned)
+               await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             return Ok(isSingned);
         }
 

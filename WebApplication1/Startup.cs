@@ -1,6 +1,7 @@
 using Antila.AnswerService;
 using Antila.Data;
 using AntilaWebApp.Data;
+using AntilaWebApp.Models.ErrorModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +35,9 @@ namespace AntilaWebApp
             services.AddControllersWithViews();
             services.AddScoped<ITestData, SqlTestData/*InMemoryTestData*/>();
             services.AddScoped<IAnswerService, AnswerService>();
+
+            services.AddScoped<IdentityErrorDescriber, LocalizedIdentityErrorDescriber>();
+
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
