@@ -8,14 +8,7 @@ import * as Category from '../../store/Category';
 
 import Loading from '../Shared/Loading';
 import '../../scss/components/Quiz.scss';
-/*
-This code differs a little bit from the rest of the project, as it current state of 03.05.20.
-There is a main class with variables stored inside state, no redux is used yet. 
 
-loadData() - function which loads question and answers
-sendIt() -function which sends selected answer
-
-*/
 type CategoryProps =
     Category.CategoryState &
     typeof Category.actionCreators &
@@ -150,7 +143,7 @@ export class Quiz extends React.Component<CategoryProps> {
 		const it = this.state.it;
 		const amount = this.state.allquestions.length - 1;
 		// DEPRECATED
-        /*if (it < amount - 1) {
+        if (it < amount - 1) {
 
 			await this.setState({
 				it : this.state.it + 1
@@ -161,9 +154,9 @@ export class Quiz extends React.Component<CategoryProps> {
 			await this.setState({
 				redirect:true
 			})
-		}*/
+		}
        // !Possible later solution
-    	it < amount -1 ? await this.setState({it: this.state.it + 1}) as any && this.currentQuestion() :  await this.setState({redirect:true})
+    	//it < amount -1 ? await this.setState({it: this.state.it + 1}) && this.currentQuestion() :  await this.setState({redirect:true})
 	}
 	componentDidMount() {
 		this.loadData();

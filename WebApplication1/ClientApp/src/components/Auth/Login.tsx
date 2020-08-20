@@ -56,7 +56,7 @@ class Login extends React.Component<SessionProps> {
         this.checkRoute();
     }
     checkRoute = () => {
-        const route:string = this.state.route;
+        const {route} = this.state;
         console.log("Checking Route...", route);
         (route === "/InvalidLogin" ? this.invalidLogin() : this.getUsername())
     }
