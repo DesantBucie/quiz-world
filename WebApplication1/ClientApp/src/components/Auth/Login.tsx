@@ -55,13 +55,13 @@ class Login extends React.Component<SessionProps> {
         })
         this.checkRoute();
     }
+    // If this gets url != /, bad login triggers
     checkRoute = () => {
         const {route} = this.state;
-        console.log("Checking Route...", route);
         (route === "/InvalidLogin" ? this.invalidLogin() : this.getUsername())
     }
+    // after good auth, this gets, username (or rather email...)
     getUsername = async () => {
-        console.log("Getting username")
         await axios.get('/Account/username')
         .then(res =>{
             this.props.sendsession(res.data[0]);
@@ -75,19 +75,16 @@ class Login extends React.Component<SessionProps> {
         (document.getElementById("login__wrong") as any )!.style.display="none";
     }
     handleMail = async(e:any) => {
-        await this.setState({
-            email:e.target.value
-        })
+        await this.setState({ email:e.target.value })
     }
     handlePass = async (e:any) => {
-        await this.setState({
-            password:e.target.value
-        })
+        await this.setState({ password:e.target.value })
     } 
     render() {
         const {email,password,redirect,route} = this.state
         if(redirect) {
             return (
+            //route is always '/'
                 <Redirect to={route}/>
             )
         }

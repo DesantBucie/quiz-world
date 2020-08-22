@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie,Cell} from 'recharts';
+
 import '../../scss/components/Summary.scss';
 // TODO: styling, possibly redux;
 
@@ -51,4 +51,4 @@ const Summary : React.FC = () =>  {
             </section>
     );
 }
-export default connect() (Summary);
+export default Summary;

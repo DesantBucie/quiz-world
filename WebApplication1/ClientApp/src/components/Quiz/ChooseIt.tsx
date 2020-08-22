@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { ApplicationState } from '../../store';
 import * as Category from '../../store/Category';
+
 import '../../scss/components/ChooseIt.scss';
 
 type State = {
@@ -20,6 +22,7 @@ class ChoseIt extends React.Component<CategoryProps> {
         category:'społeczeństwo',
         redirect:false,
     }
+    //Sends category to redux, when redirected, quiz components gets it value
     ChooseCategory = async() => {
         const category = this.state.category;
         this.props.getcategory(category);

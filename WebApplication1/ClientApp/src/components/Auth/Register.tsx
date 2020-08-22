@@ -45,6 +45,7 @@ class Register extends React.Component<SessionProps> {
         error:false,
         errmessage:[]
     }   
+
     handleSubmit = async (e:any) => {
         const {email, confirmEmail, password, confirmPassword} = this.state;
         e.preventDefault();
@@ -53,7 +54,7 @@ class Register extends React.Component<SessionProps> {
         email, confirmEmail,password,confirmPassword
         })
         .then (res => {
-            console.log(typeof res.data);
+            // I used two separate variables depending what resp i will get
             if(typeof res.data == 'string')  { 
                 this.setState({route:res.data,redirect:true,loading:false})
             } 
@@ -73,31 +74,23 @@ class Register extends React.Component<SessionProps> {
         (document.getElementById("login__wrong") as any )!.style.display="none";
     }
     handleMail = async(e:any) => {
-        await this.setState({
-            email:e.target.value
-        })
+        await this.setState({ email:e.target.value })
     }
     handlePass = async (e:any) => {
-        await this.setState({
-            password:e.target.value
-        })
+        await this.setState({ password:e.target.value })
     }
     handleConfirmMail = async(e:any) => {
-        await this.setState({
-            confirmEmail:e.target.value
-        })
+        await this.setState({ confirmEmail:e.target.value })
     }
     handleConfirmPass = async (e:any) => {
-        await this.setState({
-            confirmPassword:e.target.value
-        })
+        await this.setState({ confirmPassword:e.target.value })
     } 
     render() {
-        const {email,confirmEmail,password,confirmPassword,redirect} = this.state
-        const errmessage:string = this.state.errmessage;
+        const {email,confirmEmail,password,confirmPassword,redirect,errmessage} = this.state
 
         if(redirect) {
             return (
+            // TODO: possibly later, need to add route, for multple route redirects
                 <Redirect to='/'/>
             )
         }
