@@ -59,7 +59,9 @@ class Register extends React.Component<SessionProps> {
                     this.setState({route: res.data, redirect: true, loading: false})
                 }
                 else {
-                    this.setState({errmessage: res.data, loading: false})
+                    this.setState({errmessage: res.data.map((a:any) => a.description), loading: false})
+                    console.log(res.data.map((a:any) => a.description))
+                    console.log(res.data);
                     this.showError();
                 }
             })
@@ -87,7 +89,6 @@ class Register extends React.Component<SessionProps> {
     }
     render() {
         const {email, confirmEmail, password, confirmPassword, redirect, errmessage} = this.state
-
         if (redirect) {
             return (
                 // TODO: possibly later, need to add route, for multple route redirects
@@ -101,8 +102,7 @@ class Register extends React.Component<SessionProps> {
                 <section className="login">
                     <form id="login__form" onSubmit={this.handleSubmit}>
                         <div id="login__wrong" className="login__wrong">
-                            {errmessage.map((error: string, index: number) =>
-                                (<p key={index} className="login__bad">error.description</p>))}
+                            {errmessage}
                         </div>
                         <div className="login__email">
                             <label htmlFor="email">Email:</label><br />
