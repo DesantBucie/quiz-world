@@ -6,7 +6,6 @@ using System.Text.Json.Serialization;
 namespace Antila.Core
 {
     public class Question
-
     {
         public int Id { get; set; }
         public int TestId { get; set; }

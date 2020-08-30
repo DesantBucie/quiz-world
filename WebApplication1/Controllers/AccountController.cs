@@ -123,6 +123,7 @@ namespace AntilaWebApp.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
+            List<IdentityError> errorList = new List<IdentityError>();
             string returnUrl = Url.Content("~/");
 
             //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -156,12 +157,14 @@ namespace AntilaWebApp.Controllers
                 return Ok(returnUrl);
                 // }
                 }
+
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError(string.Empty, error.Description);
+                errorList.Add(error);
+                //ModelState.AddModelError(string.Empty, error.Description);
                 _logger.LogWarning("Registration failed.");
             }
-            return Ok(result.Errors);
+            return Ok(errorList);
       
 
             // If we got this far, something failed, redisplay form
