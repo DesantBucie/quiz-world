@@ -48,7 +48,6 @@ C:\Users\zero\Source\Repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Dat
 C:\Users\zero\Source\Repos\antila\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.runtimeconfig.json
 C:\Users\zero\Source\Repos\antila\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.runtimeconfig.dev.json
 C:\Users\zero\Source\Repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.genruntimeconfig.cache
-C:\Users\zero\source\repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.csproj.CoreCompileInputs.cache
 C:\Users\dsnt\source\repos\antila\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.deps.json
 C:\Users\dsnt\source\repos\antila\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.runtimeconfig.json
 C:\Users\dsnt\source\repos\antila\Antila.Data\bin\Debug\netcoreapp3.1\Antila.Data.runtimeconfig.dev.json
@@ -64,3 +63,4 @@ C:\Users\dsnt\source\repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Dat
 C:\Users\dsnt\source\repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.dll
 C:\Users\dsnt\source\repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.pdb
 C:\Users\dsnt\source\repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.genruntimeconfig.cache
+C:\Users\zero\Source\Repos\antila\Antila.Data\obj\Debug\netcoreapp3.1\Antila.Data.csproj.CoreCompileInputs.cache

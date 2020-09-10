@@ -5,8 +5,10 @@ import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
-import "./Login.scss";
 
+import {sleep} from '../../modules/Sleep';
+import "../../scss/components/Login.scss";
+// Redux props
 type SessionProps = 
     Session.SessionState &
     typeof Session.actionCreators &
@@ -20,6 +22,14 @@ type State = {
     loading:boolean,
     error:boolean,
 }
+/*
+! SESSION COOKIE IS SET IN VISUAL/NAVBARSWITCH DUE TO COMPONENT ALWAYS ACTIVE
+handleSubmit() => checkRoute() 
+                    /       \
+        invalidLogin()    getUsername()
+TODO: AFTER TEST WITH REDUX HOOKS, CHANGE COMPONENT TO FUNCITONAL
+*/
+
 class Login extends React.Component<SessionProps> {
     readonly state : State = {
         email:'',
@@ -28,39 +38,53 @@ class Login extends React.Component<SessionProps> {
         redirect:false,
         loading:false,
         error:false,
-    }
-
-    handleSubmit = async (evt:any) =>{
+    }   
+    handleSubmit = async (evt:any) => {
         const {email,password} = this.state;
         evt.preventDefault();
         this.setState({loading:true,error:false});
-        await axios.post(`https://localhost:44322/Account/Login`,{
+        await axios.post(`/Account/Login`,{
         email,password
         })
         .then (res => {
-           this.setState({route:res.data[0]})
-           this.props.sendsession(res.data[1]);
-           this.setState({redirect:true,loading:false})
+            this.setState({route:res.data,loading:false})
         })
         .catch(err => {
             console.error(err);
             this.setState({error:true,loading:false})
         })
+        this.checkRoute();
+    }
+    // If this gets url != /, bad login triggers
+    checkRoute = () => {
+        const {route} = this.state;
+        (route === "/InvalidLogin" ? this.invalidLogin() : this.getUsername())
+    }
+    // after good auth, this gets, username (or rather email...)
+    getUsername = async () => {
+        await axios.get('/Account/username')
+        .then(res =>{
+            this.props.sendsession(res.data[0]);
+            this.setState({redirect:true,route:res.data[1],loading:false,error:false})
+        })
+    }
+    invalidLogin = async () => {
+        (document.getElementById("login__form") as any).reset();
+        (document.getElementById("login__wrong") as any )!.style.display="block";
+        await sleep(10000);
+        (document.getElementById("login__wrong") as any )!.style.display="none";
     }
     handleMail = async(e:any) => {
-        await this.setState({
-            email:e.target.value
-        })
+        await this.setState({ email:e.target.value })
     }
     handlePass = async (e:any) => {
-        await this.setState({
-            password:e.target.value
-        })
+        await this.setState({ password:e.target.value })
     } 
     render() {
         const {email,password,redirect,route} = this.state
         if(redirect) {
             return (
+            //route is always '/'
                 <Redirect to={route}/>
             )
         }
@@ -69,7 +93,10 @@ class Login extends React.Component<SessionProps> {
             <h4>QW</h4>
             <div><p>Panel Logowania</p></div>
             <section className="login">
-                <form onSubmit={this.handleSubmit}>
+                <form id="login__form" onSubmit={this.handleSubmit}>
+                    <div id="login__wrong" className="login__wrong">
+                        <p>Zły email lub hasło!</p>
+                    </div>
                     <div className="login__email">
                         <label htmlFor="email">Email:</label><br/>
                         <input

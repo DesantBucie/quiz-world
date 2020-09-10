@@ -1,0 +1,45 @@
+.login {
+    display:flex;
+    min-width:300px;
+    width:20%;
+    max-width:600px;
+    margin:auto;
+    justify-content:center;
+    background:#aaa;
+    padding:30px;
+    border-radius:5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    & form {
+        margin:auto;
+    }
+
+  &__button {
+    padding:20px;
+    & button {
+        border:none;
+        border-radius:4px;
+        padding:5px 20px 5px 20px;
+        background:#1393aaaf;
+    }
+  }
+  &__wrong {
+    background:rgba(255, 0, 0, 0.877);
+    border-radius: .2em;
+    display:none;
+    & p {
+        padding:0.4em;
+    }
+  }
+}
+.loginpageheader {
+    text-align:center;
+}
+.darkmode {
+  & .login {
+    background:#777;
+
+    & label {
+    color:black;
+    }
+  }
+}

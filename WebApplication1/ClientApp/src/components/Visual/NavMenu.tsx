@@ -1,12 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faBars,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
+import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
+import {Redirect} from 'react-router-dom';
+
+import axios from 'axios';
+
 import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
-import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
-import './NavMenu.scss';
+
+import * as Session from '../../store/Session';
+import * as DarkMode from '../../store/Darkmode';
+
+import '../../scss/layout/NavMenu.scss';
 
 type SessionProps = 
     Session.SessionState &
@@ -17,25 +24,40 @@ type State = {
     icon:boolean,
     userIcon:boolean,
     session:boolean,
+    route:string,
 }
+
 class NavMenu extends React.Component <SessionProps> {
     readonly state : State = {
         icon:true,
         userIcon:true,
         session:false,
+        route:'',
     }
-    toggleModes = () => {
-        const icon = this.state.icon;
-        document.body.classList.toggle('darkmode');
-        (icon ? this.setState({icon:false}) : this.setState({icon:true}) );
+    componentDidMount(){
     }
     toggleUser = () => {
         const userIcon = this.state.userIcon;
         (userIcon ? this.setState({userIcon:false}) : this.setState({userIcon:true}) )
     }
+    toggleModes = () => {
+       	document.body.classList.toggle('darkmode');
+		const {icon} = this.state;
+		(icon ? this.setState({icon:false}) : this.setState({icon:true}))
+   	}
+	logout = async() => {
+        await axios.post(`/Account/Logout`)
+        .then(res => {
+            this.setState({route:res.data});
+        })
+        const route = this.state.route;
+    }
     render() {
         const {session,username} = this.props;
-        const {icon,userIcon} = this.state;
+        const {icon,userIcon,route} = this.state;
+        if(route === '/'){
+            window.location.href= '/';
+        } 
         return (       
         <nav className="navbar">
             <div className="navbar__logo">
@@ -57,7 +79,7 @@ class NavMenu extends React.Component <SessionProps> {
                 <span style={{display: session ? 'inline' : 'none'}}className="navbar__user" onClick={this.toggleUser}>{username} 
                     <FontAwesomeIcon className="navbar__user" icon={userIcon ? faSortDown : faSortUp}/>
                 </span>
-                <div className="navbar__userbar"></div>
+                <div style={{display: userIcon ? 'none' : 'block'}} className="navbar__userbar"><button onClick={this.logout}>Logout</button></div>
             </div>
 
         </nav>

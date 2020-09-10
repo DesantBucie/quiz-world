@@ -1,0 +1,39 @@
+@import '../elements/button';
+.home{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+  &__header {
+    text-align:center;
+    background:#4d974d8c;
+    padding:3em;
+    margin:1em;
+    width:100%;
+
+    &--register {
+      width:45%;
+      background:#98a52667;
+    }
+
+    &--login {
+      width:45%;
+      background:#2676a567
+    }
+  }
+  &__button {
+    @include button;
+  }
+}
+.darkmode {
+  .home {
+    &__header {
+        background:#333;
+    }
+    &__button{
+        background:#222;
+        color:white;
+    }
+  }
+}
+

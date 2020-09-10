@@ -1,0 +1,14 @@
+.summary {
+    text-align: center;
+    &__button {
+        width:50%;
+        padding:1.5em;
+        border:1px solid transparent;
+        border-radius:4px;
+        margin-top:.3em;
+        background: rgb(138, 132, 132);
+        &--green {
+            background: rgb(16, 202, 16);   
+        }
+    }
+}

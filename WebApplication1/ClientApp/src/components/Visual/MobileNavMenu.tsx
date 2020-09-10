@@ -6,7 +6,7 @@ import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
-import './MobileNavMenu.scss';
+import '../../scss/layout/MobileNavMenu.scss';
 
 type SessionProps = 
     Session.SessionState &
@@ -25,44 +25,40 @@ class MobileNavMenu extends React.Component<SessionProps> {
         userIcon:true,
         session:false,
     }
-    toggleModes = () => {
-        const icon = this.state.icon;
-        document.body.classList.toggle('darkmode');
-        (icon ? this.setState({icon:false}) : this.setState({icon:true}) );
-    }
     toggleUser = () => {
         const userIcon = this.state.userIcon;
         (userIcon ? this.setState({userIcon:false}) : this.setState({userIcon:true}) )
     }
     openNavBar = () => {
-        document.getElementById("mobileNavbar__menu")!.style.width='50%';
-        document.getElementById("mobileNavbar__menu")!.style.minWidth="300";
+        document.getElementById("mobile-navbar__menu")!.style.display="block";
     }
     closeNavbar = () => {
-        document.getElementById("mobileNavbar__menu")!.style.width="0";
-        document.getElementById("mobileNavbar__menu")!.style.minWidth="0";
+        document.getElementById("mobile-navbar__menu")!.style.display="none";
     }
+    toggleModes = (icon?:any) => {
+       document.body.classList.toggle('darkmode'); 
+   	}
     render() {
         const {userIcon,icon} = this.state;
         const {username,session} = this.props;
         return (
-        <nav className="mobileNavbar">
-            <div className="mobileNavbar__logo"><Link to="/"><h5>QW</h5></Link></div>
+        <nav className="mobile-navbar">
+            <div className="mobile-navbar__logo"><Link to="/"><h5>QW</h5></Link></div>
 
-            <div className="mobileNavbar__trigger" onClick={this.openNavBar}>Menu <FontAwesomeIcon icon={faBars}/></div>
-            <div id="mobileNavbar__menu" className="mobileNavbar__menu">
-                <div><FontAwesomeIcon onClick={this.closeNavbar} className="mobileNavbar__close" icon={faTimes}/></div>
+            <div className="mobile-navbar__trigger" onClick={this.openNavBar}>Menu <FontAwesomeIcon icon={faBars}/></div>
+            <div id="mobile-navbar__menu" className="mobile-navbar__menu">
+                <div><FontAwesomeIcon onClick={this.closeNavbar} className="mobile-navbar__close" icon={faTimes}/></div>
                 <div><Link to="/"> Strona Główna <FontAwesomeIcon icon={faHome}/></Link></div>
                 <div><Link to="/category">Quiz <FontAwesomeIcon icon={faQuestion}/></Link></div>
                 <div><Link to="/help">Pomoc <FontAwesomeIcon icon={faInfoCircle}/></Link></div>
                 <div><FontAwesomeIcon className="navbar__icon" onClick={this.toggleModes} icon={icon ? faMoon : faSun}/>&ensp;&ensp;
 
-                <div style={{display: session ? 'none' : 'inline'}} className="mobileNavbar__authpanel">
+                <div style={{display: session ? 'none' : 'inline'}} className="mobile-navbar__authpanel">
                     <div><Link to="/login">Login &ensp;</Link></div>
                     <div><Link to="/register">Zarejestruj się!</Link></div>
                 </div>
-                <div style={{display: session ? 'inline' : 'none'}}className="mobileNavbar__user" onClick={this.toggleUser}>{username} 
-                    <div><FontAwesomeIcon className="mobileNavbar__user" icon={userIcon ? faSortDown : faSortUp}/></div>
+                <div style={{display: session ? 'inline' : 'none'}}className="mobile-navbar__user" onClick={this.toggleUser}>{username} 
+                    <div><FontAwesomeIcon className="mobile-navbar__user" icon={userIcon ? faSortDown : faSortUp}/></div>
                 </div></div>
             </div>
         </nav>
