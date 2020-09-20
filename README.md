@@ -1,109 +1,17 @@
-# Aplikacja QuizWorld
+# Welcome to QuizWorld
 
-Używaliśmy do tworzenia aplikacji programu Visual Studio oraz Visual Studio Code.
+## About 
+QuizWorld is a simple app that allows you to choose a quiz form given category and then play it. 
+Frontend is build using React.js. Backend is build using .Net Core and Entity Framework. 
 
-## Autorzy
+At first start, app seeds a database with a set of predefinied questions. 
 
+We are planning to implement new feature - adding questions.
+
+
+## Authors
 * Samuel Kalwik (qalvik) - backend
-
 * Jakub Truszkowski (DesantBucie) - frontend
-
-Aplikacja zbudowana jest z dwóch modułów - Frontend i Backend. Frontent wykonany
-jest przy użyciu frameworka React.js. Backend to zasadniczo WebAPI -
-wykonane przy użyciu frameworka .Net Core. Wystwia one kilka adresów
-URL, z których frontend konsumuje dane w formacie JSON. Aplikacja przy
-pierwszym użyciu automatycznie tworzy bazę danych z predefiniowanym zestawem
-pytań w trzech kategoriach. Wszystkie dane są w niej na stałe zapisane, właściwa
-aplikacja korzysta z nich.
-
-## Użyte narzędzia
-
-* Reactjs - framework,
-
-* typescirpt - tworzenie interfejsu użytkownika i zapewnienia bezpieczeństwa
-typów danych.
-
-* git - system zarządzania rozwojem aplikacji
-
-* redux - szybki zapis stanu zmiennych
-
-* bootstrap - biblioteka css, aby zapewnić stronie kompatybilność na różnych urządzeniach.
-
-* npm - menedżer pakietów JS/TS
-
-* C# - klasowy język podobny do Javy, rozwijany jako wielkofunkcyjne zastępstwo c++
-
-* Entity - framework służący połączeniu bazy danych z aplikacją
-
-* axios - klient odbierający lub wysyłąjący dane przez API.
-
-1.1 React to biblioteka javascript rozwijana przez facebook, zapewnia pewne
-szablony rozwoju aplikacji,
-podział na komponenty poszczególnych składników
-
-1.2 Typescirpt to w pełni kompatybilna nadbiblioteka języka javascript,
-która kompiluje się do normalnego kodu JS, zapewnia jednak takie rozwiązania jak
-określenie typu zmiennej np.
-
-```typescirpt
-type State = {
-    numer:number,
-    lancuch_znakow:string,
-    tablica:Array<any>,
-    objekt:object
-}
-```
-
-1.3. Git ułatwia pracę w kilka osób, pokazując dokładnie zmiany i umożliwiając
-powrotu do staszych wersji kodu.
-
-1.4. Redux to oparty na funkcjach "magazyn" zmiennych, dość trudny w implementacji.
-
-1.5. Bootstrap - framework css stworzony przez programistów twittera, steruje
-szerokościami elementów w zależności od wielkości ekranu.
-
-1.6.npm - node packet manager - wszystkie powyższe pakiety poza gitem są pobrane
-dzięki temu narzędziu
-
-1.7 C# - używany na backendzie jak WebAPI i biblioteki. Aplikacja składa się z
-trzech części - WebAPI, Antila.Core i Antila.Data. WebAPI wystawia kilka adresów
-URL, z których frontend może konsumować dane. W Antila.Core znajduje się
-rdzeń aplikacji, czyli podstawowe modele danych. Antila.Data służy do
-komunikacji z bazą danych przy użyciu Entity Framework. Znajduje się w niej
-interfejs, który używany jest do komunikacji z WebAPI.
-
-1.8 Baza danych MS SQL - baza danych typu SQL z której pytania wysyłane są
-dzieki backendowi do frontu i odbierane interfejsem programistycznym tzw
-API przez axios.
-
-1.9 Axios - Odbiera pytania z bazy danych i ustawia dla nich zmienne
-
-## Napotkane Problemy
-
-* Frontend
-
-* Idea Reacta jest odmienna w stosunku do normalnego html, kod html/xml
-zwracają funkcje JS/TS.
-
-* Style jeśli używane w pliku TSX są przypisywane do zmiennych, i mają inne
-nazwy lub wartości niż normalny css.
-
-* axios jest tylko obietnicą, wiec może zawieść, dlatego potrzeba ekranu
-ponownego załadowania.
-
-* setState funkcja ustawiania stanu zmiennej, jest asynchroniczna, co oznacza,
-że wykona się tylko na zawołanie, dopiero poźniej zmieniając stan, użyte
-zostało await co oznacza oczekiwanie na zwrot wyniku funkcji.
-
-* iteracja przez tablicę pytań zawodziła, szczególnie gdy ilośc pytań jest
-zmienna od sesji.
-
-* Typescript jak nazwa wskazuje jest bezpiecznie typowany, co zmusza do
-określania typów zmiennych.
-
-* Redux był czymś kompletnie niezrozumiałym i nadal trochę jest, do
-przechowywania jednej zmiennej potrzebny było bardzo duzo kodu,
-ale jest szybko.
 
 ![Alt text](.github/React1.png?raw=true "Strona Główna")
 ![Alt text](.github/React2.png?raw=true "Wybór Kategorii")
