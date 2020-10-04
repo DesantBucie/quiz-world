@@ -1,31 +1,40 @@
-import { Action, Reducer } from 'redux';
-import { AppThunkAction } from '.';
+import {
+    Action,
+    Reducer
+} from 'redux';
+import {AppThunkAction} from '.';
 
-export interface CategoryState {
-    category:string,
+export interface Category {
+    category?: string;
+}
+
+interface CategoryAction extends Category, Action<string> {
 };
 
-export interface GetCategoryAction {type: 'GET_CATEGORY',category:string}; 
-export interface RecieveCategoryAction {type:'RECIEVE_CATEGORY'};
-
-type KnownAction = GetCategoryAction|RecieveCategoryAction; 
+export const categoryActionTypes = {
+    GET_CATEGORY:  'GET_CATEGORY',
+    RECEIVE_CATEGORY: 'RECEIVE_CATEGORY'
+}
 
 export const actionCreators = {
-    getcategory : (category:string):AppThunkAction<KnownAction> => (dispatch) => {
-        dispatch({type:"GET_CATEGORY", category:category});
+    getCategory: (category: string): AppThunkAction<CategoryAction> => (dispatch) => {
+        dispatch({type: categoryActionTypes.GET_CATEGORY, category});
     },
 };
-export const reducer: Reducer<CategoryState> = (state: CategoryState | undefined, incomingAction: Action): CategoryState => {
-    if (state === undefined) {
-        return { category: 'społeczeństwo' };
-    }
-    const action = incomingAction as KnownAction;
+
+const initState: Category = {
+    category: 'spoleczenstwo'
+}
+
+export const reducer: Reducer<Category> = (state : Category = initState, action: CategoryAction): Category => {
     switch (action.type) {
-        case 'GET_CATEGORY':
-            return { category:action.category };
-        case 'RECIEVE_CATEGORY':           
-            return {category:state.category};
+        case categoryActionTypes.GET_CATEGORY:
+            return {category: action.category};
+        case categoryActionTypes.RECEIVE_CATEGORY:
+            return {category: state.category};
         default:
             return state;
     }
 };
+
+

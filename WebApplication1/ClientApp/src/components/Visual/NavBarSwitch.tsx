@@ -3,6 +3,8 @@ import NavMenu from './NavMenu';
 import MobileNavMenu from './MobileNavMenu';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+
+//Redux
 import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';

@@ -1,7 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome,faQuestion,faInfoCircle,faMoon,faSun,faSortDown,faSortUp } from '@fortawesome/free-solid-svg-icons';
+
+import { 
+    faHome,
+    faQuestion,
+    faInfoCircle,
+    faMoon,
+    faSun,
+    faSortDown,
+    faSortUp 
+} from '@fortawesome/free-solid-svg-icons';
+
 import {Redirect} from 'react-router-dom';
 
 import axios from 'axios';
