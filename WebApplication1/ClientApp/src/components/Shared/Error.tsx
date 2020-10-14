@@ -1,4 +1,7 @@
+import * as React from 'react'; 
+
 const Error = () => {
+
     <section>
         <p>
 			Wystąpił problem podczas ładowania{" "}<br/>

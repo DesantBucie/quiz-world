@@ -1,12 +1,15 @@
 import * as  React from 'react';
+    
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+
 import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Session from '../../store/Session';
 import { connect } from 'react-redux';
 
-import {sleep} from '../../modules/Sleep';
+import { sleep } from '../../modules/Sleep';
+
 import "../../scss/components/Login.scss";
 // Redux props
 type SessionProps = 

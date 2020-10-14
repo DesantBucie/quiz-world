@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+
 import axios from 'axios';
+
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { ApplicationState } from '../../store';
 import { RouteComponentProps } from 'react-router';
 import * as Category from '../../store/Category';
 
 import Loading from '../Shared/Loading';
+
 import '../../scss/components/Quiz.scss';
 
 type CategoryProps =
-    Category.CategoryState &
+    Category.Category &
     typeof Category.actionCreators &
 	RouteComponentProps<{}>;
 	
@@ -31,9 +34,6 @@ type State = {
 	currentquestion?:any;
 	it:number,
 };
-
-
-
 
 export class Quiz extends React.Component<CategoryProps> {
 	
@@ -155,8 +155,6 @@ export class Quiz extends React.Component<CategoryProps> {
 				redirect:true
 			})
 		}
-       // !Possible later solution
-    	//it < amount -1 ? await this.setState({it: this.state.it + 1}) && this.currentQuestion() :  await this.setState({redirect:true})
 	}
 	componentDidMount() {
 		this.loadData();

@@ -4,7 +4,7 @@ import * as QuizResults from './QuizResults';
 import * as Darkmode from './Darkmode';
 //top level interface 
 export interface ApplicationState {
-    category: Category.CategoryState | undefined;
+    category: Category.Category | undefined;
     session:Session.SessionState | undefined;
     quizResults:QuizResults.QuizResultsState | undefined;
    	darkmode:Darkmode.DarkmodeState | undefined;

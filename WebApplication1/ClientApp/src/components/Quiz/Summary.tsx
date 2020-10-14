@@ -1,7 +1,15 @@
-import React,{useState,useEffect} from 'react';
+import React,{
+    useState,
+    useEffect
+} from 'react';
+
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { PieChart, Pie,Cell} from 'recharts';
+import { 
+    PieChart,
+    Pie,
+    Cell
+} from 'recharts';
 
 import '../../scss/components/Summary.scss';
 // TODO: styling, possibly redux;
@@ -20,7 +28,8 @@ const Summary : React.FC = () =>  {
         })
     }
     const data = [
-        { name: 'Poprawne odpowiedzi', value: good }, { name: 'Złe odpowiedzi', value: bad },
+        { name: 'Poprawne odpowiedzi', value: good },
+        { name: 'Złe odpowiedzi', value: bad },
     ];
     const screenwidth = window.outerWidth;
     const COLORS = ['#00FF00', '#FF0000'];
@@ -40,7 +49,8 @@ const Summary : React.FC = () =>  {
                         dataKey="value"
                     >
                         {
-                            data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                            data.map((entry, index) => <Cell key={`cell-${index}`} 
+                            fill={COLORS[index % COLORS.length]} />)
                         }
                     </Pie>
                 </PieChart>

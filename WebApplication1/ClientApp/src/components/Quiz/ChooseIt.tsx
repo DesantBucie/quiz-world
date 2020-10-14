@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
@@ -13,9 +17,11 @@ type State = {
     redirect:boolean,
 }
 type CategoryProps =
-    Category.CategoryState &
+    Category.Category &
     typeof Category.actionCreators &
-    RouteComponentProps<{}>;
+RouteComponentProps<{}>;
+
+//TODO: Change select option to normal divs, throwed by api
 
 class ChoseIt extends React.Component<CategoryProps> {
     readonly state : State = {
@@ -24,12 +30,16 @@ class ChoseIt extends React.Component<CategoryProps> {
     }
     //Sends category to redux, when redirected, quiz components gets it value
     ChooseCategory = async() => {
+        console.log("Clock")
         const category = this.state.category;
-        this.props.getcategory(category);
+        this.props.getCategory(category);
         await this.setState({redirect:true})
     }
     handleChange = async(event:any) => {
+        console.log("Click");
+        console.log(event.target.value);
         await this.setState({category: event.target.value});
+        this.ChooseCategory();
     }
 
     render()  {
@@ -39,18 +49,44 @@ class ChoseIt extends React.Component<CategoryProps> {
         }
 
         return (
-            <section>
+            <section className="chooseit">
 
-                   Wybierz kategorię:
-                    <form onSubmit={this.ChooseCategory} className="form">
-                        <select value={this.state.category} onChange={this.handleChange} className="form__select">
-                            <option value=''>Wszystkie</option>
-                            <option value="społeczeństwo">Społeczeństwo</option>
-                            <option value="fakty-autentyczne">Fakty Autentyczne</option>
-                            <option value="kinematografia">Kinematografia</option>
-                        </select>
-                   <button className="form__button" type="submit">Dalej!</button>
-                   </form>
+                <h2>Wybierz kategorię:</h2>
+                    <form className="form">
+                        <div className="home__header home__header--option2">
+                            <h1>Wszystkie</h1>
+                            <Link to='/category'>
+                                <button type="submit" onClick={this.handleChange} value=" " className="home__button">
+                                    Wybierz <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
+                                </button>	
+                            </Link>
+                        </div>
+                        <div className="home__header home__header--option1">
+                            <h1>Społeczeństwo</h1>
+                            <Link to='/category'>
+                                <button type="submit" onClick={this.handleChange} value="społeczeństwo" className="home__button">
+                                    Wybierz <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
+                                </button>	
+                            </Link>
+                        </div>
+                        <div className="home__header home__header--option2">
+                            <h1>Fakty(Autentyczne)</h1>
+                            <Link to='/category'>
+                                <button type="submit" onClick={this.handleChange} value="fakty-autentyczne" className="home__button">
+                                    Wybierz <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
+                                </button>	
+                            </Link>
+                        </div>
+                        <div className="home__header home__header--option1">
+                            <h1>Kinematografia</h1>
+                            <Link to='/category'>
+                                <button type="submit" onClick={this.handleChange} value="kinematografia"className="home__button">
+                                    Wybierz <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
+                                </button>	
+                            </Link>
+                        </div>
+                </form>
+
             </section>
         )
     }

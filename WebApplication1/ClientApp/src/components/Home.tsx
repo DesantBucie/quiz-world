@@ -38,7 +38,7 @@ const Home : React.FC<props> = () => {
                     <h2>Stwórz Quiz!</h2>
                     <Link to='/create'>
                         <button className="home__button">
-                            Dalej!<FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
+                            Dalej <FontAwesomeIcon className="arrowRight" icon={faArrowRight}/>
                         </button>
                     </Link>
                 </div>

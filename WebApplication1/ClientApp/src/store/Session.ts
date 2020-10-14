@@ -1,4 +1,7 @@
-import { Action, Reducer } from 'redux';
+import {
+    Action,
+    Reducer
+} from 'redux';
 import { AppThunkAction } from '.';
 
 export interface SessionState {

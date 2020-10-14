@@ -12,13 +12,25 @@
     width:100%;
 
     &--register {
-      width:45%;
+      width:50%;
+      flex:1;
       background:#98a52667;
     }
 
     &--login {
-      width:45%;
+      width:50%;
+      flex:1;
       background:#2676a567
+    }
+    &--option1 {
+      background:#98a52667;    
+      flex:1;
+      width:50%;
+    }
+    &--option2 {
+      background:#2676a567;
+      flex:1;
+      width: 50%;
     }
   }
   &__button {
