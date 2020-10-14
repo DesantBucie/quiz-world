@@ -5303,11 +5303,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj",
+      "projectUniqueName": "C:\\Users\\zero\\source\\repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj",
       "projectName": "Antila.AnswerService",
-      "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj",
+      "projectPath": "C:\\Users\\zero\\source\\repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj",
       "packagesPath": "C:\\Users\\zero\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.AnswerService\\obj\\",
+      "outputPath": "C:\\Users\\zero\\source\\repos\\antila\\Antila.AnswerService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5326,8 +5326,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Data\\Antila.Data.csproj": {
-              "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.Data\\Antila.Data.csproj"
+            "C:\\Users\\zero\\source\\repos\\antila\\Antila.Data\\Antila.Data.csproj": {
+              "projectPath": "C:\\Users\\zero\\source\\repos\\antila\\Antila.Data\\Antila.Data.csproj"
             }
           }
         }

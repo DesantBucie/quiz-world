@@ -24,16 +24,17 @@ namespace XUnitTests
             using (var context = new AntilaDbContext(options))
             {
                 context.Database.EnsureCreated();
-                
+
                 context.Add(
                     new Test
-                    {    
+                    {
+                        Id = 2,
                         Category = "Kinematografia",
                         Question = new Question
                         {
                             Content = "Jak nazywa siê postaæ w któr¹ wciela siê Harrison Ford w '£owcy Androidów'?",
                             Answers = new List<Answer>
-                            {   
+                            {
                                 new Answer { Content = "Roy Batty", QuestionId = 2 },
                                 new Answer { Content = "J.F. Sebastian", QuestionId = 2 },
                                 new Answer { Content = "Bryant", QuestionId = 2 },
@@ -42,15 +43,19 @@ namespace XUnitTests
                         }
                     });
                 context.SaveChanges();
-            }
-
-            using (var context = new AntilaDbContext(options))
-            {
                 var service = new AnswerService(context);
 
                 bool isCorrect = service.CheckAnswer(2, 8);
 
                 Assert.True(isCorrect);
+                //Assert.True(context.Database.CanConnect());
+
+
+            }
+
+            using (var context = new AntilaDbContext(options))
+            {
+               
 
             }
 

@@ -50,6 +50,7 @@ namespace AntilaWebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();   
@@ -87,6 +88,7 @@ namespace AntilaWebApp
                 }
             });
 
+            ChangeAppSettings(env);
             SeedDatabase();
             SeedIdenity();
             ApplicationDbInitializer.SeedUsers(userManager);
@@ -125,6 +127,14 @@ namespace AntilaWebApp
                     IdentityResult result = userManager.CreateAsync(user, "Antila01@Admin").Result;
                 }
             }
+        }
+
+        public void ChangeAppSettings(IWebHostEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
         }
     }
 }

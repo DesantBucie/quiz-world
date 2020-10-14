@@ -6500,11 +6500,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zero\\Source\\Repos\\antila\\XUnitTests\\XUnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\zero\\source\\repos\\antila\\XUnitTests\\XUnitTests.csproj",
       "projectName": "XUnitTests",
-      "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila\\XUnitTests\\XUnitTests.csproj",
+      "projectPath": "C:\\Users\\zero\\source\\repos\\antila\\XUnitTests\\XUnitTests.csproj",
       "packagesPath": "C:\\Users\\zero\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zero\\Source\\Repos\\antila\\XUnitTests\\obj\\",
+      "outputPath": "C:\\Users\\zero\\source\\repos\\antila\\XUnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6523,8 +6523,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj": {
-              "projectPath": "C:\\Users\\zero\\Source\\Repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj"
+            "C:\\Users\\zero\\source\\repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj": {
+              "projectPath": "C:\\Users\\zero\\source\\repos\\antila\\Antila.AnswerService\\Antila.AnswerService.csproj"
             }
           }
         }

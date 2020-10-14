@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GUcwizh7yRrzWGQeB54IY+DKTh+Dc0LRXiiVbe92Gz6SHLY+nX9A9XPTg3o7h9z35OsqSPDTUrwIa0Vqsmdc7g==",
+  "dgSpecHash": "xkgUNExoPDi0uIMEdkOpYgN2/6LA6fNcw8NAvuiEP0p+i9P2QvRo3Onv4Thowy1AVQ87Sxg4nhhvp04WIZ47Cw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zero\\Source\\Repos\\antila\\XUnitTests\\XUnitTests.csproj",
+  "projectFilePath": "C:\\Users\\zero\\source\\repos\\antila\\XUnitTests\\XUnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zero\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\zero\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
